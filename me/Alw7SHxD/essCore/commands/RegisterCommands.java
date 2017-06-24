@@ -26,7 +26,7 @@ public class RegisterCommands {
         try {
             HashMap<String, CommandExecutor> commands = new HashMap<>();
 
-            commands.put("esscore", new CommandBroadcast(core));
+            commands.put("esscore", new CommandEss(core));
             commands.put("broadcast", new CommandBroadcast(core));
             commands.put("clearchat", new CommandClearChat(core));
             commands.put("fly", new CommandFly(core));

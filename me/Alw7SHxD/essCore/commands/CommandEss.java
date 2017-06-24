@@ -56,7 +56,8 @@ public class CommandEss implements CommandExecutor, messages {
                 Integer maxPage = 1;
                 sender.sendMessage(EssAPI.color(header(1, 1)));
                 for(String string : commands().keySet()){
-                    new FancyMessage("/").color(ChatColor.DARK_GRAY).then(string).color(ChatColor.GRAY).suggest("/" + string).tooltip("aliases: " + core.getCommand(string).getAliases().toString()).color(ChatColor.AQUA).send(sender);
+                    FancyMessage tooltips = new FancyMessage("aliases: ").color(ChatColor.GRAY).then(core.getCommand(string).getAliases().toString()).color(ChatColor.DARK_AQUA).then("\n").then("usage: ").color(ChatColor.GRAY).then(core.getCommand(string).getUsage().replace("<command>", string)).color(ChatColor.DARK_AQUA);
+                    new FancyMessage("/").color(ChatColor.DARK_GRAY).then(string).color(ChatColor.AQUA).suggest("/" + string).formattedTooltip(tooltips).then(" > ").color(ChatColor.GRAY).then(commands().get(string)).send(sender);
                 }
             } else sender.sendMessage(EssAPI.color(String.format(m_syntax_error_c, s + " help")));
         } else
