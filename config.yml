@@ -1,0 +1,105 @@
+###
+# +
+# | essCore made by Alw7SHxD
+# +
+###
+
+# essCore is a minecraft essentials plugin
+# providing commands & features for daily
+# use, it is still in the beta phase but
+# i'm continuing to work on it hard to
+# make it the better it can be.
+
+# If you receive an error when loading essCore, make sure that:
+#   - No tabs are present: YAML only allows spaces
+#   - Indents are correct: YAML hierarchy is based entirely on indentation
+#   - You have "escaped" all apostrophes in your text: If you want to write "don't", for example, write "don''t" instead (note the doubled apostrophe)
+#   - Text with symbols is enclosed in single or double quotation marks
+
+# DISCLAIMER:
+#   YOU ARE NOT ALLOWED TO MODIFY THE CODE OF THE PLUGIN,
+#   AND CLAIMING IT AS IT'S YOUR'S.
+#   YOU ARE NOT ALLOWED TO MODIFY THE CODE OF THE PLUGIN,
+#   IF YOU DON'T HAVE THE PERMISSION TO DO THAT.
+
+###
+# +
+# | GLOBAL
+# +
+###
+
+# The character(s) to prefix all nicknames, so that you know they are not true usernames.
+nickname-prefix: '~'
+
+# The maximum length allowed in nicknames. The nickname prefix is included in this.
+max-nick-length: 15
+
+# If the nickname has colorcodes in it, then it'll ignore it from the maximum length.
+ignore-nick-colorcodes: false
+
+# Remove the hashtag (#) before the type of sign to enable it.
+# please note that if enabled each sign has it's own permission node for it to be used.
+# Creating the sign : esscore.signs.<name>.create
+# Usage of the sign : esscore.signs.<name>.use
+allowed-signs:
+  #- colors
+  #- warp
+  #- warps
+  #- spawn
+  #- disposal
+
+###
+# +
+# | CHAT
+# +
+###
+
+# IF set to true, any player could use
+# color codes in the chat, without
+# the 'esscore.chat.color' permission.
+allow-color-codes: false
+
+# modify the broadcast prefix, colorcodes are supported.
+broadcast-prefix: "&c&lBROADCAST! &r"
+
+# Set custom join/leave messages
+# this will change the default
+# join/leave message.
+# use %name% to display the
+# player display-name.
+# set to "" to disable.
+custom-messages:
+  join: ""
+  leave: ""
+
+# IF set true, join/leave messages
+# well be hidden.
+hide-messages:
+  join: false
+  leave: false
+
+# customize the default chat format when any
+# player sends a new message in the chat.
+# placeholderapi is supported.
+# colorcodes are supported.
+# make sure to implement {MESSAGE} in order to display
+# the message, and {DISPLAYNAME} to display the players
+# real name or the nickname.
+chat-format:
+  enabled: false
+  default-format: "<{DISPLAYNAME}> {MESSAGE}"
+
+###
+# +
+# | MISCELLANEOUS
+# +
+###
+
+# modify on which event should the player get teleported to the spawn.
+spawn-teleport:
+  player-join: true
+  player-first-join: true
+  player-respawn: true
+
+# Don't change this value
+essCore: 6.3.2

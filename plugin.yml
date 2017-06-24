@@ -1,0 +1,329 @@
+# Created by Alw7SHxD on 4/15/2017.
+name: essCore
+version: 0.6.4
+description: "Minecraft essentials plugin, provides daily used commands!"
+website: "https://www.spigotmc.org/resources/esscore.37766/"
+author: Alw7SHxD
+main: me.Alw7SHxD.essCore.Core
+softdepend: [PlaceholderAPI]
+permissions:
+  esscore.*:
+    description: "grant every permission in essCore"
+    children:
+      esscore.broadcast: true
+      esscore.clearchat: true
+      esscore.clearchat.global: true
+      esscore.clearchat.target: true
+      esscore.clearchat.ignore: true
+      esscore.chat.color: true
+      esscore.fly: true
+      esscore.fly.target: true
+      esscore.freeze: true
+      esscore.freeze.bypass: true
+      esscore.freeze.force: true
+      esscore.unfreeze: true
+      esscore.heal: true
+      esscore.heal.target: true
+      esscore.fead: true
+      esscore.fead.target: true
+      esscore.gamemode: true
+      esscore.mute: true
+      esscore.mute.bypass: true
+      esscore.mute.force: true
+      esscore.unmute: true
+      esscore.spawn: true
+      esscore.setspawn: true
+      esscore.delspawn: true
+      esscore.warp: true
+      esscore.warps: true
+      esscore.warps.*: true
+      esscore.setwarp: true
+      esscore.delwarp: true
+      esscore.nickname: true
+      esscore.nickname.target: true
+      esscore.silent: false
+      esscore.vanish: true
+      esscore.vanish.target: true
+      esscore.vanish.silent: true
+      esscore.heal: true
+      esscore.heal.target: true
+      esscore.heal.all: true
+      esscore.feed: true
+      esscore.feed.target: true
+      esscore.feed.all: true
+      esscore.workbench: true
+      esscore.enderchest: true
+      esscore.enderchest.target: true
+      esscore.home: true
+      esscore.sethome: true
+  esscore.broadcast:
+    description: "grant broadcasting to the whole server"
+    default: op
+  esscore.clearchat:
+    description: "grant silently clear the chat"
+    default: op
+  esscore.clearchat.global:
+    description: "grant global clear chat"
+    default: op
+  esscore.clearchat.target:
+    description: "grant clearing target's chat"
+    default: op
+  esscore.clearchat.ignore:
+    description: "grant ignoring the clear chat command"
+    default: false
+  esscore.chat.color:
+    description: "grant using colorcodes in the chat"
+    default: op
+  esscore.fly:
+    description: "grant toggling self flight"
+    default: op
+  esscore.fly.target:
+    description: "grant toggling target's flight"
+    default: op
+  esscore.freeze:
+    description: "grant freezing players"
+    default: op
+  esscore.freeze.bypass:
+    description: "grant bypassing the freeze"
+    default: op
+  esscore.freeze.force:
+    description: "grant forcing the freeze ( even with bypass )"
+    default: false
+  esscore.unfreeze:
+    description: "grant unfreezing frozen players"
+    default: op
+  esscore.feed:
+    description: "grant self feeding"
+    default: op
+  esscore.feed.target:
+    description: "grant target feeding"
+    default: op
+  esscore.heal:
+    description: "grant self healing"
+    default: op
+  esscore.heal.target:
+    description: "grant target healing"
+    default: op
+  esscore.gamemode:
+    description: "grant using the gamemode alias command"
+    default: op
+  esscore.mute:
+    description: "grant muting players"
+    default: op
+  esscore.mute.bypass:
+    description: "grant bypassing the mute"
+    default: op
+  esscore.mute.force:
+    description: "grant forcing the mute ( even with bypass )"
+    default: false
+  esscore.unmute:
+    description: "grant un-muting muted players"
+    default: op
+  esscore.nickname:
+    description: "grant changing personal nickname"
+    default: op
+  esscore.nickname.target:
+    description: "grant changing player's nickname"
+    default: op
+  esscore.spawn:
+    description: "grant teleporting to the spawn"
+    default: true
+  esscore.setspawn:
+    description: "grant setting the global spawn-point"
+    default: op
+  esscore.delspawn:
+    description: "grant deleting the global spawn-point"
+    default: op
+  esscore.warp:
+    description: "grant the ability to use the warp command"
+    default: op
+  esscore.warps:
+    description: "grant listing the available warps"
+    default: op
+  esscore.warps.*:
+    description: "grant access to all warps"
+    default: op
+  esscore.setwarp:
+    description: "grant creating new warps"
+    default: op
+  esscore.delwarp:
+    description: "grant deleting existing warps"
+    default: op
+  esscore.silent:
+    description: "grant connecting silently"
+    default: false
+  esscore.vanish:
+    description: "grant the ability to use the vanish command"
+    default: op
+  esscore.vanish.target:
+    description: "grant the ability to vanish other players"
+    default: op
+  esscore.heal:
+    description: "grant the ability to heal yourself"
+    default: op
+  esscore.heal.target:
+    description: "grant the ability to heal other players"
+    default: op
+  esscore.heal.all:
+    description: "grant the ability to heal all the players"
+    default: op
+  esscore.feed:
+    description: "grant the ability to feed yourself"
+    default: op
+  esscore.feed.target:
+    description: "grant the ability to feed other players"
+    default: op
+  esscore.feed.all:
+    description: "grant the ability to feed all the players"
+    default: op
+  esscore.workbench:
+    description: "grant the ability to use the workbench command"
+    default: op
+  esscore.enderchest:
+    description: "grant the ability to use the echest command"
+    default: op
+  esscore.enderchest.target:
+    description: "grant the ability to use the echest command on a player"
+    default: op
+  esscore.sethome:
+    description: "grant the ability to use the sethome command"
+    default: op
+  esscore.delhome:
+    description: "grant the ability to use the delhome command"
+    default: op
+  esscore.home:
+    description: "grant the ability to use the home command"
+    default: op
+commands:
+  esscore:
+    description: "essCore's main command."
+    usage: |
+      /<command>
+      /<command> [help|?] [page]
+      /<command> [update|check]
+      /<command> [reload|rl]
+      /<command> [wiki]
+    aliases: [essc, ess]
+  broadcast:
+    description: "broadcast your message to the whole server."
+    usage: /<command> <message>
+    aliases: [ebroadcast, ebc, bc]
+  clearchat:
+    description: "clear the chat."
+    usage: |
+      /<command>
+      /<command> [<Player|-a>]
+      /<command> [Player] [<-a>]
+    aliases: [eclearchat, ecc, cc]
+  fly:
+    description: "toggle flight."
+    usage: |
+      /<command>
+      /<command> [Player]
+    aliases: [efly]
+  feed:
+    description: "restore your hunger"
+    usage: |
+      /<command>
+      /<command> [Player]
+      /<command> [-all]
+    aliases: [efeed]
+  heal:
+    description: "restore your health"
+    usage: |
+      /<command>
+      /<command> [Player]
+      /<command> [-all]
+    aliases: [eheal]
+  mute:
+    description: "mute a player."
+    usage: /<command> <Player>
+    aliases: [emute]
+  unmute:
+    description: "un-mute a muted player."
+    usage: /<command> <Player>
+    aliases: [eunmute, un-mute, eun-mute]
+  nickname:
+    description: "change your/player displayname."
+    usage: |
+      /<command> <nickname|off>
+      /<command> <nickname|off> [Player]
+    aliases: [enickname, enick, nick]
+  warp:
+    description: "teleport to a warp."
+    usage: |
+      /<command> <name>
+      /<command> <name> [Player]
+    aliases: [ewarp]
+  warps:
+    description: "Display all the available warps."
+    usage: /<command>
+    aliases: [ewarps]
+  setwarp:
+    description: "Set a warp"
+    usage: |
+      /<command> <name>
+      /<command> <name> [<-p>]
+    aliases: [esetwarp]
+  delwarp:
+    description: "Delete a warp."
+    usage: /<command> <name>
+    aliases: [edelwarp]
+  freeze:
+    description: "Freeze a player."
+    usage: /<command> <Player>
+    aliases: [efreeze]
+  unfreeze:
+    description: "Un-Freeze a frozen player."
+    usage: /<command> <Player>
+    aliases: [eunfreeze]
+  suicide:
+    description: "Take out your life by yourself."
+    usage: /<command>
+    aliases: [esuicide]
+  spawn:
+    description: "Teleport to the spawn."
+    usage: |
+      /<command>
+      /<command> [Player]
+    aliases: [espawn]
+  setspawn:
+    description: "Set a global spawn-point."
+    usage: /<command>
+    aliases: [esetspawn]
+  delspawn:
+    description: "Delete the global spawn-point."
+    usage: /<command>
+    aliases: [edelspawn]
+  vanish:
+    description: "Go invisible."
+    usage: |
+      /<command>
+      /<command> [Player]
+    aliases: [evanish, ev, v]
+  workbench:
+    description: "Open's the crafting table."
+    usage: /<command>
+    aliases: [eworkbench, ecrafting, ecraftingtable, crafting, craftingtable]
+  enderchest:
+    description: "Open's an enderchest."
+    usage: |
+      /<command>
+      /<command> [Player]
+    aliases: [echest]
+  openinv:
+    description: "Open's a target player inventory."
+    usage: /<command> <Player>
+    aliases: [eopeninv, openinventory]
+  home:
+    description: "View available homes, or teleport to one of them."
+    usage: /<command> [name]
+    aliases: [ehome]
+  sethome:
+    description: "Set a new home."
+    usage: /<command> <name>
+    aliases: [esethome]
+  delhome:
+    description: "Delete an existing home."
+    usage: /<command> <name>
+    aliases: [edelhome]
