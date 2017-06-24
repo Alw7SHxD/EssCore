@@ -24,21 +24,14 @@ import java.util.HashMap;
 public class RegisterCommands {
     public RegisterCommands(Core core) {
         try {
-            core.getCommand("esscore").setExecutor(new CommandEss(core));
-            core.getCommand("essc").setExecutor(new CommandEss(core));
-            core.getCommand("ess").setExecutor(new CommandEss(core));
-
             HashMap<String, CommandExecutor> commands = new HashMap<>();
 
+            commands.put("esscore", new CommandBroadcast(core));
             commands.put("broadcast", new CommandBroadcast(core));
-            commands.put("bc", new CommandBroadcast(core));
             commands.put("clearchat", new CommandClearChat(core));
-            commands.put("cc", new CommandClearChat(core));
             commands.put("fly", new CommandFly(core));
             commands.put("mute", new CommandMute(core));
             commands.put("unmute", new CommandUnMute(core));
-            commands.put("un-mute", new CommandUnMute(core));
-            commands.put("nick", new CommandNick(core));
             commands.put("nickname", new CommandNick(core));
             commands.put("warp", new CommandWarp(core));
             commands.put("warps", new CommandWarps(core));

@@ -4,10 +4,13 @@ import me.Alw7SHxD.essCore.API.*;
 import me.Alw7SHxD.essCore.Core;
 import me.Alw7SHxD.essCore.lists;
 import me.Alw7SHxD.essCore.messages;
+import me.Alw7SHxD.essCore.util.FancyMessage;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /*
@@ -51,8 +54,9 @@ public class CommandEss implements CommandExecutor, messages {
                 new UpdateChecker(core).check(core.getDescription().getVersion(), sender);
             else if (args[0].equalsIgnoreCase("help") || args[0].equals("?")) {
                 Integer maxPage = 1;
+                sender.sendMessage(EssAPI.color(header(1, 1)));
                 for(String string : commands().keySet()){
-                    
+                    new FancyMessage("/").color(ChatColor.DARK_GRAY).then(string).color(ChatColor.GRAY).suggest("/" + string).tooltip("aliases: " + core.getCommand(string).getAliases().toString()).color(ChatColor.AQUA).send(sender);
                 }
             } else sender.sendMessage(EssAPI.color(String.format(m_syntax_error_c, s + " help")));
         } else
