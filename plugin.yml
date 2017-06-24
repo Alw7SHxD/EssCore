@@ -242,7 +242,7 @@ commands:
   unmute:
     description: "un-mute a muted player."
     usage: /<command> <Player>
-    aliases: [eunmute, un-mute, eun-mute]
+    aliases: [eunmute, un-mute]
   nickname:
     description: "change your/player displayname."
     usage: |

@@ -8,6 +8,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
+import java.util.HashMap;
+
 /*
  * (C) Copyright 2017 Alw7SHxD.
  *
@@ -48,15 +50,53 @@ public class CommandEss implements CommandExecutor, messages {
             else if (args[0].equalsIgnoreCase("update") || args[0].equalsIgnoreCase("check"))
                 new UpdateChecker(core).check(core.getDescription().getVersion(), sender);
             else if (args[0].equalsIgnoreCase("help") || args[0].equals("?")) {
-                Integer maxPage = 4;
-
+                Integer maxPage = 1;
+                for(String string : commands().keySet()){
+                    
+                }
             } else sender.sendMessage(EssAPI.color(String.format(m_syntax_error_c, s + " help")));
         } else
             sender.sendMessage(EssAPI.color("&a&lessCore &7version &a&l" + core.getDescription().getVersion() + "\n&7made by: &a&lAlw7SHxD"));
         return true;
     }
 
-    private String helpLines(Boolean header, Integer MaxPage, Integer currentPage) {
-        return header ? "&8&l&m|-------------->&a&l essCore &7help (" + currentPage + "/" + MaxPage + ") &8&l&m<---------------|&r" : "&8&l&m|----------------------------------------------|";
+    private HashMap<String, String> commands(){
+        HashMap<String, String> commands = new HashMap<>();
+
+        commands.put("broadcast", "send a message to the whole server.");
+        commands.put("clearchat", "clear the chat.");
+        commands.put("crafting", "open a crafting table.");
+        commands.put("delhome", "delete an existing home.");
+        commands.put("delspawn", "delete an existing spawn.");
+        commands.put("delwarp", "delete an existing warp.");
+        commands.put("enderchest", "open your enderchest.");
+        commands.put("esscore", "esscore's main command.");
+        commands.put("feed", "refill your hunger.");
+        commands.put("fly", "toggle your flight.");
+        commands.put("heal", "restore your health.");
+        commands.put("home", "teleport to your home.");
+        commands.put("mute", "mute a certain player.");
+        commands.put("nickname", "change your display name.");
+        commands.put("openinv", "open a certain player's inventory.");
+        commands.put("sethome", "set a new home.");
+        commands.put("setspawn", "set a global spawn point.");
+        commands.put("setwarp", "set a new warp.");
+        commands.put("spawn", "teleport to the global spawn point.");
+        commands.put("suicide", "close your eyes. and never wakeup.");
+        commands.put("unfreeze", "unfreeze a frozen player.");
+        commands.put("unmute", "un-mute a muted player.");
+        commands.put("vanish", "disappear from players eyes.");
+        commands.put("warp", "teleport to a specific warp.");
+        commands.put("warps", "display available warps.");
+
+        return commands;
+    }
+
+    private String header(int current, int max){
+        return "&b> &2&lessCore commands &7(&c&l" + current + "&8/&c&l" + max + "&7)";
+    }
+
+    private String footer(){
+        return "";
     }
 }
