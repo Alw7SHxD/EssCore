@@ -48,6 +48,15 @@ allowed-signs:
   #- spawn
   #- disposal
 
+# limit how many homes can each permission make
+# use esscore.sethome.<name> permission for the following
+# ex. 'esscore.sethome.member' will limit the user to 3 homes.
+# default (without permissions) is 1 home only.
+limit-homes:
+  member: 3
+  vip: 5
+  staff: 7
+
 ###
 # +
 # | CHAT
@@ -102,4 +111,4 @@ spawn-teleport:
   player-respawn: true
 
 # Don't change this value
-essCore: 6.3.2
+essCore: 6.5

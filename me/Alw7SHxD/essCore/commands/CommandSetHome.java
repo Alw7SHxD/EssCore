@@ -33,9 +33,31 @@ public class CommandSetHome implements CommandExecutor, messages {
         }
 
         EssHomesAPI homesAPI = new EssHomesAPI((Player) commandSender);
-        if (homesAPI.set(strings[0].replace(".", "-").toLowerCase(), ((Player) commandSender).getLocation()))
-            commandSender.sendMessage(EssAPI.color(String.format(m_sethome_success, strings[0].replace(".", "-").toLowerCase())));
-        else commandSender.sendMessage(EssAPI.color(m_sethome_exists));
+
+        int i = 0;
+
+        for (String key : core.lists.getLimitHomes()) {
+            if (commandSender.hasPermission("esscore.sethome." + key))
+                if (homesAPI.listAll().toArray().length >= core.getConfig().getInt("limit-homes." + key)) {
+                    i = -1;
+                    break;
+                } else {
+                    i = 1;
+                    break;
+                }
+        }
+
+        if (i == -1) {
+            commandSender.sendMessage(EssAPI.color(m_sethome_limit));
+            return true;
+        } else if (i == 0) {
+            if (homesAPI.listAll().toArray().length >= 1) {
+                commandSender.sendMessage(EssAPI.color(m_sethome_limit));
+                return true;
+            }
+        }
+
+        commandSender.sendMessage(homesAPI.set(strings[0].replace(".", "-").toLowerCase(), ((Player) commandSender).getLocation()) ? EssAPI.color(String.format(m_sethome_success, strings[0].replace(".", "-").toLowerCase())) : EssAPI.color(m_sethome_exists));
         return true;
     }
 }

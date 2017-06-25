@@ -13,9 +13,17 @@ public class lists{
 
     private ArrayList<String> allowedSigns = new ArrayList<>();
     private ArrayList<Player> vanishedPlayers = new ArrayList<>();
+    private ArrayList<String> limitHomes = new ArrayList<>();
+    private ArrayList<String> limitHomesInt = new ArrayList<>();
 
     public lists(Core core) {
         this.core = core;
+    }
+
+    public void startup(){
+        reload();
+        loadVanishedPlayers();
+        loadLimitHomes();
     }
 
     public void reload() {
@@ -38,8 +46,24 @@ public class lists{
         }
     }
 
+    public void loadLimitHomes(){
+        try {
+            limitHomes.clear();
+            if(core.getConfig().getConfigurationSection("limit-homes") != null)
+                limitHomes.addAll(core.getConfig().getConfigurationSection("limit-homes").getKeys(false));
+        }catch (NullPointerException e){
+            // nothing
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public ArrayList<String> getAllowedSigns() {
         return allowedSigns;
+    }
+
+    public ArrayList<String> getLimitHomes() {
+        return limitHomes;
     }
 
     public ArrayList<Player> getVanishedPlayers() {

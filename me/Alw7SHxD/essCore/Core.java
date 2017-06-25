@@ -25,6 +25,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Core extends JavaPlugin {
     private UpdateChecker updateChecker = new UpdateChecker(this);
     public boolean usingPlaceholderAPI = false;
+    public lists lists;
 
     public void onEnable() {
         if(!getDataFolder().exists()) getDataFolder().mkdir();
@@ -38,7 +39,9 @@ public class Core extends JavaPlugin {
             getLogger().info("detected PlaceholderAPI.");
         }
 
-        new lists(this).reload();
+        this.lists = new lists(this);
+        this.lists.startup();
+
         new RegisterListeners(this);
         new RegisterCommands(this);
     }

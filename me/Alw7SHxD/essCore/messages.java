@@ -130,6 +130,7 @@ public interface messages {
 
     String m_sethome_exists = "&c&lError! &7that home already exists.";
     String m_sethome_success = "&a&lSuccess! &7home &c&l%s &7has been created.";
+    String m_sethome_limit = "&c&lHey! &7you've reached your maximum limit.";
 
     String m_delhome_success = "&c&lSuccess! &7deleted &c&l%s &7home.";
     String m_delhome_failed = "&c&lError! &7couldn't find that home.";

@@ -2,7 +2,6 @@ package me.Alw7SHxD.essCore.commands;
 
 import me.Alw7SHxD.essCore.API.*;
 import me.Alw7SHxD.essCore.Core;
-import me.Alw7SHxD.essCore.lists;
 import me.Alw7SHxD.essCore.messages;
 import me.Alw7SHxD.essCore.util.FancyMessage;
 import org.bukkit.ChatColor;
@@ -10,7 +9,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /*
@@ -44,7 +42,7 @@ public class CommandEss implements CommandExecutor, messages {
                         core.reloadConfig();
                         new EssWarpAPI(core).reload();
                         new EssSpawnAPI(core).reload();
-                        new lists(core);
+                        core.lists.startup();
                         sender.sendMessage(EssAPI.color(m_reload_done));
                     } catch (Exception e) {
                         sender.sendMessage(EssAPI.color(m_reload_error));
