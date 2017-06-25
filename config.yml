@@ -47,6 +47,8 @@ allowed-signs:
   #- warps
   #- spawn
   #- disposal
+  #- heal
+  #- feed
 
 # limit how many homes can each permission make
 # use esscore.sethome.<name> permission for the following
@@ -110,6 +112,9 @@ spawn-teleport:
   player-join: true
   player-first-join: true
   player-respawn: true
+
+# if enabled, people with no permissions will get notified about the permission.
+debug-signs: false
 
 # Don't change this value
 essCore: 6.5

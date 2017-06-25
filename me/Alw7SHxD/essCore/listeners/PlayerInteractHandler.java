@@ -9,6 +9,7 @@ import me.Alw7SHxD.essCore.messages;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Sign;
+import org.bukkit.command.CommandSender;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -38,20 +39,44 @@ public class PlayerInteractHandler implements Listener, messages {
                 lists.reload();
                 Sign sign = (Sign) e.getClickedBlock().getState();
                 if (sign.getLine(0).equals(EssAPI.color("&8[&2&lWARP&8]"))) {
-                    if (lists.getAllowedSigns().contains("warp") && e.getPlayer().hasPermission("esscore.signs.warp.use"))
+                    String perm = "esscore.signs.warp.use";
+                    if (lists.getAllowedSigns().contains("warp") && e.getPlayer().hasPermission(perm))
                         new EssWarpAPI(core).teleport(sign.getLine(1), e.getPlayer());
+                    else if (!e.getPlayer().hasPermission(perm) && core.lists.isDebugSigns())
+                        e.getPlayer().sendMessage(EssAPI.color(String.format(m_signs_debug_permission, perm)));
                 } else if (sign.getLine(0).equals(EssAPI.color("&8[&2&lWARPS&8]"))) {
-                    if (lists.getAllowedSigns().contains("warps") && e.getPlayer().hasPermission("esscore.signs.warps.use"))
+                    String perm = "esscore.signs.warps.use";
+                    if (lists.getAllowedSigns().contains("warps") && e.getPlayer().hasPermission(perm))
                         new EssWarpAPI(core).list(e.getPlayer());
+                    else if (!e.getPlayer().hasPermission(perm) && core.lists.isDebugSigns())
+                        e.getPlayer().sendMessage(EssAPI.color(String.format(m_signs_debug_permission, perm)));
                 } else if (sign.getLine(0).equals(EssAPI.color("&8[&2&lSPAWN&8]"))) {
-                    if (lists.getAllowedSigns().contains("spawn") && e.getPlayer().hasPermission("esscore.signs.spawn.use")) {
+                    String perm = "esscore.signs.spawn.use";
+                    if (lists.getAllowedSigns().contains("spawn") && e.getPlayer().hasPermission(perm)) {
                         new EssSpawnAPI(core).teleport(e.getPlayer());
                         e.getPlayer().sendMessage(EssAPI.color(m_spawn_teleport));
-                    }
+                    } else if (!e.getPlayer().hasPermission(perm) && core.lists.isDebugSigns())
+                        e.getPlayer().sendMessage(EssAPI.color(String.format(m_signs_debug_permission, perm)));
                 } else if (sign.getLine(0).equals(EssAPI.color("&8[&2&lDISPOSAL&8]"))) {
-                    if (lists.getAllowedSigns().contains("disposal") && e.getPlayer().hasPermission("esscore.signs.disposal.use")) {
+                    String perm = "esscore.signs.disposal.use";
+                    if (lists.getAllowedSigns().contains("disposal") && e.getPlayer().hasPermission(perm)) {
                         e.getPlayer().openInventory(Bukkit.createInventory(null, 27, EssAPI.color("&8&lDisposal")));
-                    }
+                    } else if (!e.getPlayer().hasPermission(perm) && core.lists.isDebugSigns())
+                        e.getPlayer().sendMessage(EssAPI.color(String.format(m_signs_debug_permission, perm)));
+                } else if (sign.getLine(0).equals(EssAPI.color("&8[&2&lFEED&8]"))) {
+                    String perm = "esscore.signs.feed.use";
+                    if (lists.getAllowedSigns().contains("disposal") && e.getPlayer().hasPermission(perm)) {
+                        e.getPlayer().setFoodLevel(20);
+                        e.getPlayer().sendMessage(EssAPI.color(m_feed_self));
+                    } else if (!e.getPlayer().hasPermission(perm) && core.lists.isDebugSigns())
+                        e.getPlayer().sendMessage(EssAPI.color(String.format(m_signs_debug_permission, perm)));
+                } else if (sign.getLine(0).equals(EssAPI.color("&8[&2&lHEAL&8]"))) {
+                    String perm = "esscore.signs.heal.use";
+                    if (lists.getAllowedSigns().contains("disposal") && e.getPlayer().hasPermission(perm)) {
+                        e.getPlayer().setHealth(20);
+                        e.getPlayer().sendMessage(EssAPI.color(m_heal_self));
+                    } else if (!e.getPlayer().hasPermission(perm) && core.lists.isDebugSigns())
+                        e.getPlayer().sendMessage(EssAPI.color(String.format(m_signs_debug_permission, perm)));
                 }
             }
         } catch (NullPointerException ex) {

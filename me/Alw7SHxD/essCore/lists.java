@@ -12,9 +12,9 @@ public class lists{
     private Core core;
 
     private ArrayList<String> allowedSigns = new ArrayList<>();
+    private boolean debugSigns = false;
     private ArrayList<Player> vanishedPlayers = new ArrayList<>();
     private ArrayList<String> limitHomes = new ArrayList<>();
-    private ArrayList<String> limitHomesInt = new ArrayList<>();
 
     public lists(Core core) {
         this.core = core;
@@ -29,6 +29,7 @@ public class lists{
     public void reload() {
         allowedSigns.clear();
         allowedSigns.addAll(core.getConfig().getStringList("allowed-signs"));
+        debugSigns = core.getConfig().getBoolean("debug-signs");
     }
 
     public void loadVanishedPlayers(){
@@ -56,6 +57,10 @@ public class lists{
         }catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public boolean isDebugSigns() {
+        return debugSigns;
     }
 
     public ArrayList<String> getAllowedSigns() {

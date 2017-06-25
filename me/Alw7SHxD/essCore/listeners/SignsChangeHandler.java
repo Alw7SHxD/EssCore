@@ -1,35 +1,26 @@
 package me.Alw7SHxD.essCore.listeners;
 
 import me.Alw7SHxD.essCore.API.EssAPI;
-import me.Alw7SHxD.essCore.API.EssSpawnAPI;
 import me.Alw7SHxD.essCore.API.EssWarpAPI;
 import me.Alw7SHxD.essCore.Core;
-import me.Alw7SHxD.essCore.lists;
 import me.Alw7SHxD.essCore.messages;
-import org.bukkit.Material;
-import org.bukkit.block.Sign;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
 import org.bukkit.event.block.SignChangeEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
 
 /**
  * essCore was created by Alw7SHxD (C) 2017
  */
 public class SignsChangeHandler implements Listener, messages {
     private Core core;
-    private lists lists;
 
     public SignsChangeHandler(Core core) {
         this.core = core;
-        this.lists = new lists(core);
     }
 
     @EventHandler
     public void onSignChange(SignChangeEvent e) {
-        lists.reload();
-        for (String s : lists.getAllowedSigns()) {
+        for (String s : core.lists.getAllowedSigns()) {
             if (s.equalsIgnoreCase("colors")) {
                 if (!e.getPlayer().hasPermission("esscore.signs.colors.create"))
                     continue;
@@ -45,6 +36,12 @@ public class SignsChangeHandler implements Listener, messages {
                         continue;
                     } else if (i == 0 && e.getLine(0).equals("&8[&2&lDISPOSAL&8]")) {
                         e.setLine(0, EssAPI.color("&0[&2&lDISPOSAL&0]"));
+                        continue;
+                    } else if (i == 0 && e.getLine(0).equals("&8[&2&lFEED&8]")) {
+                        e.setLine(0, EssAPI.color("&0[&2&lFEED&0]"));
+                        continue;
+                    } else if (i == 0 && e.getLine(0).equals("&8[&2&lHEAL&8]")) {
+                        e.setLine(0, EssAPI.color("&0[&2&lHEAL&0]"));
                         continue;
                     }
 
@@ -84,6 +81,20 @@ public class SignsChangeHandler implements Listener, messages {
                 if (e.getLine(0).equalsIgnoreCase("[disposal]")) {
                     e.setLine(0, EssAPI.color("&8[&2&lDISPOSAL&8]"));
                     e.getPlayer().sendMessage(EssAPI.color(m_signs_disposal_create));
+                }
+            } else if (s.equalsIgnoreCase("feed")) {
+                if (!e.getPlayer().hasPermission("esscore.signs.feed.create"))
+                    continue;
+                if (e.getLine(0).equalsIgnoreCase("[feed]")) {
+                    e.setLine(0, EssAPI.color("&8[&2&lFEED&8]"));
+                    e.getPlayer().sendMessage(EssAPI.color(m_signs_feed_create));
+                }
+            } else if (s.equalsIgnoreCase("heal")) {
+                if (!e.getPlayer().hasPermission("esscore.signs.heal.create"))
+                    continue;
+                if (e.getLine(0).equalsIgnoreCase("[heal]")) {
+                    e.setLine(0, EssAPI.color("&8[&2&lHEAL&8]"));
+                    e.getPlayer().sendMessage(EssAPI.color(m_signs_heal_create));
                 }
             }
         }

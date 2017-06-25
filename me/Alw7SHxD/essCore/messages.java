@@ -106,6 +106,9 @@ public interface messages {
     String m_signs_warps_create = "&a&lSuccess! &7sign to display the available &a&lwarps &7has been created.";
     String m_signs_spawn_create = "&a&lSuccess! &7sign to teleport to the &a&lspawn &7has been created.";
     String m_signs_disposal_create = "&a&lSuccess! &7sign to &a&ldispose items &7has been created.";
+    String m_signs_feed_create = "&a&lSuccess! &7sign to &a&lfeed players &7has been created.";
+    String m_signs_heal_create = "&a&lSuccess! &7sign to &a&lheal players &7has been created.";
+    String m_signs_debug_permission = "&c&lHey! &7you don't have &c&l%s &7permission.";
 
     String m_vanish_self_on = "&7You are now &a&lvanished";
     String m_vanish_self_off = "&7You are now&c&l visible &7to everyone.";
