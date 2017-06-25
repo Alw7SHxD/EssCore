@@ -9,7 +9,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import java.util.HashMap;
+import java.util.*;
 
 /*
  * (C) Copyright 2017 Alw7SHxD.
@@ -53,8 +53,11 @@ public class CommandEss implements CommandExecutor, messages {
             else if (args[0].equalsIgnoreCase("help") || args[0].equals("?")) {
                 Integer maxPage = 4;
                 try {
-                    getPage(sender, Integer.parseInt(args[1]), maxPage);
-                }catch (NumberFormatException e){
+                    if (args.length == 1 || args[1].isEmpty())
+                        getCommands(sender, 1, maxPage);
+                    else
+                        getCommands(sender, Integer.parseInt(args[1]), maxPage);
+                } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
                     sender.sendMessage(EssAPI.color("&c&lHey! &7only numbers are allowed to be used."));
                 }
             } else sender.sendMessage(EssAPI.color(String.format(m_syntax_error_c, s + " help")));
@@ -63,74 +66,62 @@ public class CommandEss implements CommandExecutor, messages {
         return true;
     }
 
-    private void getPage(CommandSender commandSender, int page, int max){
-        if(page >= max) {
-            commandSender.sendMessage(EssAPI.color(String.format(m_ess_help_invalid_page, max)));
+    public void getCommands(CommandSender commandSender, int page, int max) {
+        SortedMap<String, Integer> commands = new TreeMap<>();
+        commands.put("broadcast", 1);
+        commands.put("clearchat", 2);
+        commands.put("crafting", 3);
+        commands.put("delhome", 4);
+        commands.put("delspawn", 5);
+        commands.put("delwarp", 6);
+        commands.put("enderchest", 7);
+        commands.put("esscore", 8);
+        commands.put("feed", 9);
+        commands.put("fly", 10);
+        commands.put("freeze", 11);
+        commands.put("heal", 12);
+        commands.put("home", 13);
+        commands.put("mute", 14);
+        commands.put("nickname", 15);
+        commands.put("openinv", 16);
+        commands.put("sethome", 17);
+        commands.put("setspawn", 18);
+        commands.put("setwarp", 19);
+        commands.put("spawn", 20);
+        commands.put("suicide", 21);
+        commands.put("unfreeze", 22);
+        commands.put("unmute", 23);
+        commands.put("vanish", 24);
+        commands.put("warp", 25);
+        commands.put("warps", 26);
+
+        paginate(commandSender, commands, page, 8, max);
+    }
+
+    public void paginate(CommandSender sender, SortedMap<String, Integer> map, int page, int pageLength, int max) {
+        if (page > max) {
+            sender.sendMessage(EssAPI.color(String.format(m_ess_help_invalid_page, max)));
             return;
         }
-
-        commandSender.sendMessage(EssAPI.color(header(page, max)));
-
-        for(String string : commands(max).keySet()) {
-            if (commands(max).get(string).equals(page)) {
-                FancyMessage tooltips = new FancyMessage("aliases: ").color(ChatColor.GRAY).then(core.getCommand(string).getAliases().toString()).color(ChatColor.DARK_AQUA).then("\n").then("usage: ").color(ChatColor.GRAY).then(core.getCommand(string).getUsage().replace("<command>", string)).color(ChatColor.DARK_AQUA);
-                new FancyMessage("/").color(ChatColor.DARK_GRAY).then(string).color(ChatColor.AQUA).suggest("/" + string).formattedTooltip(tooltips).then(" > ").color(ChatColor.GRAY).then(core.getCommand(string).getDescription()).send(commandSender);
+        sender.sendMessage(EssAPI.color(header(page, (((map.size() % pageLength) == 0) ? map.size() / pageLength : (map.size() / pageLength) + 1))));
+        int i = 0, k = 0;
+        page--;
+        for (final Map.Entry<String, Integer> e : map.entrySet()) {
+            k++;
+            if ((((page * pageLength) + i + 1) == k) && (k != ((page * pageLength) + pageLength + 1))) {
+                i++;
+                FancyMessage tooltips = new FancyMessage("aliases: ").color(ChatColor.GRAY).then(core.getCommand(e.getKey()).getAliases().toString()).color(ChatColor.DARK_AQUA).then("\n").then("usage: ").color(ChatColor.GRAY).then(core.getCommand(e.getKey()).getUsage().replace("<command>", e.getKey())).color(ChatColor.DARK_AQUA);
+                new FancyMessage("/").color(ChatColor.DARK_GRAY).then(e.getKey()).color(ChatColor.AQUA).suggest("/" + e.getKey()).formattedTooltip(tooltips).then(" > ").color(ChatColor.GRAY).then(core.getCommand(e.getKey()).getDescription()).send(sender);
             }
         }
-
-        commandSender.sendMessage(EssAPI.color(footer()));
+        sender.sendMessage(EssAPI.color(footer()));
     }
 
-    private HashMap<String, Integer> commands(int max){
-        HashMap<String, Integer> commands = new HashMap<>();
-
-        int i = 1;
-        for(int x = 0; x <= 7; x++) {
-            if(x == 7) {
-                if(i >= max) break;
-                else{
-                    i++;
-                    x = 0;
-                    continue;
-                }
-            }
-
-            commands.put("broadcast", i);
-            commands.put("clearchat", i);
-            commands.put("crafting", i);
-            commands.put("delhome", i);
-            commands.put("delspawn", i);
-            commands.put("delwarp", i);
-            commands.put("enderchest", i);
-            commands.put("esscore", i);
-            commands.put("feed", i);
-            commands.put("fly", i);
-            commands.put("freeze", i);
-            commands.put("heal", i);
-            commands.put("home", i);
-            commands.put("mute", i);
-            commands.put("nickname", i);
-            commands.put("openinv", i);
-            commands.put("sethome", i);
-            commands.put("setspawn", i);
-            commands.put("setwarp", i);
-            commands.put("spawn", i);
-            commands.put("suicide", i);
-            commands.put("unfreeze", i);
-            commands.put("unmute", i);
-            commands.put("vanish", i);
-            commands.put("warp", i);
-            commands.put("warps", i);
-        }
-
-        return commands;
-    }
-
-    private String header(int current, int max){
+    private String header(int current, int max) {
         return "&b> &2&lessCore commands &7(&c&l" + current + "&8/&c&l" + max + "&7)";
     }
 
-    private String footer(){
-        return "&b> &7you can &nclick &7or &nhover &7over the commands";
+    private String footer() {
+        return "&b> &7you can &nclick&7 or &nhover&7 over the commands";
     }
 }
