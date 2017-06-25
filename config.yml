@@ -52,10 +52,11 @@ allowed-signs:
 # use esscore.sethome.<name> permission for the following
 # ex. 'esscore.sethome.member' will limit the user to 3 homes.
 # default (without permissions) is 1 home only.
+# top has the best priority.
 limit-homes:
-  member: 3
-  vip: 5
   staff: 7
+  vip: 5
+  member: 3
 
 ###
 # +

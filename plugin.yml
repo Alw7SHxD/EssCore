@@ -56,6 +56,7 @@ permissions:
       esscore.enderchest.target: true
       esscore.home: true
       esscore.sethome: true
+      esscore.sethome.*: true
   esscore.broadcast:
     description: "grant broadcasting to the whole server"
     default: op
@@ -187,6 +188,9 @@ permissions:
     default: op
   esscore.sethome:
     description: "grant the ability to use the sethome command"
+    default: op
+  esscore.sethome.*:
+    description: "grant the ability to set unlimited homes"
     default: op
   esscore.delhome:
     description: "grant the ability to use the delhome command"

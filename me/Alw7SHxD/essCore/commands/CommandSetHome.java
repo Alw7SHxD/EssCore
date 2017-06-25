@@ -47,13 +47,15 @@ public class CommandSetHome implements CommandExecutor, messages {
                 }
         }
 
-        if (i == -1) {
-            commandSender.sendMessage(EssAPI.color(m_sethome_limit));
-            return true;
-        } else if (i == 0) {
-            if (homesAPI.listAll().toArray().length >= 1) {
+        if (!commandSender.hasPermission("esscore.sethome.*")) {
+            if (i == -1) {
                 commandSender.sendMessage(EssAPI.color(m_sethome_limit));
                 return true;
+            } else if (i == 0) {
+                if (homesAPI.listAll().toArray().length >= 1) {
+                    commandSender.sendMessage(EssAPI.color(m_sethome_limit));
+                    return true;
+                }
             }
         }
 
