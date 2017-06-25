@@ -51,11 +51,11 @@ public class CommandEss implements CommandExecutor, messages {
             else if (args[0].equalsIgnoreCase("update") || args[0].equalsIgnoreCase("check"))
                 new UpdateChecker(core).check(core.getDescription().getVersion(), sender);
             else if (args[0].equalsIgnoreCase("help") || args[0].equals("?")) {
-                Integer maxPage = 1;
-                sender.sendMessage(EssAPI.color(header(1, 1)));
-                for(String string : commands().keySet()){
-                    FancyMessage tooltips = new FancyMessage("aliases: ").color(ChatColor.GRAY).then(core.getCommand(string).getAliases().toString()).color(ChatColor.DARK_AQUA).then("\n").then("usage: ").color(ChatColor.GRAY).then(core.getCommand(string).getUsage().replace("<command>", string)).color(ChatColor.DARK_AQUA);
-                    new FancyMessage("/").color(ChatColor.DARK_GRAY).then(string).color(ChatColor.AQUA).suggest("/" + string).formattedTooltip(tooltips).then(" > ").color(ChatColor.GRAY).then(core.getCommand(string).getDescription()).send(sender);
+                Integer maxPage = 4;
+                try {
+                    getPage(sender, Integer.parseInt(args[1]), maxPage);
+                }catch (NumberFormatException e){
+                    sender.sendMessage(EssAPI.color("&c&lHey! &7only numbers are allowed to be used."));
                 }
             } else sender.sendMessage(EssAPI.color(String.format(m_syntax_error_c, s + " help")));
         } else
@@ -63,35 +63,65 @@ public class CommandEss implements CommandExecutor, messages {
         return true;
     }
 
-    private HashMap<String, String> commands(){
-        HashMap<String, String> commands = new HashMap<>();
+    private void getPage(CommandSender commandSender, int page, int max){
+        if(page >= max) {
+            commandSender.sendMessage(EssAPI.color(String.format(m_ess_help_invalid_page, max)));
+            return;
+        }
 
-        commands.put("broadcast", "send a message to the whole server.");
-        commands.put("clearchat", "clear the chat.");
-        commands.put("crafting", "open a crafting table.");
-        commands.put("delhome", "delete an existing home.");
-        commands.put("delspawn", "delete an existing spawn.");
-        commands.put("delwarp", "delete an existing warp.");
-        commands.put("enderchest", "open your enderchest.");
-        commands.put("esscore", "essCore's main command.");
-        commands.put("feed", "refill your hunger.");
-        commands.put("fly", "toggle your flight.");
-        commands.put("freeze", "freeze a certain player.");
-        commands.put("heal", "restore your health.");
-        commands.put("home", "teleport to your home.");
-        commands.put("mute", "mute a certain player.");
-        commands.put("nickname", "change your display name.");
-        commands.put("openinv", "open a certain player's inventory.");
-        commands.put("sethome", "set a new home.");
-        commands.put("setspawn", "set a global spawn point.");
-        commands.put("setwarp", "set a new warp.");
-        commands.put("spawn", "teleport to the global spawn point.");
-        commands.put("suicide", "close your eyes. and never wakeup.");
-        commands.put("unfreeze", "unfreeze a frozen player.");
-        commands.put("unmute", "un-mute a muted player.");
-        commands.put("vanish", "disappear from players eyes.");
-        commands.put("warp", "teleport to a specific warp.");
-        commands.put("warps", "display available warps.");
+        commandSender.sendMessage(EssAPI.color(header(page, max)));
+
+        for(String string : commands(max).keySet()) {
+            if (commands(max).get(string).equals(page)) {
+                FancyMessage tooltips = new FancyMessage("aliases: ").color(ChatColor.GRAY).then(core.getCommand(string).getAliases().toString()).color(ChatColor.DARK_AQUA).then("\n").then("usage: ").color(ChatColor.GRAY).then(core.getCommand(string).getUsage().replace("<command>", string)).color(ChatColor.DARK_AQUA);
+                new FancyMessage("/").color(ChatColor.DARK_GRAY).then(string).color(ChatColor.AQUA).suggest("/" + string).formattedTooltip(tooltips).then(" > ").color(ChatColor.GRAY).then(core.getCommand(string).getDescription()).send(commandSender);
+            }
+        }
+
+        commandSender.sendMessage(EssAPI.color(footer()));
+    }
+
+    private HashMap<String, Integer> commands(int max){
+        HashMap<String, Integer> commands = new HashMap<>();
+
+        int i = 1;
+        for(int x = 0; x <= 7; x++) {
+            if(x == 7) {
+                if(i >= max) break;
+                else{
+                    i++;
+                    x = 0;
+                    continue;
+                }
+            }
+
+            commands.put("broadcast", i);
+            commands.put("clearchat", i);
+            commands.put("crafting", i);
+            commands.put("delhome", i);
+            commands.put("delspawn", i);
+            commands.put("delwarp", i);
+            commands.put("enderchest", i);
+            commands.put("esscore", i);
+            commands.put("feed", i);
+            commands.put("fly", i);
+            commands.put("freeze", i);
+            commands.put("heal", i);
+            commands.put("home", i);
+            commands.put("mute", i);
+            commands.put("nickname", i);
+            commands.put("openinv", i);
+            commands.put("sethome", i);
+            commands.put("setspawn", i);
+            commands.put("setwarp", i);
+            commands.put("spawn", i);
+            commands.put("suicide", i);
+            commands.put("unfreeze", i);
+            commands.put("unmute", i);
+            commands.put("vanish", i);
+            commands.put("warp", i);
+            commands.put("warps", i);
+        }
 
         return commands;
     }
@@ -101,6 +131,6 @@ public class CommandEss implements CommandExecutor, messages {
     }
 
     private String footer(){
-        return "";
+        return "&b> &7you can &nclick &7or &nhover &7over the commands";
     }
 }
