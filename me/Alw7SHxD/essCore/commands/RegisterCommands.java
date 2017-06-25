@@ -53,12 +53,8 @@ public class RegisterCommands {
             commands.put("delhome", new CommandDelHome(core));
             commands.put("home", new CommandHome(core));
 
-            for (String command : commands.keySet()) {
+            for (String command : commands.keySet())
                 core.getCommand(command).setExecutor(commands.get(command));
-                if(command.startsWith("e"))
-                    continue;
-                core.getCommand("e" + command).setExecutor(commands.get(command));
-            }
         } catch (Exception e) {
             e.printStackTrace();
         }

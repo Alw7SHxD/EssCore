@@ -205,7 +205,7 @@ commands:
       /<command> [wiki]
     aliases: [essc, ess]
   broadcast:
-    description: "broadcast your message to the whole server."
+    description: "send a message to the whole server."
     usage: /<command> <message>
     aliases: [ebroadcast, ebc, bc]
   clearchat:
@@ -215,19 +215,45 @@ commands:
       /<command> [<Player|-a>]
       /<command> [Player] [<-a>]
     aliases: [eclearchat, ecc, cc]
-  fly:
-    description: "toggle flight."
+  crafting:
+      description: "open a crafting table."
+      usage: /<command>
+      aliases: [eworkbench, ecrafting, ecraftingtable, workbench, craftingtable]
+  delhome:
+    description: "delete an existing home."
+    usage: /<command> <name>
+    aliases: [edelhome]
+  delspawn:
+    description: "delete an existing spawn."
+    usage: /<command>
+    aliases: [edelspawn]
+  delwarp:
+    description: "delete an existing warp."
+    usage: /<command> <name>
+    aliases: [edelwarp]
+  enderchest:
+    description: "open your enderchest."
     usage: |
       /<command>
       /<command> [Player]
-    aliases: [efly]
+    aliases: [echest]
   feed:
-    description: "restore your hunger"
+    description: "refill your hunger."
     usage: |
       /<command>
       /<command> [Player]
       /<command> [-all]
     aliases: [efeed]
+  fly:
+    description: "toggle your flight."
+    usage: |
+      /<command>
+      /<command> [Player]
+    aliases: [efly]
+  freeze:
+    description: "freeze a certain player."
+    usage: /<command> <Player>
+    aliases: [efreeze]
   heal:
     description: "restore your health"
     usage: |
@@ -235,95 +261,69 @@ commands:
       /<command> [Player]
       /<command> [-all]
     aliases: [eheal]
+  home:
+    description: "teleport to your home."
+    usage: /<command> [name]
+    aliases: [ehome]
   mute:
-    description: "mute a player."
+    description: "mute a certain player."
     usage: /<command> <Player>
     aliases: [emute]
-  unmute:
-    description: "un-mute a muted player."
-    usage: /<command> <Player>
-    aliases: [eunmute, un-mute]
   nickname:
-    description: "change your/player displayname."
+    description: "change your display name."
     usage: |
       /<command> <nickname|off>
       /<command> <nickname|off> [Player]
     aliases: [enickname, enick, nick]
+  openinv:
+    description: "open a certain player's inventory."
+    usage: /<command> <Player>
+    aliases: [eopeninv, openinventory]
+  sethome:
+    description: "set a new home."
+    usage: /<command> <name>
+    aliases: [esethome]
+  setspawn:
+    description: "set a global spawn point."
+    usage: /<command>
+    aliases: [esetspawn]
+  setwarp:
+    description: "set a new warp."
+    usage: |
+      /<command> <name>
+      /<command> <name> [<-p>]
+    aliases: [esetwarp]
+  spawn:
+    description: "teleport to the global spawn point."
+    usage: |
+      /<command>
+      /<command> [Player]
+    aliases: [espawn]
+  suicide:
+    description: "close your eyes. and never wakeup."
+    usage: /<command>
+    aliases: [esuicide]
+  unfreeze:
+    description: "unfreeze a frozen player."
+    usage: /<command> <Player>
+    aliases: [eunfreeze]
+  unmute:
+    description: "un-mute a muted player."
+    usage: /<command> <Player>
+    aliases: [eunmute, un-mute]
+  vanish:
+    description: "disappear from players eyes."
+    usage: |
+      /<command>
+      /<command> [Player]
+    aliases: [evanish, ev, v]
   warp:
-    description: "teleport to a warp."
+    description: "teleport to a specific warp."
     usage: |
       /<command> <name>
       /<command> <name> [Player]
     aliases: [ewarp]
   warps:
-    description: "Display all the available warps."
+    description: "display available warps."
     usage: /<command>
     aliases: [ewarps]
-  setwarp:
-    description: "Set a warp"
-    usage: |
-      /<command> <name>
-      /<command> <name> [<-p>]
-    aliases: [esetwarp]
-  delwarp:
-    description: "Delete a warp."
-    usage: /<command> <name>
-    aliases: [edelwarp]
-  freeze:
-    description: "Freeze a player."
-    usage: /<command> <Player>
-    aliases: [efreeze]
-  unfreeze:
-    description: "Un-Freeze a frozen player."
-    usage: /<command> <Player>
-    aliases: [eunfreeze]
-  suicide:
-    description: "Take out your life by yourself."
-    usage: /<command>
-    aliases: [esuicide]
-  spawn:
-    description: "Teleport to the spawn."
-    usage: |
-      /<command>
-      /<command> [Player]
-    aliases: [espawn]
-  setspawn:
-    description: "Set a global spawn-point."
-    usage: /<command>
-    aliases: [esetspawn]
-  delspawn:
-    description: "Delete the global spawn-point."
-    usage: /<command>
-    aliases: [edelspawn]
-  vanish:
-    description: "Go invisible."
-    usage: |
-      /<command>
-      /<command> [Player]
-    aliases: [evanish, ev, v]
-  workbench:
-    description: "Open's the crafting table."
-    usage: /<command>
-    aliases: [eworkbench, ecrafting, ecraftingtable, crafting, craftingtable]
-  enderchest:
-    description: "Open's an enderchest."
-    usage: |
-      /<command>
-      /<command> [Player]
-    aliases: [echest]
-  openinv:
-    description: "Open's a target player inventory."
-    usage: /<command> <Player>
-    aliases: [eopeninv, openinventory]
-  home:
-    description: "View available homes, or teleport to one of them."
-    usage: /<command> [name]
-    aliases: [ehome]
-  sethome:
-    description: "Set a new home."
-    usage: /<command> <name>
-    aliases: [esethome]
-  delhome:
-    description: "Delete an existing home."
-    usage: /<command> <name>
-    aliases: [edelhome]
