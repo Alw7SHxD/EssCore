@@ -37,14 +37,15 @@ public class CommandSetHome implements CommandExecutor, messages {
         int i = 0;
 
         for (String key : core.lists.getLimitHomes()) {
-            if (commandSender.hasPermission("esscore.sethome." + key))
-                if (homesAPI.listAll().toArray().length >= core.getConfig().getInt("limit-homes." + key)) {
+            if (commandSender.hasPermission("esscore.sethome." + key)) {
+                if (homesAPI.listAll() != null && homesAPI.listAll().size() >= core.getConfig().getInt("limit-homes." + key)) {
                     i = -1;
                     break;
                 } else {
                     i = 1;
                     break;
                 }
+            }
         }
 
         if (!commandSender.hasPermission("esscore.sethome.*")) {
@@ -52,7 +53,7 @@ public class CommandSetHome implements CommandExecutor, messages {
                 commandSender.sendMessage(EssAPI.color(m_sethome_limit));
                 return true;
             } else if (i == 0) {
-                if (homesAPI.listAll().toArray().length >= 1) {
+                if (homesAPI.listAll().size() >= 1) {
                     commandSender.sendMessage(EssAPI.color(m_sethome_limit));
                     return true;
                 }

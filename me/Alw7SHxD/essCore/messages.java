@@ -137,4 +137,10 @@ public interface messages {
 
     String m_delhome_success = "&c&lSuccess! &7deleted &c&l%s &7home.";
     String m_delhome_failed = "&c&lError! &7couldn't find that home.";
+
+    String m_openinv = "&7You have opened &c&l%s&7's inventory.";
+    String m_craftin = "&7You have opened a &a&lcrafting table.";
+
+    String m_echest_self = "&7You have opened &a&lenderchest.";
+    String m_echest_target = "&7You have opened &c&l%s&7's enderchest.";
 }
