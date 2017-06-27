@@ -35,7 +35,7 @@ public class CommandOpenInv implements CommandExecutor, messages {
         if(target == null) return true;
 
         ((Player) commandSender).openInventory(target.getInventory());
-
+        commandSender.sendMessage(EssAPI.color(String.format(m_openinv, target.getName())));
         return true;
     }
 }

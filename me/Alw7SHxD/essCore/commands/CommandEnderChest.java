@@ -29,12 +29,14 @@ public class CommandEnderChest implements CommandExecutor, messages {
 
         if (strings.length == 0) {
             ((Player) commandSender).openInventory(((Player) commandSender).getEnderChest());
+            commandSender.sendMessage(EssAPI.color(m_echest_self));
         } else if (strings.length == 1) {
             if (!EssAPI.hasPermission(commandSender, "esscore.enderchest.target")) return true;
             Player target = EssAPI.getPlayer(core, commandSender, strings[0]);
             if (target == null) return true;
 
             ((Player) commandSender).openInventory(target.getEnderChest());
+            commandSender.sendMessage(EssAPI.color(String.format(m_echest_target, target.getName())));
         } else commandSender.sendMessage(EssAPI.color(String.format(m_syntax_error_c, s)));
         return true;
     }

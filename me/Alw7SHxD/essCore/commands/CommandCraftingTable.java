@@ -28,6 +28,7 @@ public class CommandCraftingTable implements CommandExecutor, messages {
         if(!EssAPI.hasPermission(commandSender, "esscore.workbench")) return true;
 
         ((Player) commandSender).openWorkbench(((Player) commandSender).getLocation(), true);
+        commandSender.sendMessage(EssAPI.color(m_crafting));
         return true;
     }
 }
