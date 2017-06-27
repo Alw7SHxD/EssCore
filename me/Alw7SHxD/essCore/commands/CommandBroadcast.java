@@ -46,7 +46,7 @@ public class CommandBroadcast implements CommandExecutor, messages {
             if (!message.equals("")) message += " ";
             message += part;
         }
-        core.getServer().broadcastMessage(EssAPI.color(core.getConfig().getString("broadcast-prefix") != null ? core.getConfig().getString("broadcast-prefix") : "&c&lBROADCAST! &r" + message));
+        core.getServer().broadcastMessage(EssAPI.color(core.getConfig().getString("broadcast-prefix") != null ? core.getConfig().getString("broadcast-prefix") + message : "&c&lBROADCAST! &r" + message));
         return true;
     }
 }
