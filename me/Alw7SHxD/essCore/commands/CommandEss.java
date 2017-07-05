@@ -94,6 +94,7 @@ public class CommandEss implements CommandExecutor, messages {
         commands.put("vanish", 24);
         commands.put("warp", 25);
         commands.put("warps", 26);
+        commands.put("homes", 27);
 
         paginate(commandSender, commands, page, 8, max);
     }
