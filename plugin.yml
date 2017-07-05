@@ -1,7 +1,7 @@
 # Created by Alw7SHxD on 4/15/2017.
 name: essCore
-version: 0.6.5.3
-description: "Minecraft essentials plugin, provides daily used commands!"
+version: 0.6.5.4
+description: "Minecraft essentials plugin, provides daily used commands and features!"
 website: "https://www.spigotmc.org/resources/esscore.37766/"
 author: Alw7SHxD
 main: me.Alw7SHxD.essCore.Core
@@ -11,52 +11,53 @@ permissions:
     description: "grant every permission in essCore"
     children:
       esscore.broadcast: true
-      esscore.clearchat: true
-      esscore.clearchat.global: true
-      esscore.clearchat.target: true
-      esscore.clearchat.ignore: true
       esscore.chat.color: true
-      esscore.fly: true
+      esscore.clearchat.global: true
+      esscore.clearchat.ignore: true
+      esscore.clearchat.target: true
+      esscore.clearchat: true
+      esscore.delspawn: true
+      esscore.delwarp: true
+      esscore.enderchest.target: true
+      esscore.enderchest: true
+      esscore.fead.target: true
+      esscore.fead: true
+      esscore.feed.all: true
+      esscore.feed.target: true
+      esscore.feed: true
       esscore.fly.target: true
-      esscore.freeze: true
+      esscore.fly: true
       esscore.freeze.bypass: true
       esscore.freeze.force: true
-      esscore.unfreeze: true
-      esscore.heal: true
-      esscore.heal.target: true
-      esscore.fead: true
-      esscore.fead.target: true
+      esscore.freeze: true
       esscore.gamemode: true
-      esscore.mute: true
+      esscore.heal.all: true
+      esscore.heal.target: true
+      esscore.heal.target: true
+      esscore.heal: true
+      esscore.heal: true
+      esscore.home: true
+      esscore.homes: true
       esscore.mute.bypass: true
       esscore.mute.force: true
-      esscore.unmute: true
-      esscore.spawn: true
-      esscore.setspawn: true
-      esscore.delspawn: true
-      esscore.warp: true
-      esscore.warps: true
-      esscore.warps.*: true
-      esscore.setwarp: true
-      esscore.delwarp: true
-      esscore.nickname: true
+      esscore.mute: true
       esscore.nickname.target: true
-      esscore.silent: false
-      esscore.vanish: true
-      esscore.vanish.target: true
-      esscore.vanish.silent: true
-      esscore.heal: true
-      esscore.heal.target: true
-      esscore.heal.all: true
-      esscore.feed: true
-      esscore.feed.target: true
-      esscore.feed.all: true
-      esscore.workbench: true
-      esscore.enderchest: true
-      esscore.enderchest.target: true
-      esscore.home: true
-      esscore.sethome: true
+      esscore.nickname: true
       esscore.sethome.*: true
+      esscore.sethome: true
+      esscore.setspawn: true
+      esscore.setwarp: true
+      esscore.silent: false
+      esscore.spawn: true
+      esscore.unfreeze: true
+      esscore.unmute: true
+      esscore.vanish.silent: true
+      esscore.vanish.target: true
+      esscore.vanish: true
+      esscore.warp: true
+      esscore.warps.*: true
+      esscore.warps: true
+      esscore.workbench: true
   esscore.broadcast:
     description: "grant broadcasting to the whole server"
     default: op
@@ -198,6 +199,9 @@ permissions:
   esscore.home:
     description: "grant the ability to use the home command"
     default: op
+  esscore.homes:
+    description: "grant the ability to use the homes command"
+    default: op
 commands:
   esscore:
     description: "essCore's main command."
@@ -267,8 +271,12 @@ commands:
     aliases: [eheal]
   home:
     description: "teleport to your home."
-    usage: /<command> [name]
+    usage: /<command> <name>
     aliases: [ehome]
+  homes:
+    description: "list all of your available homes."
+    usage: /<command>
+    aliases: [ehomes]
   mute:
     description: "mute a certain player."
     usage: /<command> <Player>

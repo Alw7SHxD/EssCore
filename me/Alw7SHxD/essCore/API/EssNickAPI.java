@@ -49,7 +49,7 @@ public class EssNickAPI {
     }
 
     private void Nick(Player player, String s) {
-        playerAPI.setNickname(s + "&r");
+        playerAPI.setNickname(s);
         player.setDisplayName(EssAPI.color(s + "&r"));
         // player.setPlayerListName(EssAPI.color(s));
     }

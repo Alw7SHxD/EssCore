@@ -136,7 +136,7 @@ public class EssPlayerAPI {
 
     public String getNickname() {
         playerData.modifyYaml();
-        return getString("player.nickname");
+        return getString("player.nickname") + "&r";
     }
 
     public boolean getNick() {

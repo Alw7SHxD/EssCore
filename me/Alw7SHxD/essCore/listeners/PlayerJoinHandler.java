@@ -57,7 +57,7 @@ public class PlayerJoinHandler implements Listener {
             player.sendMessage(EssAPI.color(messages.m_fly_self_on));
         }
         if (playerAPI.getNick())
-            player.setDisplayName(EssAPI.color(playerAPI.getNickname() + "&r"));
+            player.setDisplayName(EssAPI.color(playerAPI.getNickname()));
 
         if (playerAPI.l && core.getConfig().getBoolean("spawn-teleport.player-first-join"))
             spawnAPI.teleport(player);
