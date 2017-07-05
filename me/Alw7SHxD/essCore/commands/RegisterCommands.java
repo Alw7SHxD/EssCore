@@ -52,7 +52,7 @@ public class RegisterCommands {
             commands.put("sethome", new CommandSetHome(core));
             commands.put("delhome", new CommandDelHome(core));
             commands.put("home", new CommandHome(core));
-            commands.put("homes", new CommandHome(core));
+            commands.put("homes", new CommandHomes(core));
 
             for (String command : commands.keySet())
                 core.getCommand(command).setExecutor(commands.get(command));
