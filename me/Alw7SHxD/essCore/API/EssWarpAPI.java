@@ -148,11 +148,8 @@ public class EssWarpAPI {
             commandSender.sendMessage(EssAPI.color(messages.m_warp_no_warps));
             return;
         }
-        String warps = "";
 
-        for (String s : list) {
-            warps = warps.concat(s + "&7 ");
-        }
+        String warps = String.join("&8, &7", list);
 
         if (warps.length() == 0) {
             commandSender.sendMessage(EssAPI.color(messages.m_warp_not_available));

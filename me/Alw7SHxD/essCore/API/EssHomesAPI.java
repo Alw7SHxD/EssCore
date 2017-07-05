@@ -36,10 +36,6 @@ public class EssHomesAPI extends EssPlayerAPI {
         return true;
     }
 
-    //public int getTotal(){
-    //    for(String home : getPlayerData().getYaml().getConfigurationSection("homes").getKeys(false))
-    //}
-
     public void list() {
         getPlayerData().reloadYaml();
         ArrayList<String> list = new ArrayList<>();
@@ -54,11 +50,8 @@ public class EssHomesAPI extends EssPlayerAPI {
             getPlayer().sendMessage(EssAPI.color(messages.m_home_no_homes));
             return;
         }
-        String homes = "";
 
-        for (String s : list) {
-            homes = homes.concat(s + "&7 ");
-        }
+        String homes = String.join("&8, &7", list);
 
         if (homes.length() == 0) {
             getPlayer().sendMessage(EssAPI.color(messages.m_home_no_homes));
