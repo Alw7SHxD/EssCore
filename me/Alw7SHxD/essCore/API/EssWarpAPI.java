@@ -82,7 +82,7 @@ public class EssWarpAPI {
         data.reloadConfig();
     }
 
-    private Location getLocation(String name) {
+    public Location getLocation(String name) {
         World world = core.getServer().getWorld(data.getString(w1 + name + w2 + "World"));
         Double x = data.getDouble(w1 + name + w2 + "X");
         Double y = data.getDouble(w1 + name + w2 + "Y");
@@ -171,5 +171,15 @@ public class EssWarpAPI {
         if (list == null) return null;
 
         return list;
+    }
+
+    public String getPermission(String s){
+        data.reloadConfig();
+        return w4 + data.getString(w1 + s + w3);
+    }
+
+    public String getString(String name, String s){
+        data.reloadConfig();
+        return data.getString(w1 + name + "." + s);
     }
 }
