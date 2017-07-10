@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /*
  * (C) Copyright 2017 Alw7SHxD.
@@ -78,7 +79,7 @@ public class EssWarpAPI {
         return false;
     }
 
-    public void reload(){
+    public void reload() {
         data.reloadConfig();
     }
 
@@ -101,7 +102,7 @@ public class EssWarpAPI {
                 if (player.hasPermission(w4 + data.getString(w1 + name + w3))) {
                     player.teleport(getLocation(name));
                     player.sendMessage(EssAPI.color(String.format(messages.m_warp_teleport, name)));
-                }else player.sendMessage(EssAPI.color(messages.m_no_permission));
+                } else player.sendMessage(EssAPI.color(messages.m_no_permission));
             } else {
                 player.teleport(getLocation(name));
                 player.sendMessage(EssAPI.color(String.format(messages.m_warp_teleport, name)));
@@ -120,7 +121,7 @@ public class EssWarpAPI {
                     player.sendMessage(EssAPI.color(String.format(messages.m_warp_teleport_target, EssAPI.getSenderDisplayName(core, sender), name)));
                     if (sender != player)
                         sender.sendMessage(EssAPI.color(String.format(messages.m_warp_teleport_sender, player.getName(), name)));
-                }else player.sendMessage(EssAPI.color(messages.m_no_permission));
+                } else player.sendMessage(EssAPI.color(messages.m_no_permission));
             } else {
                 player.teleport(getLocation(name));
                 player.sendMessage(EssAPI.color(String.format(messages.m_warp_teleport_target, EssAPI.getSenderDisplayName(core, sender), name)));
@@ -173,12 +174,12 @@ public class EssWarpAPI {
         return list;
     }
 
-    public String getPermission(String s){
+    public String getPermission(String s) {
         data.reloadConfig();
-        return w4 + data.getString(w1 + s + w3);
+        return !Objects.equals(w4 + data.getString(w1 + s + w3), w4 + "null") ? w4 + data.getString(w1 + s + w3) : null;
     }
 
-    public String getString(String name, String s){
+    public String getString(String name, String s) {
         data.reloadConfig();
         return data.getString(w1 + name + "." + s);
     }
