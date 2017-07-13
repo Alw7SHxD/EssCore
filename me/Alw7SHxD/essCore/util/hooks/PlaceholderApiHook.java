@@ -1,5 +1,6 @@
-package me.Alw7SHxD.essCore.API;
+package me.Alw7SHxD.essCore.util.hooks;
 
+import me.Alw7SHxD.essCore.API.EssPlayerAPI;
 import me.Alw7SHxD.essCore.Core;
 import me.clip.placeholderapi.external.EZPlaceholderHook;
 import org.bukkit.entity.Player;
@@ -7,10 +8,10 @@ import org.bukkit.entity.Player;
 /**
  * essCore was created by Alw7SHxD (C) 2017
  */
-public class EssPlaceholders extends EZPlaceholderHook {
+public class PlaceholderApiHook extends EZPlaceholderHook {
     private Core core;
 
-    public EssPlaceholders(Core core) {
+    public PlaceholderApiHook(Core core) {
         super(core, "essCore");
     }
 

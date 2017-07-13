@@ -1,10 +1,11 @@
 package me.Alw7SHxD.essCore;
 
-import me.Alw7SHxD.essCore.API.EssPlaceholders;
+import me.Alw7SHxD.essCore.util.EssEconomy;
+import me.Alw7SHxD.essCore.util.hooks.PlaceholderApiHook;
 import me.Alw7SHxD.essCore.API.UpdateChecker;
 import me.Alw7SHxD.essCore.commands.RegisterCommands;
 import me.Alw7SHxD.essCore.listeners.RegisterListeners;
-import org.bukkit.Bukkit;
+import me.Alw7SHxD.essCore.util.hooks.VaultHook;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -26,15 +27,17 @@ public class Core extends JavaPlugin {
     private UpdateChecker updateChecker = new UpdateChecker(this);
     public boolean usingPlaceholderAPI = false;
     public lists lists;
+    public EssEconomy essEconomy;
+    public VaultHook vaultHook;
 
     public void onEnable() {
-        if(!getDataFolder().exists()) getDataFolder().mkdir();
+        if (!getDataFolder().exists()) getDataFolder().mkdir();
         saveDefaultConfig();
 
         updateChecker.check(this, getDescription().getVersion());
 
         if (getServer().getPluginManager().isPluginEnabled("PlaceholderAPI")) {
-            new EssPlaceholders(this).hook();
+            new PlaceholderApiHook(this).hook();
             this.usingPlaceholderAPI = true;
             getLogger().info("detected PlaceholderAPI.");
         }
@@ -44,9 +47,14 @@ public class Core extends JavaPlugin {
 
         new RegisterListeners(this);
         new RegisterCommands(this);
+
+        this.essEconomy = new EssEconomy(this);
+        this.vaultHook = new VaultHook(this);
+        vaultHook.hook();
     }
 
     public void onDisable() {
+        vaultHook.unHook();
         getLogger().info("essCore v" + getDescription().getVersion() + " has been disabled.");
     }
 }

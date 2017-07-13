@@ -4,6 +4,8 @@ import me.Alw7SHxD.essCore.API.EssPlayerAPI;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.UUID;
 
 /**
  * essCore was created by Alw7SHxD (C) 2017
@@ -15,6 +17,7 @@ public class lists{
     private boolean debugSigns = false;
     private ArrayList<Player> vanishedPlayers = new ArrayList<>();
     private ArrayList<String> limitHomes = new ArrayList<>();
+    private final HashMap<UUID, Double> playerBank = new HashMap<>();
 
     public lists(Core core) {
         this.core = core;
@@ -81,5 +84,9 @@ public class lists{
 
     public void removeVanishedPlayers(Player player) {
         this.vanishedPlayers.remove(player);
+    }
+
+    public HashMap<UUID, Double> getPlayerBank() {
+        return playerBank;
     }
 }
