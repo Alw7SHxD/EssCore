@@ -27,8 +27,8 @@ public class Core extends JavaPlugin {
     private UpdateChecker updateChecker = new UpdateChecker(this);
     public boolean usingPlaceholderAPI = false;
     public lists lists;
-    public EssEconomy essEconomy;
-    public VaultHook vaultHook;
+    private EssEconomy essEconomy;
+    private VaultHook vaultHook;
 
     public void onEnable() {
         if (!getDataFolder().exists()) getDataFolder().mkdir();
@@ -56,5 +56,9 @@ public class Core extends JavaPlugin {
     public void onDisable() {
         vaultHook.unHook();
         getLogger().info("essCore v" + getDescription().getVersion() + " has been disabled.");
+    }
+
+    public EssEconomy getEssEconomy() {
+        return essEconomy;
     }
 }

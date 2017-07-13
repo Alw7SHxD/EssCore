@@ -26,33 +26,36 @@ public class RegisterCommands {
         try {
             HashMap<String, CommandExecutor> commands = new HashMap<>();
 
-            commands.put("esscore", new CommandEss(core));
+            commands.put("balance", new CommandBalance(core, true));
             commands.put("broadcast", new CommandBroadcast(core));
             commands.put("clearchat", new CommandClearChat(core));
-            commands.put("fly", new CommandFly(core));
-            commands.put("mute", new CommandMute(core));
-            commands.put("unmute", new CommandUnMute(core));
-            commands.put("nickname", new CommandNick(core));
-            commands.put("warp", new CommandWarp(core));
-            commands.put("warps", new CommandWarps(core));
-            commands.put("setwarp", new CommandSetWarp(core));
-            commands.put("delwarp", new CommandDelWarp(core));
-            commands.put("freeze", new CommandFreeze(core));
-            commands.put("unfreeze", new CommandUnFreeze(core));
-            commands.put("suicide", new CommandSuicide());
-            commands.put("spawn", new CommandSpawn(core));
-            commands.put("setspawn", new CommandSetSpawn(core));
-            commands.put("delspawn", new CommandDelSpawn(core));
-            commands.put("vanish", new CommandVanish(core));
-            commands.put("heal", new CommandHeal(core));
-            commands.put("feed", new CommandFeed(core));
-            commands.put("workbench", new CommandCraftingTable(core));
-            commands.put("enderchest", new CommandEnderChest(core));
-            commands.put("openinv", new CommandOpenInv(core));
-            commands.put("sethome", new CommandSetHome(core));
             commands.put("delhome", new CommandDelHome(core));
+            commands.put("delspawn", new CommandDelSpawn(core));
+            commands.put("delwarp", new CommandDelWarp(core));
+            commands.put("eco", new CommandEconomy(core));
+            commands.put("enderchest", new CommandEnderChest(core));
+            commands.put("esscore", new CommandEss(core));
+            commands.put("feed", new CommandFeed(core));
+            commands.put("fly", new CommandFly(core));
+            commands.put("freeze", new CommandFreeze(core));
+            commands.put("heal", new CommandHeal(core));
             commands.put("home", new CommandHome(core));
             commands.put("homes", new CommandHomes(core));
+            commands.put("money", new CommandBalance(core, false));
+            commands.put("mute", new CommandMute(core));
+            commands.put("nickname", new CommandNick(core));
+            commands.put("openinv", new CommandOpenInv(core));
+            commands.put("sethome", new CommandSetHome(core));
+            commands.put("setspawn", new CommandSetSpawn(core));
+            commands.put("setwarp", new CommandSetWarp(core));
+            commands.put("spawn", new CommandSpawn(core));
+            commands.put("suicide", new CommandSuicide());
+            commands.put("unfreeze", new CommandUnFreeze(core));
+            commands.put("unmute", new CommandUnMute(core));
+            commands.put("vanish", new CommandVanish(core));
+            commands.put("warp", new CommandWarp(core));
+            commands.put("warps", new CommandWarps(core));
+            commands.put("workbench", new CommandCraftingTable(core));
 
             for (String command : commands.keySet())
                 core.getCommand(command).setExecutor(commands.get(command));

@@ -5,6 +5,7 @@ import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.economy.EconomyResponse;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.RegisteredServiceProvider;
 
 import java.util.List;
 import java.util.UUID;
@@ -14,24 +15,28 @@ import java.util.UUID;
  */
 public class EssEconomy implements Economy {
     private Core core;
+    private Economy economy;
 
     public EssEconomy(Core core) {
         this.core = core;
+        RegisteredServiceProvider<Economy> economyProvider = core.getServer().getServicesManager().getRegistration(net.milkbowl.vault.economy.Economy.class);
+        if (economyProvider != null)
+            this.economy = economyProvider.getProvider();
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return this.economy.isEnabled();
     }
 
     @Override
     public String getName() {
-        return null;
+        return this.economy.getName();
     }
 
     @Override
     public boolean hasBankSupport() {
-        return false;
+        return this.economy.hasBankSupport();
     }
 
     @Override
@@ -41,17 +46,17 @@ public class EssEconomy implements Economy {
 
     @Override
     public String format(double v) {
-        return null;
+        return this.economy.format(v);
     }
 
     @Override
     public String currencyNamePlural() {
-        return null;
+        return "dollars";
     }
 
     @Override
     public String currencyNameSingular() {
-        return null;
+        return "dollar";
     }
 
     /**
@@ -60,12 +65,15 @@ public class EssEconomy implements Economy {
      */
     @Override
     public boolean hasAccount(String s) {
-        return false;
+        Player player = core.getServer().getPlayerExact(s);
+        UUID uuid = player.getUniqueId();
+        return core.lists.getPlayerBank().containsKey(uuid);
     }
 
     @Override
     public boolean hasAccount(OfflinePlayer offlinePlayer) {
-        return false;
+        UUID uuid = offlinePlayer.getUniqueId();
+        return core.lists.getPlayerBank().containsKey(uuid);
     }
 
     /**
@@ -75,12 +83,15 @@ public class EssEconomy implements Economy {
      */
     @Override
     public boolean hasAccount(String s, String s1) {
-        return false;
+        Player player = core.getServer().getPlayerExact(s);
+        UUID uuid = player.getUniqueId();
+        return core.lists.getPlayerBank().containsKey(uuid);
     }
 
     @Override
     public boolean hasAccount(OfflinePlayer offlinePlayer, String s) {
-        return false;
+        UUID uuid = offlinePlayer.getUniqueId();
+        return core.lists.getPlayerBank().containsKey(uuid);
     }
 
     /**
@@ -125,12 +136,17 @@ public class EssEconomy implements Economy {
      */
     @Override
     public boolean has(String s, double v) {
-        return false;
+        Player player = core.getServer().getPlayerExact(s);
+        UUID uuid = player.getUniqueId();
+        Double balance = core.lists.getPlayerBank().get(uuid);
+        return balance >= v;
     }
 
     @Override
     public boolean has(OfflinePlayer offlinePlayer, double v) {
-        return false;
+        UUID uuid = offlinePlayer.getUniqueId();
+        Double balance = core.lists.getPlayerBank().get(uuid);
+        return balance >= v;
     }
 
     /**
@@ -141,12 +157,17 @@ public class EssEconomy implements Economy {
      */
     @Override
     public boolean has(String s, String s1, double v) {
-        return false;
+        Player player = core.getServer().getPlayerExact(s);
+        UUID uuid = player.getUniqueId();
+        Double balance = core.lists.getPlayerBank().get(uuid);
+        return balance >= v;
     }
 
     @Override
     public boolean has(OfflinePlayer offlinePlayer, String s, double v) {
-        return false;
+        UUID uuid = offlinePlayer.getUniqueId();
+        Double balance = core.lists.getPlayerBank().get(uuid);
+        return balance >= v;
     }
 
     /**
@@ -236,6 +257,43 @@ public class EssEconomy implements Economy {
         UUID uuid = offlinePlayer.getUniqueId();
         double oldBalance = core.lists.getPlayerBank().get(uuid);
         core.lists.getPlayerBank().put(uuid, oldBalance + v);
+        return null;
+    }
+
+    /**
+     * @param s
+     * @param v
+     * @deprecated
+     */
+    public EconomyResponse setPlayer(String s, double v) {
+        Player player = core.getServer().getPlayerExact(s);
+        UUID uuid = player.getUniqueId();
+        core.lists.getPlayerBank().put(uuid, v);
+        return null;
+    }
+
+    public EconomyResponse setPlayer(OfflinePlayer offlinePlayer, double v) {
+        UUID uuid = offlinePlayer.getUniqueId();
+        core.lists.getPlayerBank().put(uuid, v);
+        return null;
+    }
+
+    /**
+     * @param s
+     * @param s1
+     * @param v
+     * @deprecated
+     */
+    public EconomyResponse setPlayer(String s, String s1, double v) {
+        Player player = core.getServer().getPlayerExact(s);
+        UUID uuid = player.getUniqueId();
+        core.lists.getPlayerBank().put(uuid, v);
+        return null;
+    }
+
+    public EconomyResponse setPlayer(OfflinePlayer offlinePlayer, String s, double v) {
+        UUID uuid = offlinePlayer.getUniqueId();
+        core.lists.getPlayerBank().put(uuid, v);
         return null;
     }
 

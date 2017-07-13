@@ -143,4 +143,13 @@ public interface messages {
 
     String m_echest_self = "&7You have opened your &a&lenderchest.";
     String m_echest_target = "&7You have opened &c&l%s&7's enderchest.";
+
+    String m_eco_set_sender = "&a&lSuccess! &c&l%s&7's new balance is &c&l$%s";
+    String m_eco_set_target = "&7Your new balance is &c&l$%s";
+    String m_eco_give_sender = "&a&lSuccess! &c&l$%s &7has been added to &c&l%s&7's balance.";
+    String m_eco_give_target = "&7&c&l$%s&7 has been added to your balance, your new balance is &c&l$%s";
+    String m_eco_take_sender = "&a&lSuccess! &c&l$%s &7has been taken from &c&l%s&7's balance.";
+    String m_eco_take_target = "&7&c&l$%s&7 has been taken from your balance, your new balance is &c&l$%s";
+    String m_eco_reset_sender = "&a&lSuccess! &c&l%s&7's balance has been reset.";
+    String m_eco_reset_target = "&7Your balance has been reset.";
 }

@@ -1,6 +1,6 @@
 # Created by Alw7SHxD on 4/15/2017.
 name: essCore
-version: 0.6.6
+version: 0.7
 description: "Minecraft essentials plugin, provides daily used commands and features!"
 website: "https://www.spigotmc.org/resources/esscore.37766/"
 author: Alw7SHxD
@@ -10,6 +10,8 @@ permissions:
   esscore.*:
     description: "grant every permission in essCore"
     children:
+      esscore.balance: true
+      esscore.balance.target: true
       esscore.broadcast: true
       esscore.chat.color: true
       esscore.clearchat.global: true
@@ -18,6 +20,7 @@ permissions:
       esscore.clearchat: true
       esscore.delspawn: true
       esscore.delwarp: true
+      esscore.eco: true
       esscore.enderchest.target: true
       esscore.enderchest: true
       esscore.fead.target: true
@@ -38,6 +41,8 @@ permissions:
       esscore.heal: true
       esscore.home: true
       esscore.homes: true
+      esscore.money: true
+      esscore.money.target: true
       esscore.mute.bypass: true
       esscore.mute.force: true
       esscore.mute: true
@@ -202,6 +207,21 @@ permissions:
   esscore.homes:
     description: "grant the ability to use the homes command"
     default: op
+  esscore.eco:
+    description: "grant the ability to use the eco command"
+    default: op
+  esscore.balance:
+    description: "grant the ability to use the balance command"
+    default: op
+  esscore.balance.target:
+    description: "grant the ability to use the balance command on a player"
+    default: op
+  esscore.balance:
+    description: "grant the ability to use the money command"
+    default: op
+  esscore.money.target:
+    description: "grant the ability to use the money command on a player"
+    default: op
 commands:
   esscore:
     description: "essCore's main command."
@@ -212,6 +232,12 @@ commands:
       /<command> [reload|rl]
       /<command> [wiki]
     aliases: [essc, ess]
+  balance:
+    description: "display current balance."
+    usage: |
+      /<command>
+      /<command> [Player]
+    aliases: [bal, ebal, ebalance]
   broadcast:
     description: "send a message to the whole server."
     usage: /<command> <message>
@@ -239,6 +265,16 @@ commands:
     description: "delete an existing warp."
     usage: /<command> <name>
     aliases: [edelwarp]
+  eco:
+    description: "open your enderchest."
+    usage: |
+      /<command>
+      /<command> help
+      /<command> set <Player> <Balance>
+      /<command> give <Player> <Amount>
+      /<command> take <Player> <Amount>
+      /<command> reset <Player>
+    aliases: [eeco, economy, eeconomy]
   enderchest:
     description: "open your enderchest."
     usage: |
@@ -277,6 +313,12 @@ commands:
     description: "list all of your available homes."
     usage: /<command>
     aliases: [ehomes]
+  money:
+    description: "display current money."
+    usage: |
+      /<command>
+      /<command> [Player]
+    aliases: [emoney]
   mute:
     description: "mute a certain player."
     usage: /<command> <Player>

@@ -68,12 +68,14 @@ public class CommandEss implements CommandExecutor, messages {
 
     public void getCommands(CommandSender commandSender, int page, int max) {
         SortedMap<String, Integer> commands = new TreeMap<>();
+        commands.put("balance", 29);
         commands.put("broadcast", 1);
         commands.put("clearchat", 2);
         commands.put("crafting", 3);
         commands.put("delhome", 4);
         commands.put("delspawn", 5);
         commands.put("delwarp", 6);
+        commands.put("eco", 28);
         commands.put("enderchest", 7);
         commands.put("esscore", 8);
         commands.put("feed", 9);
@@ -81,6 +83,8 @@ public class CommandEss implements CommandExecutor, messages {
         commands.put("freeze", 11);
         commands.put("heal", 12);
         commands.put("home", 13);
+        commands.put("homes", 27);
+        commands.put("money", 30);
         commands.put("mute", 14);
         commands.put("nickname", 15);
         commands.put("openinv", 16);
@@ -94,7 +98,6 @@ public class CommandEss implements CommandExecutor, messages {
         commands.put("vanish", 24);
         commands.put("warp", 25);
         commands.put("warps", 26);
-        commands.put("homes", 27);
 
         paginate(commandSender, commands, page, 8, max);
     }

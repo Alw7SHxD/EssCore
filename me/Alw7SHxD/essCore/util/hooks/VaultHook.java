@@ -16,7 +16,7 @@ public class VaultHook {
     }
 
     public void hook() {
-        this.economy = core.essEconomy;
+        this.economy = core.getEssEconomy();
         core.getServer().getServicesManager().register(Economy.class, this.economy, this.core, ServicePriority.Normal);
     }
 

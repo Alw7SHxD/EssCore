@@ -103,6 +103,21 @@ chat-format:
 
 ###
 # +
+# | ECONOMY
+# +
+###
+
+enable-vault: true
+
+currency-format:
+  single: "dollar"
+  plural: "dollars"
+  symbol: "$"
+
+starting-balance: 0
+
+###
+# +
 # | MISCELLANEOUS
 # +
 ###
@@ -117,4 +132,4 @@ spawn-teleport:
 debug-signs: false
 
 # Don't change this value
-essCore: 6.5
+essCore: 6.6
