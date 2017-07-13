@@ -25,7 +25,7 @@ public class CommandEconomy implements CommandExecutor {
             try {
                 if (strings[0].equalsIgnoreCase("set")) {
                     if (strings.length != 3) {
-                        commandSender.sendMessage(EssAPI.color(String.format(messages.m_syntax_error_c, s + " &9<Player> <Balance>")));
+                        commandSender.sendMessage(EssAPI.color(String.format(messages.m_syntax_error_c, s + " set &9<Player> <Balance>")));
                         return true;
                     }
 
@@ -39,7 +39,7 @@ public class CommandEconomy implements CommandExecutor {
                         target.sendMessage(EssAPI.color(String.format(messages.m_eco_set_target, balance)));
                 } else if (strings[0].equalsIgnoreCase("give")) {
                     if (strings.length != 3) {
-                        commandSender.sendMessage(EssAPI.color(String.format(messages.m_syntax_error_c, s + " &9<Player> <Amount>")));
+                        commandSender.sendMessage(EssAPI.color(String.format(messages.m_syntax_error_c, s + " give &9<Player> <Amount>")));
                         return true;
                     }
 
@@ -53,7 +53,7 @@ public class CommandEconomy implements CommandExecutor {
                         target.sendMessage(EssAPI.color(String.format(messages.m_eco_give_target, amount, core.getEssEconomy().getBalance(target))));
                 } else if (strings[0].equalsIgnoreCase("take")) {
                     if (strings.length != 3) {
-                        commandSender.sendMessage(EssAPI.color(String.format(messages.m_syntax_error_c, s + " &9<Player> <Amount>")));
+                        commandSender.sendMessage(EssAPI.color(String.format(messages.m_syntax_error_c, s + " take &9<Player> <Amount>")));
                         return true;
                     }
 
@@ -67,7 +67,7 @@ public class CommandEconomy implements CommandExecutor {
                         target.sendMessage(EssAPI.color(String.format(messages.m_eco_take_target, amount, core.getEssEconomy().getBalance(target))));
                 } else if (strings[0].equalsIgnoreCase("reset")) {
                     if (strings.length != 2) {
-                        commandSender.sendMessage(EssAPI.color(String.format(messages.m_syntax_error_c, s + " &9<Player>")));
+                        commandSender.sendMessage(EssAPI.color(String.format(messages.m_syntax_error_c, s + " reset &9<Player>")));
                         return true;
                     }
 
