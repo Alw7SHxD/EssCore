@@ -26,6 +26,7 @@ public class CommandBalance implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (t) {
+            if(!EssAPI.hasPermission(commandSender, "esscore.balance")) return true;
             if (strings.length == 0) {
                 if (!(commandSender instanceof Player)) {
                     commandSender.sendMessage(messages.m_not_player);
@@ -36,14 +37,16 @@ public class CommandBalance implements CommandExecutor {
                 Double balance = core.getEssEconomy().getBalance(((Player) commandSender));
                 commandSender.sendMessage(EssAPI.color(String.format(messages.m_balance_self, balance(balance), replace(balance))));
             } else if (strings.length == 1) {
+                if(!EssAPI.hasPermission(commandSender, "esscore.balance.target")) return true;
                 Player target = EssAPI.getPlayer(core, commandSender, strings[0]);
                 if (target == null) return true;
 
                 hasAccount(target);
-                Double balance = core.getEssEconomy().getBalance(((Player) commandSender));
+                Double balance = core.getEssEconomy().getBalance(target);
                 commandSender.sendMessage(EssAPI.color(String.format(messages.m_balance_target, target.getName(), balance(balance), replace(balance))));
             } else commandSender.sendMessage(EssAPI.color(String.format(messages.m_syntax_error_c, s + " &9[Player]")));
         } else {
+            if(!EssAPI.hasPermission(commandSender, "esscore.money")) return true;
             if (strings.length == 0) {
                 if (!(commandSender instanceof Player)) {
                     commandSender.sendMessage(messages.m_not_player);
@@ -54,11 +57,12 @@ public class CommandBalance implements CommandExecutor {
                 Double balance = core.getEssEconomy().getBalance(((Player) commandSender));
                 commandSender.sendMessage(EssAPI.color(String.format(messages.m_money_self, symbol(), balance(balance))));
             } else if (strings.length == 1) {
+                if(!EssAPI.hasPermission(commandSender, "esscore.money.target")) return true;
                 Player target = EssAPI.getPlayer(core, commandSender, strings[0]);
                 if (target == null) return true;
 
                 hasAccount(target);
-                Double balance = core.getEssEconomy().getBalance(((Player) commandSender));
+                Double balance = core.getEssEconomy().getBalance(target);
                 commandSender.sendMessage(EssAPI.color(String.format(messages.m_money_target, target.getName(), symbol(), balance(balance))));
             } else commandSender.sendMessage(EssAPI.color(String.format(messages.m_syntax_error_c, s + " &9[Player]")));
         }

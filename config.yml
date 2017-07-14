@@ -117,6 +117,11 @@ currency-format:
 # set new players starting balance
 starting-balance: 0
 
+# If set to true, the player who sends money to
+# another player, needs to confirm their
+# transaction. set to false to make it instant.
+send-pay-confirmation: true
+
 ###
 # +
 # | MISCELLANEOUS
@@ -133,4 +138,4 @@ spawn-teleport:
 debug-signs: false
 
 # Don't change this value
-essCore: 6.6
+essCore: 7

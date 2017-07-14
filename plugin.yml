@@ -1,11 +1,11 @@
 # Created by Alw7SHxD on 4/15/2017.
-name: essCore
+name: EssCore
 version: 0.7
 description: "Minecraft essentials plugin, provides daily used commands and features!"
 website: "https://www.spigotmc.org/resources/esscore.37766/"
 author: Alw7SHxD
 main: me.Alw7SHxD.essCore.Core
-softdepend: [PlaceholderAPI, Vault]
+softdepend: [Vault, PlaceholderAPI]
 permissions:
   esscore.*:
     description: "grant every permission in essCore"

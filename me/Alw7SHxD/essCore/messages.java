@@ -158,4 +158,13 @@ public interface messages {
     String m_balance_target = "&c&l%s &7has &c&l%s &7%s";
     String m_money_self = "&7Your balance is &c&l%s%s";
     String m_money_target = "&c&l%s&7's balance is &c&l%s%s";
+
+    String m_economy_transaction_fail = "&c&lError! &7transaction failed.";
+    String m_economy_transaction_pending = "&c&lOops! &7Please confirm your other transaction.";
+    String m_economy_not_enough_money = "&c&lSorry! &7you don't have that amount of money.";
+
+    String m_pay_confirm = "&7Please confirm your transaction of &6&l%s&7 to &6&l%s, by typing &a&lYES &7or &c&lNO&7 in chat.";
+    String m_pay_confirm_decline = "&aSuccess! &7you have canceled this transaction.";
+    String m_pay_confirmed_sender = "&aSuccess! &7you have paid &6&l%s &7to &6&l%s";
+    String m_pay_confirmed_target = "&6&l%s &7paid you &6&l%s&7, your new balance is &c&l%s";
 }

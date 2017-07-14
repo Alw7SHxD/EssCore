@@ -2,12 +2,11 @@ package me.Alw7SHxD.essCore;
 
 import me.Alw7SHxD.essCore.util.EssEconomy;
 import me.Alw7SHxD.essCore.util.hooks.PlaceholderApiHook;
-import me.Alw7SHxD.essCore.API.UpdateChecker;
+import me.Alw7SHxD.essCore.util.updaters.UpdateChecker;
 import me.Alw7SHxD.essCore.commands.RegisterCommands;
 import me.Alw7SHxD.essCore.listeners.RegisterListeners;
 import me.Alw7SHxD.essCore.util.hooks.VaultHook;
-import net.milkbowl.vault.economy.Economy;
-import org.bukkit.plugin.RegisteredServiceProvider;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -32,21 +31,25 @@ public class Core extends JavaPlugin {
     public lists lists;
     private EssEconomy essEconomy;
     private VaultHook vaultHook;
-    private static Economy economy = null;
+    private Runnables runnables;
 
     public void onEnable() {
         if (!getDataFolder().exists()) getDataFolder().mkdir();
         saveDefaultConfig();
 
+        if (getConfig().getDouble("essCore") != 7)
+            getLogger().info("Your configuration file is outdated, please remove your old config.yml file.");
+
         updateChecker.check(this, getDescription().getVersion());
-        Runnables runnables = new Runnables(this);
+        this.runnables = new Runnables(this);
+        this.runnables.asyncOneSecond();
 
         if(getServer().getPluginManager().isPluginEnabled("Vault")) {
             this.essEconomy = new EssEconomy(this);
             this.vaultHook = new VaultHook(this);
             vaultHook.hook();
             this.hookedWithVault = true;
-            runnables.asynFiveMinutes();
+            this.runnables.asyncFiveMinutes();
         }
 
         if (getServer().getPluginManager().isPluginEnabled("PlaceholderAPI")) {
@@ -65,6 +68,9 @@ public class Core extends JavaPlugin {
     public void onDisable() {
         if(hookedWithVault)
             vaultHook.unHook();
+        for(Player player: getServer().getOnlinePlayers())
+            player.kickPlayer("Server is either reloading or shutting down.");
+        this.runnables.getAsyncFiveMinutes().cancel();
         getLogger().info("essCore v" + getDescription().getVersion() + " has been disabled.");
     }
 

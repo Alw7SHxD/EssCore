@@ -11,6 +11,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
+import java.util.HashMap;
+import java.util.UUID;
 import java.util.UnknownFormatConversionException;
 
 /*
@@ -40,6 +42,22 @@ public class PlayerChatHandler implements Listener, messages {
         EssPlayerAPI playerAPI = new EssPlayerAPI(e.getPlayer());
         if (playerAPI.getMuted()) {
             e.getPlayer().sendMessage(EssAPI.color(m_muted));
+            e.setCancelled(true);
+        }
+
+        if(core.lists.getPlayerPayTransaction().containsKey(e.getPlayer().getUniqueId())){
+            if(e.getMessage().equalsIgnoreCase("yes")){
+                HashMap<UUID, Double> hashMap = core.lists.getPlayerPayTransaction().get(e.getPlayer().getUniqueId());
+                UUID targetUUID = null;
+                for(UUID uuid: hashMap.keySet())
+                    targetUUID = uuid;
+                core.getEssEconomy().withdrawPlayer(e.getPlayer(), hashMap.get(targetUUID));
+                core.getEssEconomy().depositPlayer(core.getServer().getOfflinePlayer(targetUUID), hashMap.get(targetUUID));
+            }else if(e.getMessage().equalsIgnoreCase("no"))
+                e.getPlayer().sendMessage(EssAPI.color(m_pay_confirm_decline));
+            else
+                e.getPlayer().sendMessage(EssAPI.color(m_economy_transaction_fail));
+            core.lists.removePlayerPayTransaction(e.getPlayer().getUniqueId());
             e.setCancelled(true);
         }
 

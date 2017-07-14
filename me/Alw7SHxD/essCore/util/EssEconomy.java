@@ -43,7 +43,12 @@ public class EssEconomy implements Economy {
     @Override
     public String format(double v) {
         DecimalFormat decimalFormat = new DecimalFormat("###.#");
-        return decimalFormat.format(v);
+        return String.format("%s%s", currencySymbol(), decimalFormat.format(v));
+    }
+
+    public String format(double v, boolean b) {
+        DecimalFormat decimalFormat = new DecimalFormat("###.#");
+        return b ? String.format("%s %s", decimalFormat.format(v), v == 1 ? currencyNameSingular() : currencyNamePlural()) : decimalFormat.format(v);
     }
 
     @Override
@@ -54,6 +59,10 @@ public class EssEconomy implements Economy {
     @Override
     public String currencyNameSingular() {
         return core.getConfig().getString("currency-format.singular") != null ? core.getConfig().getString("currency-format.singular") : "Dollar";
+    }
+
+    public String currencySymbol() {
+        return core.getConfig().getString("currency-format.symbol") != null ? core.getConfig().getString("currency-format.symbol") : "$";
     }
 
     /**

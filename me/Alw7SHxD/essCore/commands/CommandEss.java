@@ -4,6 +4,7 @@ import me.Alw7SHxD.essCore.API.*;
 import me.Alw7SHxD.essCore.Core;
 import me.Alw7SHxD.essCore.messages;
 import me.Alw7SHxD.essCore.util.FancyMessage;
+import me.Alw7SHxD.essCore.util.updaters.UpdateChecker;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -88,6 +89,7 @@ public class CommandEss implements CommandExecutor, messages {
         commands.put("mute", 14);
         commands.put("nickname", 15);
         commands.put("openinv", 16);
+        commands.put("pay", 31);
         commands.put("sethome", 17);
         commands.put("setspawn", 18);
         commands.put("setwarp", 19);
@@ -98,6 +100,7 @@ public class CommandEss implements CommandExecutor, messages {
         commands.put("vanish", 24);
         commands.put("warp", 25);
         commands.put("warps", 26);
+        // 31
 
         paginate(commandSender, commands, page, 8, max);
     }

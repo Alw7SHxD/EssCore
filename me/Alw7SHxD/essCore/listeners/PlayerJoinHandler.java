@@ -3,7 +3,7 @@ package me.Alw7SHxD.essCore.listeners;
 import me.Alw7SHxD.essCore.API.EssAPI;
 import me.Alw7SHxD.essCore.API.EssPlayerAPI;
 import me.Alw7SHxD.essCore.API.EssSpawnAPI;
-import me.Alw7SHxD.essCore.API.UpdateChecker;
+import me.Alw7SHxD.essCore.util.updaters.UpdateChecker;
 import me.Alw7SHxD.essCore.Core;
 import me.Alw7SHxD.essCore.lists;
 import me.Alw7SHxD.essCore.messages;

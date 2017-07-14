@@ -40,6 +40,14 @@ public class EssPlayerAPI {
         create();
     }
 
+    public EssPlayerAPI(UUID uuid) {
+        this.player = core.getServer().getOfflinePlayer(uuid);
+        this.uuid = uuid;
+        this.playerData = new PlayerData(uuid + ".yml", Core.getPlugin(Core.class));
+        this.core = Core.getPlugin(Core.class);
+        create();
+    }
+
     private void create() {
         if (!isSet("player.unique_id")) {
             set("player.unique_id", this.uuid.toString());
@@ -207,11 +215,13 @@ public class EssPlayerAPI {
     }
 
     public void giveBalance(double amount){
+        amount = Double.parseDouble(String.valueOf(amount).replace("-", ""));
         Double balance = core.lists.getPlayerBank().get(uuid);
         setBalance(balance + amount);
     }
 
     public boolean takeBalance(double amount){
+        amount = Double.parseDouble(String.valueOf(amount).replace("-", ""));
         Double balance = core.lists.getPlayerBank().get(uuid);
         if(balance - amount < 0) return false;
         setBalance(balance - amount);

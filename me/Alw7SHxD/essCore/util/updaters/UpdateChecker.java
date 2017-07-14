@@ -1,6 +1,7 @@
-package me.Alw7SHxD.essCore.API;
+package me.Alw7SHxD.essCore.util.updaters;
 
 import com.sun.istack.internal.NotNull;
+import me.Alw7SHxD.essCore.API.EssAPI;
 import me.Alw7SHxD.essCore.Core;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.command.CommandSender;

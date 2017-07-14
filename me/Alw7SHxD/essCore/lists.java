@@ -18,6 +18,8 @@ public class lists{
     private ArrayList<Player> vanishedPlayers = new ArrayList<>();
     private ArrayList<String> limitHomes = new ArrayList<>();
     private final HashMap<UUID, Double> playerBank = new HashMap<>();
+    private HashMap<UUID, Integer> playerPayTransactionTime = new HashMap<>();
+    private HashMap<UUID, HashMap<UUID, Double>> playerPayTransaction = new HashMap<>();
 
     public lists(Core core) {
         this.core = core;
@@ -88,5 +90,27 @@ public class lists{
 
     public HashMap<UUID, Double> getPlayerBank() {
         return playerBank;
+    }
+
+    public HashMap<UUID, Integer> getPlayerPayTransactionTime() {
+        return playerPayTransactionTime;
+    }
+
+    public HashMap<UUID, HashMap<UUID, Double>> getPlayerPayTransaction() {
+        return playerPayTransaction;
+    }
+
+    public void addPlayerPayTransaction(UUID uuid, UUID uuid1, int time, double amount){
+        HashMap<UUID, Double> hashMap = new HashMap<>();
+        hashMap.put(uuid1, amount);
+        playerPayTransactionTime.put(uuid, time);
+        playerPayTransaction.put(uuid, hashMap);
+    }
+
+    public void removePlayerPayTransaction(UUID uuid){
+        if(playerPayTransaction.containsKey(uuid))
+            playerPayTransaction.remove(uuid);
+        if(playerPayTransactionTime.containsKey(uuid))
+            playerPayTransactionTime.remove(uuid);
     }
 }

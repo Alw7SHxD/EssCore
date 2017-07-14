@@ -80,7 +80,7 @@ public class PlayerInteractHandler implements Listener, messages {
                 } else if (sign.getLine(0).equals(EssAPI.color("&8[&2&lBALANCE&8]"))) {
                     String perm = "esscore.signs.balance.use";
                     if (lists.getAllowedSigns().contains("balance") && e.getPlayer().hasPermission(perm)) {
-                        e.getPlayer().sendMessage(EssAPI.color(String.format(messages.m_balance_self, core.getEssEconomy().format(core.getEssEconomy().getBalance(e.getPlayer())), replace(core.getEssEconomy().getBalance(e.getPlayer())))));
+                        e.getPlayer().sendMessage(EssAPI.color(String.format(messages.m_balance_self, core.getEssEconomy().format(core.getEssEconomy().getBalance(e.getPlayer()), false), replace(core.getEssEconomy().getBalance(e.getPlayer())))));
                     } else if (!e.getPlayer().hasPermission(perm) && core.lists.isDebugSigns())
                         e.getPlayer().sendMessage(EssAPI.color(String.format(m_signs_debug_permission, perm)));
                 }
