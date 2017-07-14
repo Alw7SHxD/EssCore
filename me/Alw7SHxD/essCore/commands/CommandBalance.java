@@ -9,6 +9,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.text.DecimalFormat;
+
 /**
  * essCore was created by Alw7SHxD (C) 2017
  */
@@ -77,6 +79,7 @@ public class CommandBalance implements CommandExecutor {
     }
 
     private String balance(double v) {
-        return (v == Math.floor(v)) && !Double.isInfinite(v) ? Math.floor(v) + "" : v + "";
+        DecimalFormat decimalFormat = new DecimalFormat("###.#");
+        return decimalFormat.format(v);
     }
 }
