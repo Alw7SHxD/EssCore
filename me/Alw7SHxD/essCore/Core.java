@@ -6,6 +6,8 @@ import me.Alw7SHxD.essCore.API.UpdateChecker;
 import me.Alw7SHxD.essCore.commands.RegisterCommands;
 import me.Alw7SHxD.essCore.listeners.RegisterListeners;
 import me.Alw7SHxD.essCore.util.hooks.VaultHook;
+import net.milkbowl.vault.economy.Economy;
+import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -30,6 +32,7 @@ public class Core extends JavaPlugin {
     public lists lists;
     private EssEconomy essEconomy;
     private VaultHook vaultHook;
+    private static Economy economy = null;
 
     public void onEnable() {
         if (!getDataFolder().exists()) getDataFolder().mkdir();
@@ -66,6 +69,6 @@ public class Core extends JavaPlugin {
     }
 
     public EssEconomy getEssEconomy() {
-        return hookedWithVault ? essEconomy : null;
+        return essEconomy;
     }
 }

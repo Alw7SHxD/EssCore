@@ -13,11 +13,12 @@ public class VaultHook {
 
     public VaultHook(Core core) {
         this.core = core;
+        this.economy = core.getEssEconomy();
     }
 
     public void hook() {
-        this.economy = core.getEssEconomy();
-        core.getServer().getServicesManager().register(Economy.class, this.economy, this.core, ServicePriority.Normal);
+        core.getServer().getServicesManager().register(Economy.class, this.economy, this.core, ServicePriority.High);
+        core.getLogger().info("[ECONOMY] hooked into Vault");
     }
 
     public void unHook() {
