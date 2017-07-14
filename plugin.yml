@@ -266,7 +266,7 @@ commands:
     usage: /<command> <name>
     aliases: [edelwarp]
   eco:
-    description: "open your enderchest."
+    description: "economy base command."
     usage: |
       /<command>
       /<command> help
