@@ -69,11 +69,11 @@ public class CommandBalance implements CommandExecutor {
     }
 
     private String replace(double v) {
-        return v == 1 ? core.getConfig().getString("currency-format.single") : core.getConfig().getString("currency-format.plural");
+        return v == 1 ? core.getEssEconomy().currencyNameSingular() : core.getEssEconomy().currencyNamePlural();
     }
 
     private String symbol() {
-        return core.getConfig().getString("currency-format.symbol");
+        return core.getConfig().getString("currency-format.symbol") != null ? core.getConfig().getString("currency-format.symbol") : "$";
     }
 
     private String balance(double v) {

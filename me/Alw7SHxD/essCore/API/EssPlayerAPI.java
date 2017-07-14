@@ -4,8 +4,8 @@ import me.Alw7SHxD.essCore.Core;
 import me.Alw7SHxD.essCore.configuration.PlayerData;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Date;
 import java.util.UUID;
@@ -26,15 +26,17 @@ import java.util.UUID;
  * limitations under the License.
  */
 public class EssPlayerAPI {
-    private Player player;
+    private OfflinePlayer player;
     private UUID uuid;
     private PlayerData playerData;
+    private Core core;
     public boolean l = false;
 
-    public EssPlayerAPI(Player player) {
+    public EssPlayerAPI(OfflinePlayer player) {
         this.player = player;
         this.uuid = player.getUniqueId();
         this.playerData = new PlayerData(uuid + ".yml", Core.getPlugin(Core.class));
+        this.core = Core.getPlugin(Core.class);
         create();
     }
 
@@ -47,6 +49,7 @@ public class EssPlayerAPI {
         if (!isSet("player.first_join.date"))
             set("player.first_join.date", new Date(this.player.getFirstPlayed() * 1000).toString());
         if (!isSet("player.first_join.int.Long")) set("player.first_join.int.Long", this.player.getFirstPlayed());
+        if (!isSet("player.economy.balance")) set("player.economy.balance", core.getConfig().get("starting-balance") != null ? core.getConfig().getDouble("starting-balance") : 0);
     }
 
     protected boolean isSet(String path) {
@@ -74,11 +77,15 @@ public class EssPlayerAPI {
         playerData.saveYaml();
     }
 
-    public Player getPlayer() {
+    public OfflinePlayer getPlayer() {
         return player;
     }
 
-    public UUID getUuid() {
+    public Player getOnlinePlayer() {
+        return (Player) player;
+    }
+
+    public UUID getUUID() {
         return uuid;
     }
 
@@ -176,5 +183,33 @@ public class EssPlayerAPI {
 
         set("homes." + s, null);
         return true;
+    }
+
+    public double getBalance(){
+        return core.lists.getPlayerBank().get(uuid);
+    }
+
+    public double getLocalBalance(){
+        return getDouble("player.economy.balance");
+    }
+
+    public void setBalance(double balance){
+        core.lists.getPlayerBank().put(uuid, balance);
+    }
+
+    public void giveBalance(double amount){
+        Double balance = core.lists.getPlayerBank().get(uuid);
+        setBalance(balance + amount);
+    }
+
+    public boolean takeBalance(double amount){
+        Double balance = core.lists.getPlayerBank().get(uuid);
+        if(balance - amount < 0) return false;
+        setBalance(balance - amount);
+        return true;
+    }
+
+    public boolean hasBalance(double balance){
+        return getBalance() >= balance;
     }
 }

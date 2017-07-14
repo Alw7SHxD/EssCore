@@ -32,7 +32,7 @@ public class EssHomesAPI extends EssPlayerAPI {
 
     public boolean teleport(String s) {
         if (getHome(s) == null) return false;
-        getPlayer().teleport(getHome(s));
+        getOnlinePlayer().teleport(getHome(s));
         return true;
     }
 
@@ -47,17 +47,17 @@ public class EssHomesAPI extends EssPlayerAPI {
         }
 
         if (list == null) {
-            getPlayer().sendMessage(EssAPI.color(messages.m_home_no_homes));
+            getOnlinePlayer().sendMessage(EssAPI.color(messages.m_home_no_homes));
             return;
         }
 
         String homes = String.join("&8, &7", list);
 
         if (homes.length() == 0) {
-            getPlayer().sendMessage(EssAPI.color(messages.m_home_no_homes));
+            getOnlinePlayer().sendMessage(EssAPI.color(messages.m_home_no_homes));
             return;
         }
-        getPlayer().sendMessage(EssAPI.color(String.format(messages.m_home_list, homes)));
+        getOnlinePlayer().sendMessage(EssAPI.color(String.format(messages.m_home_list, homes)));
     }
 
     public List listAll() {

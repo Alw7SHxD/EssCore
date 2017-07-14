@@ -110,7 +110,7 @@ chat-format:
 enable-vault: true
 
 currency-format:
-  single: "dollar"
+  singular: "dollar"
   plural: "dollars"
   symbol: "$"
 
