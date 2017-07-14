@@ -189,12 +189,25 @@ public class EssPlayerAPI {
         return core.lists.getPlayerBank().get(uuid);
     }
 
+    /**
+     * @deprecated
+     */
+    @Deprecated
     public double getLocalBalance(){
         return getDouble("player.economy.balance");
     }
 
     public void setBalance(double balance){
         core.lists.getPlayerBank().put(uuid, balance);
+    }
+
+    public void setLocalBalance(double balance){
+        set("player.economy.balance", balance);
+    }
+
+    public void setDefaultBalance(){
+        setBalance(core.getConfig().get("starting-balance") != null ? core.getConfig().getDouble("starting-balance") : 0);
+        setLocalBalance(core.getConfig().get("starting-balance") != null ? core.getConfig().getDouble("starting-balance") : 0);
     }
 
     public void giveBalance(double amount){
@@ -211,5 +224,17 @@ public class EssPlayerAPI {
 
     public boolean hasBalance(double balance){
         return getBalance() >= balance;
+    }
+
+    public boolean hasAccount(){
+        return core.lists.getPlayerBank().containsKey(uuid);
+    }
+
+    /**
+     * @deprecated
+     */
+    @Deprecated
+    public boolean hasLocalAccount(){
+        return isSet("player.economy.balance");
     }
 }

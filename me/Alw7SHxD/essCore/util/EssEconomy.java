@@ -4,26 +4,19 @@ import me.Alw7SHxD.essCore.API.EssPlayerAPI;
 import me.Alw7SHxD.essCore.Core;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.economy.EconomyResponse;
-import net.milkbowl.vault.economy.plugins.Economy_Essentials;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.RegisteredServiceProvider;
 
 import java.util.List;
-import java.util.UUID;
 
 /**
  * essCore was created by Alw7SHxD (C) 2017
  */
 public class EssEconomy implements Economy {
     private Core core;
-    private Economy economy;
 
     public EssEconomy(Core core) {
         this.core = core;
-        RegisteredServiceProvider<Economy> economyProvider = core.getServer().getServicesManager().getRegistration(net.milkbowl.vault.economy.Economy.class);
-        if (economyProvider != null)
-            this.economy = economyProvider.getProvider();
     }
 
     @Override
@@ -68,14 +61,14 @@ public class EssEconomy implements Economy {
     @Override
     public boolean hasAccount(String s) {
         Player player = core.getServer().getPlayerExact(s);
-        UUID uuid = player.getUniqueId();
-        return core.lists.getPlayerBank().containsKey(uuid);
+        EssPlayerAPI playerAPI = new EssPlayerAPI(player);
+        return playerAPI.hasAccount();
     }
 
     @Override
     public boolean hasAccount(OfflinePlayer offlinePlayer) {
-        UUID uuid = offlinePlayer.getUniqueId();
-        return core.lists.getPlayerBank().containsKey(uuid);
+        EssPlayerAPI playerAPI = new EssPlayerAPI(offlinePlayer);
+        return playerAPI.hasAccount();
     }
 
     /**
@@ -86,14 +79,14 @@ public class EssEconomy implements Economy {
     @Override
     public boolean hasAccount(String s, String s1) {
         Player player = core.getServer().getPlayerExact(s);
-        UUID uuid = player.getUniqueId();
-        return core.lists.getPlayerBank().containsKey(uuid);
+        EssPlayerAPI playerAPI = new EssPlayerAPI(player);
+        return playerAPI.hasAccount();
     }
 
     @Override
     public boolean hasAccount(OfflinePlayer offlinePlayer, String s) {
-        UUID uuid = offlinePlayer.getUniqueId();
-        return core.lists.getPlayerBank().containsKey(uuid);
+        EssPlayerAPI playerAPI = new EssPlayerAPI(offlinePlayer);
+        return playerAPI.hasAccount();
     }
 
     /**
@@ -255,17 +248,15 @@ public class EssEconomy implements Economy {
      * @param v
      * @deprecated
      */
-    public EconomyResponse setPlayer(String s, double v) {
+    public void setPlayer(String s, double v) {
         Player player = core.getServer().getPlayerExact(s);
         EssPlayerAPI playerAPI = new EssPlayerAPI(player);
         playerAPI.setBalance(v);
-        return new EconomyResponse(v, 0, EconomyResponse.ResponseType.SUCCESS, "setFailure");
     }
 
-    public EconomyResponse setPlayer(OfflinePlayer offlinePlayer, double v) {
+    public void setPlayer(OfflinePlayer offlinePlayer, double v) {
         EssPlayerAPI playerAPI = new EssPlayerAPI(offlinePlayer);
         playerAPI.setBalance(v);
-        return new EconomyResponse(v, 0, EconomyResponse.ResponseType.SUCCESS, "setFailure");
     }
 
     /**
@@ -274,17 +265,15 @@ public class EssEconomy implements Economy {
      * @param v
      * @deprecated
      */
-    public EconomyResponse setPlayer(String s, String s1, double v) {
+    public void setPlayer(String s, String s1, double v) {
         Player player = core.getServer().getPlayerExact(s);
         EssPlayerAPI playerAPI = new EssPlayerAPI(player);
         playerAPI.setBalance(v);
-        return new EconomyResponse(v, 0, EconomyResponse.ResponseType.SUCCESS, "setFailure");
     }
 
-    public EconomyResponse setPlayer(OfflinePlayer offlinePlayer, String s, double v) {
+    public void setPlayer(OfflinePlayer offlinePlayer, String s, double v) {
         EssPlayerAPI playerAPI = new EssPlayerAPI(offlinePlayer);
         playerAPI.setBalance(v);
-        return new EconomyResponse(v, 0, EconomyResponse.ResponseType.SUCCESS, "setFailure");
     }
 
     /**
@@ -368,12 +357,19 @@ public class EssEconomy implements Economy {
      */
     @Override
     public boolean createPlayerAccount(String s) {
-        return false;
+        Player player = core.getServer().getPlayerExact(s);
+        EssPlayerAPI playerAPI = new EssPlayerAPI(player);
+        if(!playerAPI.hasAccount())
+            playerAPI.setDefaultBalance();
+        return true;
     }
 
     @Override
     public boolean createPlayerAccount(OfflinePlayer offlinePlayer) {
-        return false;
+        EssPlayerAPI playerAPI = new EssPlayerAPI(offlinePlayer);
+        if(!playerAPI.hasAccount())
+            playerAPI.setDefaultBalance();
+        return true;
     }
 
     /**
@@ -383,11 +379,18 @@ public class EssEconomy implements Economy {
      */
     @Override
     public boolean createPlayerAccount(String s, String s1) {
-        return false;
+        Player player = core.getServer().getPlayerExact(s);
+        EssPlayerAPI playerAPI = new EssPlayerAPI(player);
+        if(!playerAPI.hasAccount())
+            playerAPI.setDefaultBalance();
+        return true;
     }
 
     @Override
     public boolean createPlayerAccount(OfflinePlayer offlinePlayer, String s) {
-        return false;
+        EssPlayerAPI playerAPI = new EssPlayerAPI(offlinePlayer);
+        if(!playerAPI.hasAccount())
+            playerAPI.setDefaultBalance();
+        return true;
     }
 }
