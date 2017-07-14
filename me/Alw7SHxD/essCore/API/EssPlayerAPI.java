@@ -189,10 +189,6 @@ public class EssPlayerAPI {
         return core.lists.getPlayerBank().get(uuid);
     }
 
-    /**
-     * @deprecated
-     */
-    @Deprecated
     public double getLocalBalance(){
         return getDouble("player.economy.balance");
     }
@@ -230,10 +226,6 @@ public class EssPlayerAPI {
         return core.lists.getPlayerBank().containsKey(uuid);
     }
 
-    /**
-     * @deprecated
-     */
-    @Deprecated
     public boolean hasLocalAccount(){
         return isSet("player.economy.balance");
     }

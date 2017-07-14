@@ -26,6 +26,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Core extends JavaPlugin {
     private UpdateChecker updateChecker = new UpdateChecker(this);
     public boolean usingPlaceholderAPI = false;
+    public boolean hookedWithVault = false;
     public lists lists;
     private EssEconomy essEconomy;
     private VaultHook vaultHook;
@@ -35,6 +36,15 @@ public class Core extends JavaPlugin {
         saveDefaultConfig();
 
         updateChecker.check(this, getDescription().getVersion());
+        Runnables runnables = new Runnables(this);
+
+        if(getServer().getPluginManager().isPluginEnabled("Vault")) {
+            this.essEconomy = new EssEconomy(this);
+            this.vaultHook = new VaultHook(this);
+            vaultHook.hook();
+            this.hookedWithVault = true;
+            runnables.asynFiveMinutes();
+        }
 
         if (getServer().getPluginManager().isPluginEnabled("PlaceholderAPI")) {
             new PlaceholderApiHook(this).hook();
@@ -47,18 +57,15 @@ public class Core extends JavaPlugin {
 
         new RegisterListeners(this);
         new RegisterCommands(this);
-
-        this.essEconomy = new EssEconomy(this);
-        this.vaultHook = new VaultHook(this);
-        vaultHook.hook();
     }
 
     public void onDisable() {
-        vaultHook.unHook();
+        if(hookedWithVault)
+            vaultHook.unHook();
         getLogger().info("essCore v" + getDescription().getVersion() + " has been disabled.");
     }
 
     public EssEconomy getEssEconomy() {
-        return essEconomy;
+        return hookedWithVault ? essEconomy : null;
     }
 }

@@ -26,7 +26,7 @@ public class RegisterCommands {
         try {
             HashMap<String, CommandExecutor> commands = new HashMap<>();
 
-            commands.put("balance", new CommandBalance(core, true));
+            if(core.hookedWithVault) commands.put("balance", new CommandBalance(core, true));
             commands.put("broadcast", new CommandBroadcast(core));
             commands.put("clearchat", new CommandClearChat(core));
             commands.put("delhome", new CommandDelHome(core));
@@ -41,7 +41,7 @@ public class RegisterCommands {
             commands.put("heal", new CommandHeal(core));
             commands.put("home", new CommandHome(core));
             commands.put("homes", new CommandHomes(core));
-            commands.put("money", new CommandBalance(core, false));
+            if(core.hookedWithVault) commands.put("money", new CommandBalance(core, false));
             commands.put("mute", new CommandMute(core));
             commands.put("nickname", new CommandNick(core));
             commands.put("openinv", new CommandOpenInv(core));

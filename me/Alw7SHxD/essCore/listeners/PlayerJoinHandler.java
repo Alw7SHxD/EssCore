@@ -64,6 +64,12 @@ public class PlayerJoinHandler implements Listener {
         else if (core.getConfig().getBoolean("spawn-teleport.player-join"))
             spawnAPI.teleport(player);
 
+        if(core.hookedWithVault) {
+            if(playerAPI.hasLocalAccount())
+                playerAPI.setBalance(playerAPI.getLocalBalance());
+            core.getEssEconomy().createPlayerAccount(player);
+        }
+
         try {
             lists.loadVanishedPlayers();
             for (Player p : lists.getVanishedPlayers()) {
