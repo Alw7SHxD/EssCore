@@ -43,6 +43,9 @@ public class SignsChangeHandler implements Listener, messages {
                     } else if (i == 0 && e.getLine(0).equals("&8[&2&lHEAL&8]")) {
                         e.setLine(0, EssAPI.color("&0[&2&lHEAL&0]"));
                         continue;
+                    } else if (i == 0 && e.getLine(0).equals("&8[&2&lBALANCE&8]")) {
+                        e.setLine(0, EssAPI.color("&0[&2&lBALANCE&0]"));
+                        continue;
                     }
 
                     e.setLine(i, EssAPI.color(e.getLine(i)));
@@ -95,6 +98,13 @@ public class SignsChangeHandler implements Listener, messages {
                 if (e.getLine(0).equalsIgnoreCase("[heal]")) {
                     e.setLine(0, EssAPI.color("&8[&2&lHEAL&8]"));
                     e.getPlayer().sendMessage(EssAPI.color(m_signs_heal_create));
+                }
+            } else if (s.equalsIgnoreCase("balance")) {
+                if (!e.getPlayer().hasPermission("esscore.signs.balance.create"))
+                    continue;
+                if (e.getLine(0).equalsIgnoreCase("[balance]")) {
+                    e.setLine(0, EssAPI.color("&8[&2&lBALANCE&8]"));
+                    e.getPlayer().sendMessage(EssAPI.color(m_signs_balance_create));
                 }
             }
         }

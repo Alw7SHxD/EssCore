@@ -42,13 +42,14 @@ ignore-nick-colorcodes: false
 # Creating the sign : esscore.signs.<name>.create
 # Usage of the sign : esscore.signs.<name>.use
 allowed-signs:
+  #- balance
   #- colors
+  #- disposal
+  #- feed
+  #- heal
+  #- spawn
   #- warp
   #- warps
-  #- spawn
-  #- disposal
-  #- heal
-  #- feed
 
 # limit how many homes can each permission make
 # use esscore.sethome.<name> permission for the following
@@ -103,17 +104,17 @@ chat-format:
 
 ###
 # +
-# | ECONOMY
+# | ECONOMY (Vault)
 # +
 ###
 
-enable-vault: true
-
+# set custom format to display balance
 currency-format:
   singular: "dollar"
   plural: "dollars"
   symbol: "$"
 
+# set new players starting balance
 starting-balance: 0
 
 ###

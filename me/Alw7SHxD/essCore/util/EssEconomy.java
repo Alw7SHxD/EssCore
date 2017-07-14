@@ -7,6 +7,7 @@ import net.milkbowl.vault.economy.EconomyResponse;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 /**
@@ -41,7 +42,8 @@ public class EssEconomy implements Economy {
 
     @Override
     public String format(double v) {
-        return String.valueOf(v);
+        DecimalFormat decimalFormat = new DecimalFormat("###.#");
+        return decimalFormat.format(v);
     }
 
     @Override

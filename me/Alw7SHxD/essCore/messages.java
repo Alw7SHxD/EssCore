@@ -108,6 +108,7 @@ public interface messages {
     String m_signs_disposal_create = "&a&lSuccess! &7sign to &a&ldispose items &7has been created.";
     String m_signs_feed_create = "&a&lSuccess! &7sign to &a&lfeed players &7has been created.";
     String m_signs_heal_create = "&a&lSuccess! &7sign to &a&lheal players &7has been created.";
+    String m_signs_balance_create = "&a&lSuccess! &7sign to display &a&lbalance &7has been created.";
     String m_signs_debug_permission = "&c&lHey! &7you don't have &c&l%s &7permission.";
 
     String m_vanish_self_on = "&7You are now &a&lvanished";
@@ -152,4 +153,9 @@ public interface messages {
     String m_eco_take_target = "&7&c&l$%s&7 has been taken from your balance, your new balance is &c&l$%s";
     String m_eco_reset_sender = "&a&lSuccess! &c&l%s&7's balance has been reset.";
     String m_eco_reset_target = "&7Your balance has been reset.";
+
+    String m_balance_self = "&7You have &c&l%s &7%s";
+    String m_balance_target = "&c&l%s &7has &c&l%s &7%s";
+    String m_money_self = "&7Your balance is &c&l%s%s";
+    String m_money_target = "&c&l%s&7's balance is &c&l%s%s";
 }

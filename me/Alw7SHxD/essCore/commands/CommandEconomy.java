@@ -77,11 +77,11 @@ public class CommandEconomy implements CommandExecutor {
                     commandSender.sendMessage(EssAPI.color(String.format(messages.m_eco_reset_sender, target.getName())));
                     if(commandSender != target)
                         target.sendMessage(EssAPI.color(messages.m_eco_reset_target));
-                } else commandSender.sendMessage(EssAPI.color(messages.m_syntax_error));
+                } else commandSender.sendMessage(EssAPI.color(String.format(messages.m_syntax_error_c, s + " &9<set/give/take/reset>")));
             } catch (NumberFormatException e) {
                 commandSender.sendMessage(EssAPI.color("&7Please make sure to type a correct number."));
             }
-        } else commandSender.sendMessage(EssAPI.color(messages.m_syntax_error));
+        } else commandSender.sendMessage(EssAPI.color(String.format(messages.m_syntax_error_c, s + " &9<set/give/take/reset>")));
         return true;
     }
 

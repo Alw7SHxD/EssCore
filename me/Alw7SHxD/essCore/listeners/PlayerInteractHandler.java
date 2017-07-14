@@ -65,16 +65,22 @@ public class PlayerInteractHandler implements Listener, messages {
                         e.getPlayer().sendMessage(EssAPI.color(String.format(m_signs_debug_permission, perm)));
                 } else if (sign.getLine(0).equals(EssAPI.color("&8[&2&lFEED&8]"))) {
                     String perm = "esscore.signs.feed.use";
-                    if (lists.getAllowedSigns().contains("disposal") && e.getPlayer().hasPermission(perm)) {
+                    if (lists.getAllowedSigns().contains("feed") && e.getPlayer().hasPermission(perm)) {
                         e.getPlayer().setFoodLevel(20);
                         e.getPlayer().sendMessage(EssAPI.color(m_feed_self));
                     } else if (!e.getPlayer().hasPermission(perm) && core.lists.isDebugSigns())
                         e.getPlayer().sendMessage(EssAPI.color(String.format(m_signs_debug_permission, perm)));
                 } else if (sign.getLine(0).equals(EssAPI.color("&8[&2&lHEAL&8]"))) {
                     String perm = "esscore.signs.heal.use";
-                    if (lists.getAllowedSigns().contains("disposal") && e.getPlayer().hasPermission(perm)) {
+                    if (lists.getAllowedSigns().contains("heal") && e.getPlayer().hasPermission(perm)) {
                         e.getPlayer().setHealth(20);
                         e.getPlayer().sendMessage(EssAPI.color(m_heal_self));
+                    } else if (!e.getPlayer().hasPermission(perm) && core.lists.isDebugSigns())
+                        e.getPlayer().sendMessage(EssAPI.color(String.format(m_signs_debug_permission, perm)));
+                } else if (sign.getLine(0).equals(EssAPI.color("&8[&2&lBALANCE&8]"))) {
+                    String perm = "esscore.signs.balance.use";
+                    if (lists.getAllowedSigns().contains("balance") && e.getPlayer().hasPermission(perm)) {
+                        e.getPlayer().sendMessage(EssAPI.color(String.format(messages.m_balance_self, core.getEssEconomy().format(core.getEssEconomy().getBalance(e.getPlayer())), replace(core.getEssEconomy().getBalance(e.getPlayer())))));
                     } else if (!e.getPlayer().hasPermission(perm) && core.lists.isDebugSigns())
                         e.getPlayer().sendMessage(EssAPI.color(String.format(m_signs_debug_permission, perm)));
                 }
@@ -84,5 +90,9 @@ public class PlayerInteractHandler implements Listener, messages {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    private String replace(double v) {
+        return v == 1 ? core.getEssEconomy().currencyNameSingular() : core.getEssEconomy().currencyNamePlural();
     }
 }
