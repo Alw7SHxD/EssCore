@@ -55,9 +55,9 @@ public class PlayerChatHandler implements Listener, messages {
                 EconomyResponse responseWithdraw = core.getEssEconomy().withdrawPlayer(e.getPlayer(), hashMap.get(targetUUID));
                 if(responseWithdraw.transactionSuccess()) {
                     core.getEssEconomy().depositPlayer(core.getServer().getOfflinePlayer(targetUUID), hashMap.get(targetUUID));
-                    e.getPlayer().sendMessage(EssAPI.color(String.format(m_pay_confirmed_sender, hashMap.get(targetUUID), core.getServer().getOfflinePlayer(targetUUID).getName())));
+                    e.getPlayer().sendMessage(EssAPI.color(String.format(m_pay_confirmed_sender, core.getEssEconomy().format(hashMap.get(targetUUID)), core.getServer().getOfflinePlayer(targetUUID).getName())));
                     if(core.getServer().getOfflinePlayer(targetUUID).isOnline())
-                        core.getServer().getPlayer(targetUUID).sendMessage(EssAPI.color(String.format(m_pay_confirmed_target, e.getPlayer().getDisplayName(), hashMap.get(targetUUID), core.getEssEconomy().getBalance(core.getServer().getOfflinePlayer(targetUUID)))));
+                        core.getServer().getPlayer(targetUUID).sendMessage(EssAPI.color(String.format(m_pay_confirmed_target, e.getPlayer().getDisplayName(), core.getEssEconomy().format(hashMap.get(targetUUID)), core.getEssEconomy().format(core.getEssEconomy().getBalance(core.getServer().getOfflinePlayer(targetUUID))))));
                 }else
                     e.getPlayer().sendMessage(EssAPI.color(m_economy_not_enough_money));
             }else if(e.getMessage().equalsIgnoreCase("no"))

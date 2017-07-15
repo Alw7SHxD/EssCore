@@ -20,34 +20,41 @@ public class CommandPay implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-        if(!(commandSender instanceof Player)){
+        if (!(commandSender instanceof Player)) {
             commandSender.sendMessage(messages.m_not_player);
             return true;
         }
 
-        if(!EssAPI.hasPermission(commandSender, "esscore.pay")) return true;
-        if(strings.length != 2) {
+        if (!EssAPI.hasPermission(commandSender, "esscore.pay")) return true;
+        if (strings.length != 2) {
             commandSender.sendMessage(EssAPI.color(String.format(messages.m_syntax_error_c, s + " &9<Player> <Amount>")));
             return true;
         }
 
         Player player = (Player) commandSender;
         Player target = EssAPI.getPlayer(core, commandSender, strings[0]);
-        if(target == null) return true;
+        if (target == null) return true;
 
-        Double amount = Double.parseDouble(strings[1]);
-        if(!core.getEssEconomy().has(player, amount)){
-            commandSender.sendMessage(EssAPI.color(messages.m_economy_not_enough_money));
-            return true;
+        try {
+            Double amount = Double.parseDouble(strings[1]);
+            if (target == player) {
+                commandSender.sendMessage(EssAPI.color(messages.m_pay_self));
+                return true;
+            } else if (amount == 0) {
+                commandSender.sendMessage(EssAPI.color(messages.m_pay_zero));
+                return true;
+            } else if (!core.getEssEconomy().has(player, amount)) {
+                commandSender.sendMessage(EssAPI.color(messages.m_economy_not_enough_money));
+                return true;
+            } else if (core.lists.getPlayerPayTransaction().containsKey(player.getUniqueId()) || core.lists.getPlayerPayTransactionTime().containsKey(player.getUniqueId())) {
+                commandSender.sendMessage(EssAPI.color(messages.m_economy_transaction_pending));
+                return true;
+            }
+            core.lists.addPlayerPayTransaction(player.getUniqueId(), target.getUniqueId(), 10, amount);
+            player.sendMessage(EssAPI.color(String.format(messages.m_pay_confirm, core.getEssEconomy().format(amount), target.getName())));
+        } catch (NumberFormatException e) {
+            commandSender.sendMessage(EssAPI.color(messages.m_number_format));
         }
-
-        if(core.lists.getPlayerPayTransaction().containsKey(player.getUniqueId()) || core.lists.getPlayerPayTransactionTime().containsKey(player.getUniqueId())){
-            commandSender.sendMessage(EssAPI.color(messages.m_economy_transaction_pending));
-            return true;
-        }
-
-        core.lists.addPlayerPayTransaction(player.getUniqueId(), target.getUniqueId(), 10, amount);
-        player.sendMessage(EssAPI.color(String.format(messages.m_pay_confirm, core.getEssEconomy().format(amount), target.getName())));
         return true;
     }
 }

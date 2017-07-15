@@ -18,7 +18,7 @@ public class VaultHook {
 
     public void hook() {
         core.getServer().getServicesManager().register(Economy.class, this.economy, this.core, ServicePriority.High);
-        core.getLogger().info("[ECONOMY] hooked into Vault");
+        core.getLogger().info("[Economy] hooked into Vault");
     }
 
     public void unHook() {

@@ -24,6 +24,7 @@ public interface messages {
     String m_not_player = "Hey! only players can use this command.";
     String m_reload_done = "&a&lessCore &8» &2successfully reloaded configuration files.";
     String m_reload_error = "&a&lessCore &8» &can error occurred.";
+    String m_number_format = "&c&lOops! &7you must include a number.";
 
     String m_ess_help_invalid_page = "&c&lInvalid page! &7available pages from &c&l1 &7to &c&l%s";
 
@@ -167,4 +168,6 @@ public interface messages {
     String m_pay_confirm_decline = "&aSuccess! &7you have canceled this transaction.";
     String m_pay_confirmed_sender = "&aSuccess! &7you have paid &6&l%s &7to &6&l%s";
     String m_pay_confirmed_target = "&6&l%s &7paid you &6&l%s&7, your new balance is &c&l%s";
+    String m_pay_self = "&c&lHey! &7you cannot pay yourself.";
+    String m_pay_zero = "&c&lHey! &7what's the point of paying nothing?";
 }
