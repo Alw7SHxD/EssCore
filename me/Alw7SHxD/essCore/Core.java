@@ -1,5 +1,7 @@
 package me.Alw7SHxD.essCore;
 
+import me.Alw7SHxD.essCore.API.EssAPI;
+import me.Alw7SHxD.essCore.API.EssPlayerAPI;
 import me.Alw7SHxD.essCore.util.EssEconomy;
 import me.Alw7SHxD.essCore.util.hooks.PlaceholderApiHook;
 import me.Alw7SHxD.essCore.util.updaters.UpdateChecker;
@@ -8,6 +10,8 @@ import me.Alw7SHxD.essCore.listeners.RegisterListeners;
 import me.Alw7SHxD.essCore.util.hooks.VaultHook;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.io.File;
 
 /**
  * (C) Copyright 2017 Alw7SHxD.
@@ -63,12 +67,21 @@ public class Core extends JavaPlugin {
 
         if (getConfig().getDouble("essCore") != 7)
             getLogger().info("Your configuration file is outdated, please remove your old config.yml file.");
+
+        checkBalances();
     }
 
     public void onDisable() {
         if(hookedWithVault)
             vaultHook.unHook();
+
         getLogger().info("essCore v" + getDescription().getVersion() + " has been disabled.");
+    }
+
+    private void checkBalances() {
+        if (getServer().getOnlinePlayers().size() != 0)
+            for (Player player : getServer().getOnlinePlayers())
+                new EssPlayerAPI(player).setBalance();
     }
 
     public EssEconomy getEssEconomy() {

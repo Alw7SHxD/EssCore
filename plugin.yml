@@ -6,7 +6,6 @@ website: "https://www.spigotmc.org/resources/esscore.37766/"
 author: Alw7SHxD
 main: me.Alw7SHxD.essCore.Core
 loadbefore: [Vault]
-softdepend: [Vault, PlaceholderAPI]
 permissions:
   esscore.*:
     description: "grant every permission in essCore"

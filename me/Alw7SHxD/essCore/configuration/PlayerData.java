@@ -26,6 +26,7 @@ import java.nio.file.Path;
 import java.util.logging.Level;
 
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -42,22 +43,18 @@ public class PlayerData {
     private File configFile;
     private FileConfiguration fileConfiguration;
 
-    public PlayerData(String fileName, JavaPlugin plugin) {
+    public PlayerData(OfflinePlayer player, JavaPlugin plugin) {
         if (plugin == null)
             throw new IllegalArgumentException("Plugin cannot be null");
+        if (player == null)
+            throw new IllegalArgumentException("Player cannot be null");
         this.plugin = plugin;
-        if (!plugin.getDataFolder().exists()) {
-            plugin.getDataFolder().mkdir();
-        }
+        if (!plugin.getDataFolder().exists()) plugin.getDataFolder().mkdir();
         File dataFolder = new File(plugin.getDataFolder().getPath() + File.separator + "Players");
-        this.configFile = new File(dataFolder, fileName);
-        if (!dataFolder.exists()) {
-            dataFolder.mkdir();
-        }
-        if (!configFile.exists()) {
-
-        }
-        saveDefaultYaml();
+        this.configFile = new File(dataFolder, player.getUniqueId() + ".yml");
+        if (!dataFolder.exists()) dataFolder.mkdir();
+        if (!configFile.exists())
+            if (player.isOnline()) saveDefaultYaml();
     }
 
     public void reloadYaml() {
@@ -119,7 +116,7 @@ public class PlayerData {
             } catch (FileAlreadyExistsException x) {
                 Bukkit.getLogger().log(Level.INFO, "Tried to create a new Player Config, but it already existed! ");
             } catch (IOException x) {
-                if (Bukkit.broadcast(ChatColor.DARK_RED + "AN ERROR OCCURRED WHILE ATTEMPTING TO CREATE FILE: " + this.configFile.getName(), "esscore.debug") == 0 ) {
+                if (Bukkit.broadcast(ChatColor.DARK_RED + "AN ERROR OCCURRED WHILE ATTEMPTING TO CREATE FILE: " + this.configFile.getName(), "esscore.debug") == 0) {
                     Bukkit.getLogger().log(Level.SEVERE, "AN ERROR OCCURRED WHILE ATTEMPTING TO CREATE FILE: " + this.configFile.getName(), x);
                 }
             }

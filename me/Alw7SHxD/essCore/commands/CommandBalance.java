@@ -1,6 +1,7 @@
 package me.Alw7SHxD.essCore.commands;
 
 import me.Alw7SHxD.essCore.API.EssAPI;
+import me.Alw7SHxD.essCore.API.EssPlayerAPI;
 import me.Alw7SHxD.essCore.Core;
 import me.Alw7SHxD.essCore.messages;
 import org.bukkit.OfflinePlayer;
@@ -40,7 +41,10 @@ public class CommandBalance implements CommandExecutor {
                 if(!EssAPI.hasPermission(commandSender, "esscore.balance.target")) return true;
                 OfflinePlayer target = core.getServer().getOfflinePlayer(strings[0]);
 
-                hasAccount(target);
+                if(!hasAccount(target)) {
+                    commandSender.sendMessage(EssAPI.color(messages.m_player_doesnt_exist));
+                    return true;
+                }
                 Double balance = core.getEssEconomy().getBalance(target);
                 commandSender.sendMessage(EssAPI.color(String.format(messages.m_balance_target, target.getName(), balance(balance), replace(balance))));
             } else commandSender.sendMessage(EssAPI.color(String.format(messages.m_syntax_error_c, s + " &9[Player]")));
@@ -58,9 +62,11 @@ public class CommandBalance implements CommandExecutor {
             } else if (strings.length == 1) {
                 if(!EssAPI.hasPermission(commandSender, "esscore.money.target")) return true;
                 OfflinePlayer target = core.getServer().getOfflinePlayer(strings[0]);
-                if (target == null) return true;
 
-                hasAccount(target);
+                if(!hasAccount(target)) {
+                    commandSender.sendMessage(EssAPI.color(messages.m_player_doesnt_exist));
+                    return true;
+                }
                 Double balance = core.getEssEconomy().getBalance(target);
                 commandSender.sendMessage(EssAPI.color(String.format(messages.m_money_target, target.getName(), symbol(), balance(balance))));
             } else commandSender.sendMessage(EssAPI.color(String.format(messages.m_syntax_error_c, s + " &9[Player]")));
@@ -68,9 +74,14 @@ public class CommandBalance implements CommandExecutor {
         return true;
     }
 
-    private void hasAccount(OfflinePlayer player) {
-        if (!core.getEssEconomy().hasAccount(player))
-            core.lists.getPlayerBank().put(player.getUniqueId(), core.getConfig().get("starting-balance") != null ? core.getConfig().getDouble("starting-balance") : 0);
+    private boolean hasAccount(OfflinePlayer player) {
+        if (!core.getEssEconomy().hasAccount(player)) {
+            if (player.isOnline()) {
+                new EssPlayerAPI(core.getServer().getPlayer(player.getUniqueId())).setDefaultBalance();
+                return true;
+            }
+        } else return true;
+        return false;
     }
 
     private String replace(double v) {

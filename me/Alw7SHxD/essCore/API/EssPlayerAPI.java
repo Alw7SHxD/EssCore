@@ -32,20 +32,26 @@ public class EssPlayerAPI {
     private Core core;
     public boolean l = false;
 
-    public EssPlayerAPI(OfflinePlayer player) {
+    public EssPlayerAPI(Player player) {
         this.player = player;
         this.uuid = player.getUniqueId();
-        this.playerData = new PlayerData(uuid + ".yml", Core.getPlugin(Core.class));
+        this.playerData = new PlayerData(player, Core.getPlugin(Core.class));
         this.core = Core.getPlugin(Core.class);
         create();
     }
 
-    public EssPlayerAPI(UUID uuid) {
-        this.player = core.getServer().getOfflinePlayer(uuid);
-        this.uuid = uuid;
-        this.playerData = new PlayerData(uuid + ".yml", Core.getPlugin(Core.class));
+    public EssPlayerAPI(OfflinePlayer player) {
+        this.player = player;
+        this.uuid = player.getUniqueId();
+        this.playerData = new PlayerData(player, Core.getPlugin(Core.class));
         this.core = Core.getPlugin(Core.class);
-        create();
+        check();
+        if(l) setBalance();
+    }
+
+    private void check(){
+        if (isSet("player.unique_id"))
+            this.l = true;
     }
 
     private void create() {
@@ -204,6 +210,10 @@ public class EssPlayerAPI {
     public void setBalance(double balance){
         core.lists.getPlayerBank().put(uuid, balance);
         set("player.economy.balance", balance);
+    }
+
+    public void setBalance(){
+        core.lists.getPlayerBank().put(uuid, getDouble("player.economy.balance"));
     }
 
     public void setDefaultBalance(){

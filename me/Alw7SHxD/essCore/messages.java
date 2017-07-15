@@ -25,6 +25,7 @@ public interface messages {
     String m_reload_done = "&a&lessCore &8» &2successfully reloaded configuration files.";
     String m_reload_error = "&a&lessCore &8» &can error occurred.";
     String m_number_format = "&c&lOops! &7you must include a number.";
+    String m_player_doesnt_exist = "&c&lOops! &7seems like that player hasn't been on the server yet.";
 
     String m_ess_help_invalid_page = "&c&lInvalid page! &7available pages from &c&l1 &7to &c&l%s";
 
@@ -155,10 +156,10 @@ public interface messages {
     String m_eco_reset_sender = "&a&lSuccess! &c&l%s&7's balance has been reset.";
     String m_eco_reset_target = "&7Your balance has been reset.";
 
-    String m_balance_self = "&7You have &c&l%s &7%s";
-    String m_balance_target = "&c&l%s &7has &c&l%s &7%s";
-    String m_money_self = "&7Your balance is &c&l%s%s";
-    String m_money_target = "&c&l%s&7's balance is &c&l%s%s";
+    String m_balance_self = "&7You have &c&l%s &7%s&7.";
+    String m_balance_target = "&c&l%s &7has &c&l%s &7%s&7.";
+    String m_money_self = "&7Your balance is &c&l%s%s&7.";
+    String m_money_target = "&c&l%s&7's balance is &c&l%s%s&7.";
 
     String m_economy_transaction_fail = "&c&lError! &7transaction failed.";
     String m_economy_transaction_pending = "&c&lOops! &7Please confirm your other transaction.";
