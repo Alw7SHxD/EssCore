@@ -5,6 +5,7 @@ import me.Alw7SHxD.essCore.API.EssPlayerAPI;
 import me.Alw7SHxD.essCore.Core;
 import me.Alw7SHxD.essCore.messages;
 import me.clip.placeholderapi.PlaceholderAPI;
+import net.milkbowl.vault.economy.EconomyResponse;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
@@ -51,8 +52,14 @@ public class PlayerChatHandler implements Listener, messages {
                 UUID targetUUID = null;
                 for(UUID uuid: hashMap.keySet())
                     targetUUID = uuid;
-                core.getEssEconomy().withdrawPlayer(e.getPlayer(), hashMap.get(targetUUID));
-                core.getEssEconomy().depositPlayer(core.getServer().getOfflinePlayer(targetUUID), hashMap.get(targetUUID));
+                EconomyResponse responseWithdraw = core.getEssEconomy().withdrawPlayer(e.getPlayer(), hashMap.get(targetUUID));
+                if(responseWithdraw.transactionSuccess()) {
+                    core.getEssEconomy().depositPlayer(core.getServer().getOfflinePlayer(targetUUID), hashMap.get(targetUUID));
+                    e.getPlayer().sendMessage(EssAPI.color(String.format(m_pay_confirmed_sender, hashMap.get(targetUUID), core.getServer().getOfflinePlayer(targetUUID).getName())));
+                    if(core.getServer().getOfflinePlayer(targetUUID).isOnline())
+                        core.getServer().getPlayer(targetUUID).sendMessage(EssAPI.color(String.format(m_pay_confirmed_target, e.getPlayer().getDisplayName(), hashMap.get(targetUUID), core.getEssEconomy().getBalance(core.getServer().getOfflinePlayer(targetUUID)))));
+                }else
+                    e.getPlayer().sendMessage(EssAPI.color(m_economy_not_enough_money));
             }else if(e.getMessage().equalsIgnoreCase("no"))
                 e.getPlayer().sendMessage(EssAPI.color(m_pay_confirm_decline));
             else

@@ -45,6 +45,7 @@ public class RegisterCommands {
             commands.put("mute", new CommandMute(core));
             commands.put("nickname", new CommandNick(core));
             commands.put("openinv", new CommandOpenInv(core));
+            if(core.hookedWithVault) commands.put("pay", new CommandPay(core));
             commands.put("sethome", new CommandSetHome(core));
             commands.put("setspawn", new CommandSetSpawn(core));
             commands.put("setwarp", new CommandSetWarp(core));

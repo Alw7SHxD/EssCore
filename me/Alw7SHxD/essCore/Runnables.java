@@ -38,18 +38,20 @@ public class Runnables {
         new BukkitRunnable() {
             @Override
             public void run() {
-                if (!core.getConfig().getBoolean("send-pay-confirmation") && (core.lists.getPlayerPayTransactionTime().size() == 0 || core.getServer().getOnlinePlayers().size() == 0))
+                if (core.lists.getPlayerPayTransactionTime().size() == 0 || core.getServer().getOnlinePlayers().size() == 0)
                     return;
 
                 for (UUID uuid : core.lists.getPlayerPayTransactionTime().keySet()) {
                     int time = core.lists.getPlayerPayTransactionTime().get(uuid);
 
-                    if (time <= 1) {
-                        core.getServer().getPlayer(uuid).sendMessage(EssAPI.color(messages.m_economy_transaction_fail));
-                        core.lists.getPlayerPayTransaction().remove(uuid);
-                        core.lists.getPlayerPayTransactionTime().remove(uuid);
-                    } else
-                        core.lists.getPlayerPayTransactionTime().put(uuid, time - 1);
+                    for (UUID uuid1 : core.lists.getPlayerPayTransaction().get(uuid).keySet()) {
+                        if (time <= 1 || !core.getServer().getOfflinePlayer(uuid1).isOnline()) {
+                            core.getServer().getPlayer(uuid).sendMessage(EssAPI.color(messages.m_economy_transaction_fail));
+                            core.lists.getPlayerPayTransaction().remove(uuid);
+                            core.lists.getPlayerPayTransactionTime().remove(uuid);
+                        } else
+                            core.lists.getPlayerPayTransactionTime().put(uuid, time - 1);
+                    }
                 }
             }
         }.runTaskTimerAsynchronously(core, 0, 20);

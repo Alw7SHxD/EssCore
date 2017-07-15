@@ -26,7 +26,7 @@ public class CommandPay implements CommandExecutor {
         }
 
         if(!EssAPI.hasPermission(commandSender, "esscore.pay")) return true;
-        if(strings.length != 3) {
+        if(strings.length != 2) {
             commandSender.sendMessage(EssAPI.color(String.format(messages.m_syntax_error_c, s + " &9<Player> <Amount>")));
             return true;
         }

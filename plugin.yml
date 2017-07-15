@@ -1,5 +1,5 @@
 # Created by Alw7SHxD on 4/15/2017.
-name: EssCore
+name: essCore
 version: 0.7
 description: "Minecraft essentials plugin, provides daily used commands and features!"
 website: "https://www.spigotmc.org/resources/esscore.37766/"
@@ -10,8 +10,8 @@ permissions:
   esscore.*:
     description: "grant every permission in essCore"
     children:
-      esscore.balance: true
       esscore.balance.target: true
+      esscore.balance: true
       esscore.broadcast: true
       esscore.chat.color: true
       esscore.clearchat.global: true
@@ -41,13 +41,14 @@ permissions:
       esscore.heal: true
       esscore.home: true
       esscore.homes: true
-      esscore.money: true
       esscore.money.target: true
+      esscore.money: true
       esscore.mute.bypass: true
       esscore.mute.force: true
       esscore.mute: true
       esscore.nickname.target: true
       esscore.nickname: true
+      esscore.pay: true
       esscore.sethome.*: true
       esscore.sethome: true
       esscore.setspawn: true
@@ -222,6 +223,9 @@ permissions:
   esscore.money.target:
     description: "grant the ability to use the money command on a player"
     default: op
+  esscore.pay:
+    description: "grant the ability to use the pay command"
+    default: op
 commands:
   esscore:
     description: "essCore's main command."
@@ -333,6 +337,10 @@ commands:
     description: "open a certain player's inventory."
     usage: /<command> <Player>
     aliases: [eopeninv, openinventory]
+  pay:
+    description: "send payments (money) to players."
+    usage: /<command> <Player> <Amount>
+    aliases: [epay]
   sethome:
     description: "set a new home."
     usage: /<command> <name>

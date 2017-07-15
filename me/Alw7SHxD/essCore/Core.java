@@ -37,8 +37,6 @@ public class Core extends JavaPlugin {
         if (!getDataFolder().exists()) getDataFolder().mkdir();
         saveDefaultConfig();
 
-        if (getConfig().getDouble("essCore") != 7)
-            getLogger().info("Your configuration file is outdated, please remove your old config.yml file.");
 
         updateChecker.check(this, getDescription().getVersion());
         this.runnables = new Runnables(this);
@@ -63,6 +61,9 @@ public class Core extends JavaPlugin {
 
         new RegisterListeners(this);
         new RegisterCommands(this);
+
+        if (getConfig().getDouble("essCore") != 7)
+            getLogger().info("Your configuration file is outdated, please remove your old config.yml file.");
     }
 
     public void onDisable() {
