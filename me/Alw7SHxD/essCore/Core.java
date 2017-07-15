@@ -47,7 +47,6 @@ public class Core extends JavaPlugin {
             this.vaultHook = new VaultHook(this);
             vaultHook.hook();
             this.hookedWithVault = true;
-            this.runnables.asyncFiveMinutes();
         }
 
         if (getServer().getPluginManager().isPluginEnabled("PlaceholderAPI")) {
@@ -69,9 +68,6 @@ public class Core extends JavaPlugin {
     public void onDisable() {
         if(hookedWithVault)
             vaultHook.unHook();
-        for(Player player: getServer().getOnlinePlayers())
-            player.kickPlayer("Server is either reloading or shutting down.");
-        this.runnables.getAsyncFiveMinutes().cancel();
         getLogger().info("essCore v" + getDescription().getVersion() + " has been disabled.");
     }
 

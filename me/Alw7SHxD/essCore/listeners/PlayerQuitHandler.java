@@ -33,8 +33,5 @@ public class PlayerQuitHandler implements Listener {
         lists.loadVanishedPlayers();
         if(lists.getVanishedPlayers().contains(e.getPlayer()) && e.getPlayer().hasPermission("esscore.vanish.silent"))
             e.setQuitMessage("");
-
-        if(core.hookedWithVault)
-            playerAPI.setLocalBalance(playerAPI.getBalance());
     }
 }
