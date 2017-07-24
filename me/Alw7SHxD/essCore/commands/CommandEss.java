@@ -50,7 +50,7 @@ public class CommandEss implements CommandExecutor, messages {
                     }
                 } else sender.sendMessage(EssAPI.color(m_no_permission));
             else if (args[0].equalsIgnoreCase("update") || args[0].equalsIgnoreCase("check"))
-                new UpdateChecker(core).check(core.getDescription().getVersion(), sender);
+               core.updateChecker.check(sender);
             else if (args[0].equalsIgnoreCase("help") || args[0].equals("?")) {
                 Integer maxPage = 4;
                 try {
@@ -62,8 +62,10 @@ public class CommandEss implements CommandExecutor, messages {
                     sender.sendMessage(EssAPI.color("&c&lHey! &7only numbers are allowed to be used."));
                 }
             } else sender.sendMessage(EssAPI.color(String.format(m_syntax_error_c, s + " help")));
-        } else
-            sender.sendMessage(EssAPI.color("&a&lessCore &7version &a&l" + core.getDescription().getVersion() + "\n&7made by: &a&lAlw7SHxD"));
+        } else {
+            sender.sendMessage(EssAPI.color(String.format("&a&lEssCore &7version &a&l%s", core.getDescription().getVersion())));
+            sender.sendMessage(EssAPI.color("&7Created by: &a&lAlw7SHxD"));
+        }
         return true;
     }
 

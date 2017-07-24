@@ -29,7 +29,7 @@ import java.io.File;
  * limitations under the License.
  */
 public class Core extends JavaPlugin {
-    private UpdateChecker updateChecker = new UpdateChecker(this);
+    public UpdateChecker updateChecker = new UpdateChecker(this);
     public boolean usingPlaceholderAPI = false;
     public boolean hookedWithVault = false;
     public lists lists;
@@ -42,7 +42,7 @@ public class Core extends JavaPlugin {
         saveDefaultConfig();
 
 
-        updateChecker.check(this, getDescription().getVersion());
+        updateChecker.check(getServer().getConsoleSender());
         this.runnables = new Runnables(this);
         this.runnables.asyncOneSecond();
 

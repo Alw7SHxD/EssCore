@@ -46,7 +46,7 @@ public class PlayerJoinHandler implements Listener {
         Player player = e.getPlayer();
         EssPlayerAPI playerAPI = new EssPlayerAPI(player);
         if (player.hasPermission("esscore.notify"))
-            updateChecker.check(core.getDescription().getVersion(), player);
+            updateChecker.check(player);
 
         if (core.getConfig().getBoolean("hide-messages.join") || e.getPlayer().hasPermission("esscore.silent"))
             e.setJoinMessage("");

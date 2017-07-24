@@ -5,6 +5,7 @@ import me.Alw7SHxD.essCore.API.EssAPI;
 import me.Alw7SHxD.essCore.Core;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
 import java.io.BufferedReader;
@@ -45,7 +46,7 @@ public class UpdateChecker {
                     ("key=98BE0FE67F88AB82B4C197FAF1DC3B69206EFDCC4D3B80FC83A00037510B99B4&resource=" + id).getBytes("UTF-8"));
             String latestVersion = new BufferedReader(new InputStreamReader(con.getInputStream())).readLine();
             return latestVersion.substring(1, latestVersion.length() - 1);
-        } catch (UnknownHostException e){
+        } catch (UnknownHostException e) {
             core.getLogger().warning("had an issue while trying to get the latest version.");
         } catch (Exception e) {
             e.printStackTrace();
@@ -53,44 +54,22 @@ public class UpdateChecker {
         return null;
     }
 
-    public void check(@NotNull String currentUpdate, @NotNull Player player){
+    public void check(CommandSender commandSender) {
         String latestVersion = getLatestVersion();
-        if(latestVersion == null) return;
+        if (latestVersion == null) return;
 
-        if(currentUpdate.compareTo(latestVersion) < 0){
-            player.sendMessage(EssAPI.color("&a&lessCore &8» &7found a new version (&c&l" + latestVersion + "&7)"));
-            player.sendMessage(EssAPI.color("&a&lessCore &8» &7make sure to update to the latest version."));
-            player.sendMessage(EssAPI.color("&a&lessCore &8» &7https://goo.gl/Ie0eX4"));
-        }else{
-            player.sendMessage(EssAPI.color("&a&lessCore &8» &7running the latest version."));
-        }
+        if (core.getDescription().getVersion().compareTo(latestVersion) < 0) {
+            if (isConsole(commandSender)) commandSender.sendMessage(EssAPI.color("&7--------------------------------------"));
+            commandSender.sendMessage(EssAPI.color(String.format("&7Found a newer version of &a&lEssCore &7(&a&l%s&7)", latestVersion)));
+            commandSender.sendMessage(EssAPI.color("&7please make sure to update to the latest version."));
+            commandSender.sendMessage(EssAPI.color("&eSpigot Download &8@&e&n https://goo.gl/Ie0eX4"));
+            if (isConsole(commandSender)) commandSender.sendMessage(EssAPI.color("&7--------------------------------------"));
+
+        } else
+            commandSender.sendMessage(EssAPI.color((isConsole(commandSender) ? "[EssCore] " : "") + String.format("&7Currently running the latest version of &a&lEssCore &7(&a&l%s&7)", core.getDescription().getVersion())));
     }
 
-    public void check(@NotNull String currentUpdate, @NotNull CommandSender sender){
-        String latestVersion = getLatestVersion();
-        if(latestVersion == null) return;
-
-        if(currentUpdate.compareTo(latestVersion) < 0){
-            sender.sendMessage(EssAPI.color("&a&lessCore &8» &7found a new version (&c&l" + latestVersion + "&7)"));
-            sender.sendMessage(EssAPI.color("&a&lessCore &8» &7make sure to update to the latest version."));
-            sender.sendMessage(EssAPI.color("&a&lessCore &8» &7https://goo.gl/Ie0eX4"));
-        }else{
-            sender.sendMessage(EssAPI.color("&a&lessCore &8» &7currently running the latest version."));
-        }
-    }
-
-    public void check(Core core, @NotNull String currentUpdate){
-        String latestVersion = getLatestVersion();
-        if(latestVersion == null) return;
-
-        if(currentUpdate.compareTo(latestVersion) < 0){
-            core.getLogger().warning(ChatColor.YELLOW + "---------------------");
-            core.getLogger().warning(ChatColor.RED + " FOUND NEW VERSION FOR");
-            core.getLogger().warning(ChatColor.RED + " essCore, please update");
-            core.getLogger().warning(ChatColor.RED + " https://goo.gl/Ie0eX4");
-            core.getLogger().warning(ChatColor.YELLOW + "---------------------");
-        }else{
-            core.getLogger().info("running latest version (" + currentUpdate + ")");
-        }
+    private boolean isConsole(CommandSender commandSender) {
+        return commandSender instanceof ConsoleCommandSender;
     }
 }
