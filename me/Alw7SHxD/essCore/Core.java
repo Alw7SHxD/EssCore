@@ -2,6 +2,7 @@ package me.Alw7SHxD.essCore;
 
 import me.Alw7SHxD.essCore.API.EssAPI;
 import me.Alw7SHxD.essCore.API.EssPlayerAPI;
+import me.Alw7SHxD.essCore.util.ConfigCache;
 import me.Alw7SHxD.essCore.util.EssEconomy;
 import me.Alw7SHxD.essCore.util.hooks.PlaceholderApiHook;
 import me.Alw7SHxD.essCore.util.updaters.UpdateChecker;
@@ -29,8 +30,9 @@ import java.io.File;
  * limitations under the License.
  */
 public class Core extends JavaPlugin {
-    public UpdateChecker updateChecker = new UpdateChecker(this);
+    private ConfigCache configCache = new ConfigCache(this);
     public boolean usingPlaceholderAPI = false;
+    public UpdateChecker updateChecker = new UpdateChecker(this);
     public boolean hookedWithVault = false;
     public lists lists;
     private EssEconomy essEconomy;
@@ -40,7 +42,7 @@ public class Core extends JavaPlugin {
     public void onEnable() {
         if (!getDataFolder().exists()) getDataFolder().mkdir();
         saveDefaultConfig();
-
+        configCache.load();
 
         updateChecker.check(getServer().getConsoleSender());
         this.runnables = new Runnables(this);
@@ -65,7 +67,7 @@ public class Core extends JavaPlugin {
         new RegisterListeners(this);
         new RegisterCommands(this);
 
-        if (getConfig().getDouble("essCore") != 7)
+        if (getConfig().getDouble("essCore") != 7.1)
             getLogger().info("Your configuration file is outdated, please remove your old config.yml file.");
 
         checkBalances();
@@ -86,5 +88,9 @@ public class Core extends JavaPlugin {
 
     public EssEconomy getEssEconomy() {
         return essEconomy;
+    }
+
+    public ConfigCache getConfigCache() {
+        return configCache;
     }
 }

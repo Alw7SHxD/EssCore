@@ -68,19 +68,19 @@ public class PlayerChatHandler implements Listener, messages {
             e.setCancelled(true);
         }
 
-        if (e.getPlayer().hasPermission("esscore.chat.color") || core.getConfig().getBoolean("allow-color-codes")) {
+        if (e.getPlayer().hasPermission("esscore.chat.color") || core.getConfigCache().getBoolean("allow-color-codes")) {
             e.setMessage(EssAPI.color(e.getMessage()));
         }
 
-        if (core.getConfig().getBoolean("chat-format.enabled")) {
+        if (core.getConfigCache().getBoolean("cf.enabled")) {
             try {
                 if (core.usingPlaceholderAPI) {
-                    String s1 = core.getConfig().getString("chat-format.default-format");
+                    String s1 = core.getConfigCache().getString("cf.default-format");
                     String s2 = PlaceholderAPI.setPlaceholders(e.getPlayer(), s1);
                     s2 = s2.replaceAll("%", "%%");
                     e.setFormat(EssAPI.color(localph(playerAPI, e.getPlayer(), s2)));
                 } else {
-                    String s1 = core.getConfig().getString("chat-format.default-format");
+                    String s1 = core.getConfigCache().getString("cf.default-format");
                     s1 = s1.replaceAll("%", "%%");
                     e.setFormat(EssAPI.color(localph(playerAPI, e.getPlayer(), s1)));
                 }

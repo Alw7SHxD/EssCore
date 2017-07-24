@@ -20,7 +20,7 @@ public class PlayerRespawnHandler implements Listener {
 
     @EventHandler
     public void onPlayerRespawn(PlayerRespawnEvent e){
-        if(core.getConfig().getBoolean("spawn-teleport.player-respawn"))
+        if(core.getConfigCache().getBoolean("stp.player-respawn"))
             e.setRespawnLocation(spawnAPI.getLocation());
             //spawnAPI.teleport(e.getPlayer());
     }

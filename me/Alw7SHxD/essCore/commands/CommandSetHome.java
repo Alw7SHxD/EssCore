@@ -38,7 +38,7 @@ public class CommandSetHome implements CommandExecutor, messages {
 
         for (String key : core.lists.getLimitHomes()) {
             if (commandSender.hasPermission("esscore.sethome." + key)) {
-                if (homesAPI.listAll() != null && homesAPI.listAll().size() >= core.getConfig().getInt("limit-homes." + key)) {
+                if (homesAPI.listAll() != null && homesAPI.listAll().size() >= core.getConfigCache().getInt("limit-homes." + key)) {
                     i = -1;
                     break;
                 } else {

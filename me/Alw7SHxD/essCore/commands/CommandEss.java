@@ -40,7 +40,7 @@ public class CommandEss implements CommandExecutor, messages {
             if (args[0].equalsIgnoreCase("reload") || args[0].equalsIgnoreCase("rl"))
                 if (sender.hasPermission("esscore.reload")) {
                     try {
-                        core.reloadConfig();
+                        core.getConfigCache().load();
                         new EssWarpAPI(core).reload();
                         new EssSpawnAPI(core).reload();
                         core.lists.startup();

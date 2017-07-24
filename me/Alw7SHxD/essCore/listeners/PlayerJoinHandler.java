@@ -48,9 +48,9 @@ public class PlayerJoinHandler implements Listener {
         if (player.hasPermission("esscore.notify"))
             updateChecker.check(player);
 
-        if (core.getConfig().getBoolean("hide-messages.join") || e.getPlayer().hasPermission("esscore.silent"))
+        if (core.getConfigCache().getBoolean("hm.join") || e.getPlayer().hasPermission("esscore.silent"))
             e.setJoinMessage("");
-        if (!core.getConfig().getString("custom-messages.join").isEmpty() && (!core.getConfig().getBoolean("hide-messages.join") || !e.getPlayer().hasPermission("esscore.silent")))
+        if (!core.getConfigCache().getString("cm.join").isEmpty() && (!core.getConfigCache().getBoolean("hm.join") || !e.getPlayer().hasPermission("esscore.silent")))
             e.setJoinMessage(core.getConfig().getString("custom-messages.join").replaceAll("%name%", player.getDisplayName()));
         if (playerAPI.getFlight()) {
             player.setAllowFlight(true);
@@ -59,9 +59,9 @@ public class PlayerJoinHandler implements Listener {
         if (playerAPI.getNick())
             player.setDisplayName(EssAPI.color(playerAPI.getNickname()));
 
-        if (playerAPI.l && core.getConfig().getBoolean("spawn-teleport.player-first-join"))
+        if (playerAPI.l && core.getConfigCache().getBoolean("stp.player-first-join"))
             spawnAPI.teleport(player);
-        else if (core.getConfig().getBoolean("spawn-teleport.player-join"))
+        else if (core.getConfigCache().getBoolean("stp.player-join"))
             spawnAPI.teleport(player);
 
         if(core.hookedWithVault) {

@@ -63,7 +63,7 @@ public class EssPlayerAPI {
         if (!isSet("player.first_join.date"))
             set("player.first_join.date", new Date(this.player.getFirstPlayed() * 1000).toString());
         if (!isSet("player.first_join.int.Long")) set("player.first_join.int.Long", this.player.getFirstPlayed());
-        if (!isSet("player.economy.balance")) set("player.economy.balance", core.getConfig().get("starting-balance") != null ? core.getConfig().getDouble("starting-balance") : 0);
+        if (!isSet("player.economy.balance")) set("player.economy.balance", core.getConfigCache().getDouble("starting-balance") != null ? core.getConfigCache().getDouble("starting-balance") : 0);
     }
 
     protected boolean isSet(String path) {
@@ -217,7 +217,7 @@ public class EssPlayerAPI {
     }
 
     public void setDefaultBalance(){
-        setBalance(core.getConfig().get("starting-balance") != null ? core.getConfig().getDouble("starting-balance") : 0);
+        setBalance(core.getConfigCache().getDouble("starting-balance") != null ? core.getConfigCache().getDouble("starting-balance") : 0);
     }
 
     public void giveBalance(double amount){

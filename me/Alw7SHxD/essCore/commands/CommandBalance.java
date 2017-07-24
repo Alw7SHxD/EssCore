@@ -89,7 +89,7 @@ public class CommandBalance implements CommandExecutor {
     }
 
     private String symbol() {
-        return core.getConfig().getString("currency-format.symbol") != null ? core.getConfig().getString("currency-format.symbol") : "$";
+        return core.getConfigCache().getString("cuf.symbol") != null ? core.getConfigCache().getString("cuf.symbol") : "$";
     }
 
     private String balance(double v) {

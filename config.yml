@@ -121,7 +121,14 @@ starting-balance: 0
 # another player, needs to confirm their
 # transaction. set to false to make it instant.
 #send-pay-confirmation: true
-# this will not work. unsupported.
+# this will not work anymore. unsupported.
+
+# If enabled, players can go under 0 dollars
+allow-negative-balance: false
+
+# will work if "allow-negative-balance" is set to true.
+# please make sure to insert negative numbers only.
+maximum-negative-balance: -1000
 
 ###
 # +
@@ -139,4 +146,4 @@ spawn-teleport:
 debug-signs: false
 
 # Don't change this value
-essCore: 7
+essCore: 7.1

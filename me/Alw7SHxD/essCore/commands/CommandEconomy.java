@@ -73,7 +73,7 @@ public class CommandEconomy implements CommandExecutor {
 
                     Player target = EssAPI.getPlayer(core, commandSender, strings[1]);
                     if (target == null) return true;
-                    core.getEssEconomy().setPlayer(target, core.getConfig().get("starting-balance") != null ? core.getConfig().getDouble("starting-balance") : 0);
+                    core.getEssEconomy().setPlayer(target, core.getConfigCache().getDouble("starting-balance") != null ? core.getConfigCache().getDouble("starting-balance") : 0);
                     commandSender.sendMessage(EssAPI.color(String.format(messages.m_eco_reset_sender, target.getName())));
                     if(commandSender != target)
                         target.sendMessage(EssAPI.color(messages.m_eco_reset_target));
@@ -87,6 +87,6 @@ public class CommandEconomy implements CommandExecutor {
 
     private void hasAccount(Player player) {
         if (!core.getEssEconomy().hasAccount(player))
-            core.lists.getPlayerBank().put(player.getUniqueId(), core.getConfig().get("starting-balance") != null ? core.getConfig().getDouble("starting-balance") : 0);
+            core.lists.getPlayerBank().put(player.getUniqueId(), core.getConfigCache().getDouble("starting-balance") != null ? core.getConfigCache().getDouble("starting-balance") : 0);
     }
 }

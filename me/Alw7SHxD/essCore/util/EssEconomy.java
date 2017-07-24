@@ -53,16 +53,16 @@ public class EssEconomy implements Economy {
 
     @Override
     public String currencyNamePlural() {
-        return core.getConfig().getString("currency-format.plural") != null ? core.getConfig().getString("currency-format.plural") : "Dollars";
+        return core.getConfigCache().getConfig().get("cuf.plural") != null ? core.getConfigCache().getString("cuf.plural") : "Dollars";
     }
 
     @Override
     public String currencyNameSingular() {
-        return core.getConfig().getString("currency-format.singular") != null ? core.getConfig().getString("currency-format.singular") : "Dollar";
+        return core.getConfigCache().getConfig().get("cuf.singular") != null ? core.getConfigCache().getString("cuf.singular") : "Dollar";
     }
 
     public String currencySymbol() {
-        return core.getConfig().getString("currency-format.symbol") != null ? core.getConfig().getString("currency-format.symbol") : "$";
+        return core.getConfigCache().getConfig().get("cuf.symbol") != null ? core.getConfigCache().getString("cuf.symbol") : "$";
     }
 
     /**

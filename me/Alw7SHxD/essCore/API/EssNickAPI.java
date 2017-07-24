@@ -35,11 +35,11 @@ public class EssNickAPI {
         }
 
         if (!t) return 0x00; // has non alphabetic letter.
-        if (core.getConfig().getBoolean("ignore-nick-colorcodes")) {
+        if (core.getConfigCache().getBoolean("ignore-nick-colorcodes")) {
             s = s.replaceAll(regax, "");
         }
 
-        if (s.length() > core.getConfig().getInt("max-nick-length")) return 0x01; // maximum nick length exceeded
+        if (s.length() > core.getConfigCache().getInt("max-nick-length")) return 0x01; // maximum nick length exceeded
         if (s.isEmpty()) return 0x00;
 
         s = s.replaceAll(regax, "");
@@ -71,7 +71,7 @@ public class EssNickAPI {
         if (nick == 0x00)
             commandSender.sendMessage(EssAPI.color(messages.m_nick_invalid));
         else if (nick == 0x01)
-            commandSender.sendMessage(EssAPI.color(String.format(messages.m_nick_max_length, core.getConfig().getInt("max-nick-length"))));
+            commandSender.sendMessage(EssAPI.color(String.format(messages.m_nick_max_length, core.getConfigCache().getInt("max-nick-length"))));
         else if (nick == 0x02) {
             Nick(player, nickname);
             if (commandSender == player)
