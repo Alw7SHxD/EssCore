@@ -1,6 +1,7 @@
 package me.Alw7SHxD.essCore;
 
 import me.Alw7SHxD.essCore.API.EssPlayerAPI;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public class lists{
     private final HashMap<UUID, Double> playerBank = new HashMap<>();
     private HashMap<UUID, Integer> playerPayTransactionTime = new HashMap<>();
     private HashMap<UUID, HashMap<UUID, Double>> playerPayTransaction = new HashMap<>();
+    private HashMap<String, Location> warps = new HashMap<>();
 
     public lists(Core core) {
         this.core = core;
@@ -64,6 +66,20 @@ public class lists{
         }
     }
 
+    public void addPlayerPayTransaction(UUID uuid, UUID uuid1, int time, double amount){
+        HashMap<UUID, Double> hashMap = new HashMap<>();
+        hashMap.put(uuid1, amount);
+        playerPayTransactionTime.put(uuid, time);
+        playerPayTransaction.put(uuid, hashMap);
+    }
+
+    public void removePlayerPayTransaction(UUID uuid){
+        if(playerPayTransaction.containsKey(uuid))
+            playerPayTransaction.remove(uuid);
+        if(playerPayTransactionTime.containsKey(uuid))
+            playerPayTransactionTime.remove(uuid);
+    }
+
     public boolean isDebugSigns() {
         return debugSigns;
     }
@@ -100,17 +116,7 @@ public class lists{
         return playerPayTransaction;
     }
 
-    public void addPlayerPayTransaction(UUID uuid, UUID uuid1, int time, double amount){
-        HashMap<UUID, Double> hashMap = new HashMap<>();
-        hashMap.put(uuid1, amount);
-        playerPayTransactionTime.put(uuid, time);
-        playerPayTransaction.put(uuid, hashMap);
-    }
-
-    public void removePlayerPayTransaction(UUID uuid){
-        if(playerPayTransaction.containsKey(uuid))
-            playerPayTransaction.remove(uuid);
-        if(playerPayTransactionTime.containsKey(uuid))
-            playerPayTransactionTime.remove(uuid);
+    public HashMap<String, Location> getWarps() {
+        return warps;
     }
 }

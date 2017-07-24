@@ -46,10 +46,10 @@ public class EssPlayerAPI {
         this.playerData = new PlayerData(player, Core.getPlugin(Core.class));
         this.core = Core.getPlugin(Core.class);
         check();
-        if(l) setBalance();
+        if (l) setBalance();
     }
 
-    private void check(){
+    private void check() {
         if (isSet("player.unique_id"))
             this.l = true;
     }
@@ -63,7 +63,8 @@ public class EssPlayerAPI {
         if (!isSet("player.first_join.date"))
             set("player.first_join.date", new Date(this.player.getFirstPlayed() * 1000).toString());
         if (!isSet("player.first_join.int.Long")) set("player.first_join.int.Long", this.player.getFirstPlayed());
-        if (!isSet("player.economy.balance")) set("player.economy.balance", core.getConfigCache().getDouble("starting-balance") != null ? core.getConfigCache().getDouble("starting-balance") : 0);
+        if (!isSet("player.economy.balance"))
+            set("player.economy.balance", core.getConfigCache().getDouble("starting-balance") != null ? core.getConfigCache().getDouble("starting-balance") : 0);
     }
 
     protected boolean isSet(String path) {
@@ -199,50 +200,57 @@ public class EssPlayerAPI {
         return true;
     }
 
-    public double getBalance(){
+    public double getBalance() {
         return core.lists.getPlayerBank().get(uuid);
     }
 
-    public double getLocalBalance(){
+    public double getLocalBalance() {
         return getDouble("player.economy.balance");
     }
 
-    public void setBalance(double balance){
+    public void setBalance(double balance) {
         core.lists.getPlayerBank().put(uuid, balance);
         set("player.economy.balance", balance);
     }
 
-    public void setBalance(){
+    public void setBalance() {
         core.lists.getPlayerBank().put(uuid, getDouble("player.economy.balance"));
     }
 
-    public void setDefaultBalance(){
+    public void setDefaultBalance() {
         setBalance(core.getConfigCache().getDouble("starting-balance") != null ? core.getConfigCache().getDouble("starting-balance") : 0);
     }
 
-    public void giveBalance(double amount){
+    public void giveBalance(double amount) {
         amount = Double.parseDouble(String.valueOf(amount).replace("-", ""));
         Double balance = core.lists.getPlayerBank().get(uuid);
         setBalance(balance + amount);
     }
 
-    public boolean takeBalance(double amount){
+    public boolean takeBalance(double amount) {
         amount = Double.parseDouble(String.valueOf(amount).replace("-", ""));
         Double balance = core.lists.getPlayerBank().get(uuid);
-        if(balance - amount < 0) return false;
+        if (!core.getConfigCache().getBoolean("allow-negative-balance") && balance - amount < 0)
+            return false;
+        if (core.getConfigCache().getBoolean("allow-negative-balance")) {
+            Double d = core.getConfigCache().getDouble("maximum-negative-balance");
+            if (!d.toString().startsWith("-")) d = 0 - d;
+            if (d >= balance - amount)
+                return false;
+        }
         setBalance(balance - amount);
         return true;
     }
 
-    public boolean hasBalance(double balance){
+    public boolean hasBalance(double balance) {
         return getBalance() >= balance;
     }
 
-    public boolean hasAccount(){
+    public boolean hasAccount() {
         return core.lists.getPlayerBank().containsKey(uuid);
     }
 
-    public boolean hasLocalAccount(){
+    public boolean hasLocalAccount() {
         return isSet("player.economy.balance");
     }
 }
