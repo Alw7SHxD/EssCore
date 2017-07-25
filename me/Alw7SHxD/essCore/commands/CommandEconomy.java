@@ -20,6 +20,11 @@ public class CommandEconomy implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
+        if (!core.hookedWithVault) {
+            commandSender.sendMessage(EssAPI.color(messages.m_vault_unavailable));
+            return true;
+        }
+
         if (!EssAPI.hasPermission(commandSender, "esscore.eco")) return true;
         if (strings.length >= 1) {
             try {
@@ -35,7 +40,7 @@ public class CommandEconomy implements CommandExecutor {
                     hasAccount(target);
                     core.getEssEconomy().setPlayer(target, balance);
                     commandSender.sendMessage(EssAPI.color(String.format(messages.m_eco_set_sender, target.getName(), balance)));
-                    if(commandSender != target)
+                    if (commandSender != target)
                         target.sendMessage(EssAPI.color(String.format(messages.m_eco_set_target, balance)));
                 } else if (strings[0].equalsIgnoreCase("give")) {
                     if (strings.length != 3) {
@@ -49,7 +54,7 @@ public class CommandEconomy implements CommandExecutor {
                     hasAccount(target);
                     core.getEssEconomy().depositPlayer(target, amount);
                     commandSender.sendMessage(EssAPI.color(String.format(messages.m_eco_give_sender, amount, target.getName())));
-                    if(commandSender != target)
+                    if (commandSender != target)
                         target.sendMessage(EssAPI.color(String.format(messages.m_eco_give_target, amount, core.getEssEconomy().getBalance(target))));
                 } else if (strings[0].equalsIgnoreCase("take")) {
                     if (strings.length != 3) {
@@ -63,7 +68,7 @@ public class CommandEconomy implements CommandExecutor {
                     hasAccount(target);
                     core.getEssEconomy().withdrawPlayer(target, amount);
                     commandSender.sendMessage(EssAPI.color(String.format(messages.m_eco_take_sender, amount, target.getName())));
-                    if(commandSender != target)
+                    if (commandSender != target)
                         target.sendMessage(EssAPI.color(String.format(messages.m_eco_take_target, amount, core.getEssEconomy().getBalance(target))));
                 } else if (strings[0].equalsIgnoreCase("reset")) {
                     if (strings.length != 2) {
@@ -75,13 +80,15 @@ public class CommandEconomy implements CommandExecutor {
                     if (target == null) return true;
                     core.getEssEconomy().setPlayer(target, core.getConfigCache().getDouble("starting-balance") != null ? core.getConfigCache().getDouble("starting-balance") : 0);
                     commandSender.sendMessage(EssAPI.color(String.format(messages.m_eco_reset_sender, target.getName())));
-                    if(commandSender != target)
+                    if (commandSender != target)
                         target.sendMessage(EssAPI.color(messages.m_eco_reset_target));
-                } else commandSender.sendMessage(EssAPI.color(String.format(messages.m_syntax_error_c, s + " &9<set/give/take/reset>")));
+                } else
+                    commandSender.sendMessage(EssAPI.color(String.format(messages.m_syntax_error_c, s + " &9<set/give/take/reset>")));
             } catch (NumberFormatException e) {
                 commandSender.sendMessage(EssAPI.color("&7Please make sure to type a correct number."));
             }
-        } else commandSender.sendMessage(EssAPI.color(String.format(messages.m_syntax_error_c, s + " &9<set/give/take/reset>")));
+        } else
+            commandSender.sendMessage(EssAPI.color(String.format(messages.m_syntax_error_c, s + " &9<set/give/take/reset>")));
         return true;
     }
 

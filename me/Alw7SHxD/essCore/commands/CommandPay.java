@@ -20,7 +20,10 @@ public class CommandPay implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-        if (!(commandSender instanceof Player)) {
+        if (!core.hookedWithVault) {
+            commandSender.sendMessage(EssAPI.color(messages.m_vault_unavailable));
+            return true;
+        } else if (!(commandSender instanceof Player)) {
             commandSender.sendMessage(messages.m_not_player);
             return true;
         }

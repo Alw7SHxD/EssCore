@@ -1,6 +1,6 @@
 ###
 # +
-# | essCore made by Alw7SHxD
+# | EssCore made by Alw7SHxD
 # +
 ###
 
@@ -124,6 +124,8 @@ starting-balance: 0
 # this will not work anymore. unsupported.
 
 # If enabled, players can go under 0 dollars
+# negative balance has been tested, but it's
+# risky to use, use it at your own risk.
 allow-negative-balance: false
 
 # will work if "allow-negative-balance" is set to true.

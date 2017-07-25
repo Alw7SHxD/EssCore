@@ -1,6 +1,5 @@
 package me.Alw7SHxD.essCore;
 
-import me.Alw7SHxD.essCore.API.EssAPI;
 import me.Alw7SHxD.essCore.API.EssPlayerAPI;
 import me.Alw7SHxD.essCore.util.ConfigCache;
 import me.Alw7SHxD.essCore.util.EssEconomy;
@@ -11,8 +10,6 @@ import me.Alw7SHxD.essCore.listeners.RegisterListeners;
 import me.Alw7SHxD.essCore.util.hooks.VaultHook;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.io.File;
 
 /**
  * (C) Copyright 2017 Alw7SHxD.

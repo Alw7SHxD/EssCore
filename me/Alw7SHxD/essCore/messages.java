@@ -26,6 +26,7 @@ public interface messages {
     String m_reload_error = "&a&lessCore &8» &can error occurred.";
     String m_number_format = "&c&lOops! &7you must include a number.";
     String m_player_doesnt_exist = "&c&lOops! &7seems like that player hasn't been on the server yet.";
+    String m_vault_unavailable = "&c&lSorry! &7this server doesn't allow an economy.";
 
     String m_ess_help_invalid_page = "&c&lInvalid page! &7available pages from &c&l1 &7to &c&l%s";
 
