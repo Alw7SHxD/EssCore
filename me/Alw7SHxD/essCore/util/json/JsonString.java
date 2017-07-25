@@ -1,4 +1,4 @@
-package me.Alw7SHxD.essCore.util;
+package me.Alw7SHxD.essCore.util.json;
 
 import java.io.IOException;
 import java.util.HashMap;

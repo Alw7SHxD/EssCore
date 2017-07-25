@@ -1,4 +1,4 @@
-package me.Alw7SHxD.essCore.util;
+package me.Alw7SHxD.essCore.util.json;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 
-import static me.Alw7SHxD.essCore.util.TextualComponent.rawText;
+import static me.Alw7SHxD.essCore.util.json.TextualComponent.rawText;
 
 /**
  * Represents a formattable message. Such messages can use elements such as colors, formatting codes, hover and click data, and other features provided by the vanilla Minecraft <a href="http://minecraft.gamepedia.com/Tellraw#Raw_JSON_Text">JSON message formatter</a>.

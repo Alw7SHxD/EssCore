@@ -4,13 +4,13 @@
 # +
 ###
 
-# essCore is a minecraft essentials plugin
+# EssCore is a minecraft essentials plugin
 # providing commands & features for daily
 # use, it is still in the beta phase but
 # i'm continuing to work on it hard to
 # make it the better it can be.
 
-# If you receive an error when loading essCore, make sure that:
+# If you receive an error when loading EssCore, make sure that:
 #   - No tabs are present: YAML only allows spaces
 #   - Indents are correct: YAML hierarchy is based entirely on indentation
 #   - You have "escaped" all apostrophes in your text: If you want to write "don't", for example, write "don''t" instead (note the doubled apostrophe)

@@ -1,4 +1,4 @@
-package me.Alw7SHxD.essCore.util;
+package me.Alw7SHxD.essCore.util.json;
 
 import com.google.common.collect.BiMap;
 import com.google.common.collect.ImmutableBiMap;
