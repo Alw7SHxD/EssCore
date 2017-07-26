@@ -65,7 +65,7 @@ public class CommandBalance implements CommandExecutor {
                 Double balance = core.getEssEconomy().getBalance(((Player) commandSender));
                 commandSender.sendMessage(EssAPI.color(String.format(messages.m_money_self, symbol(), balance(balance))));
             } else if (strings.length == 1) {
-                if (!EssAPI.hasPermission(commandSender, "esscore.money.target")) return true;
+                if (!EssAPI.hasPermission(commandSender, "esscore.money.targetrhg9jhb")) return true;
                 OfflinePlayer target = core.getServer().getOfflinePlayer(strings[0]);
 
                 if (!hasAccount(target)) {

@@ -51,7 +51,7 @@ allowed-signs:
   #- warp
   #- warps
 
-# limit how many homes can each permission make
+# Limit how many homes can each permission make
 # use esscore.sethome.<name> permission for the following
 # ex. 'esscore.sethome.member' will limit the user to 3 homes.
 # default (without permissions) is 1 home only.
@@ -67,12 +67,12 @@ limit-homes:
 # +
 ###
 
-# IF set to true, any player could use
+# If set to true, any player could use
 # color codes in the chat, without
 # the 'esscore.chat.color' permission.
 allow-color-codes: false
 
-# modify the broadcast prefix, colorcodes are supported.
+# Modify the broadcast prefix, colorcodes are supported.
 broadcast-prefix: "&c&lBROADCAST! &r"
 
 # Set custom join/leave messages
@@ -85,13 +85,13 @@ custom-messages:
   join: ""
   leave: ""
 
-# IF set true, join/leave messages
+# If set true, join/leave messages
 # well be hidden.
 hide-messages:
   join: false
   leave: false
 
-# customize the default chat format when any
+# Customize the default chat format when any
 # player sends a new message in the chat.
 # placeholderapi is supported.
 # colorcodes are supported.
@@ -108,13 +108,13 @@ chat-format:
 # +
 ###
 
-# set custom format to display balance
+# Set custom format to display balance
 currency-format:
   singular: "dollar"
   plural: "dollars"
   symbol: "$"
 
-# set new players starting balance
+# Set new players starting balance
 starting-balance: 0
 
 # If set to true, the player who sends money to
@@ -128,7 +128,7 @@ starting-balance: 0
 # risky to use, use it at your own risk.
 allow-negative-balance: false
 
-# will work if "allow-negative-balance" is set to true.
+# Will work if "allow-negative-balance" is set to true.
 # please make sure to insert negative numbers only.
 maximum-negative-balance: -1000
 
@@ -138,14 +138,14 @@ maximum-negative-balance: -1000
 # +
 ###
 
-# modify on which event should the player get teleported to the spawn.
+# Modify on which event should the player get teleported to the spawn.
 spawn-teleport:
   player-join: true
   player-first-join: true
   player-respawn: true
 
-# if enabled, people with no permissions will get notified about the permission.
+# If enabled, people with no permissions will get notified about the permission.
 debug-signs: false
 
-# Don't change this value
+# Don't change this value, unless you know what to do.
 essCore: 7.1
