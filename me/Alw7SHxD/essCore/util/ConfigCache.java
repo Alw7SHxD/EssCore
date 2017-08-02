@@ -19,7 +19,7 @@ public class ConfigCache {
         try {
             core.reloadConfig();
             config.put("nickname-prefix", core.getConfig().getString("nickname-prefix"));
-            config.put("max-nick-length", core.getConfig().getInt("nmax-nick-length"));
+            config.put("max-nick-length", core.getConfig().getInt("max-nick-length"));
             config.put("ignore-nick-colorcodes", core.getConfig().getBoolean("ignore-nick-colorcodes"));
             config.put("allow-color-codes", core.getConfig().getBoolean("allow-color-codes"));
             config.put("broadcast-prefix", core.getConfig().getString("broadcast-prefix"));

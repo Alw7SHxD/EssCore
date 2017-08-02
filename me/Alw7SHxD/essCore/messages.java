@@ -92,7 +92,7 @@ public interface messages {
     String m_spawn_sender = "&7teleported &c&l%s &7to the spawn.";
 
     String m_nick_invalid = "&c&lHey! &7nicknames must be alphanumeric";
-    String m_nick_max_length = "&c&lHey! &7nicknames cannot be more than &c&l%s &7letters/numbers";
+    String m_nick_max_length = "&c&lHey! &7nicknames cannot be longer than &c&l%s &7letters/numbers";
     String m_nick_success = "&7Your nickname has been set to &r%s";
     String m_nick_sender = "&c&l%s&7's nickname has been set to &r%s";
     String m_nick_target_g = "&c&l%s has set your nickname to &r%s";
