@@ -4,11 +4,11 @@ version: 0.7.1.1
 description: "Minecraft essentials plugin, provides daily used commands and features!"
 website: "https://www.spigotmc.org/resources/esscore.37766/"
 author: Alw7SHxD
-main: me.Alw7SHxD.essCore.Core
+main: me.Alw7SHxD.EssCore.Core
 loadbefore: [Vault]
 permissions:
   esscore.*:
-    description: "grant every permission in essCore"
+    description: "grant every permission in EssCore"
     children:
       esscore.balance.target: true
       esscore.balance: true
@@ -228,7 +228,7 @@ permissions:
     default: op
 commands:
   esscore:
-    description: "essCore's main command."
+    description: "EssCore's main command."
     usage: |
       /<command>
       /<command> [help|?] [page]
