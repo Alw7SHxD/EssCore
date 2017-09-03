@@ -1,6 +1,6 @@
 package me.Alw7SHxD.EssCore.util.hooks;
 
-import me.Alw7SHxD.EssCore.API.Players;
+import me.Alw7SHxD.EssCore.API.EssPlayer;
 import me.Alw7SHxD.EssCore.Core;
 import me.clip.placeholderapi.external.EZPlaceholderHook;
 import org.bukkit.entity.Player;
@@ -20,7 +20,7 @@ public class PlaceholderApiHook extends EZPlaceholderHook {
         if (player == null)
             return "";
 
-        Players playerAPI = new Players(player);
+        EssPlayer playerAPI = new EssPlayer(player);
         switch (s) {
             case "nickname":
                 if (playerAPI.getNick()) {

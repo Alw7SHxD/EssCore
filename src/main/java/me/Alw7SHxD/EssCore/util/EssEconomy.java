@@ -1,6 +1,6 @@
 package me.Alw7SHxD.EssCore.util;
 
-import me.Alw7SHxD.EssCore.API.Players;
+import me.Alw7SHxD.EssCore.API.EssPlayer;
 import me.Alw7SHxD.EssCore.Core;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.economy.EconomyResponse;
@@ -72,13 +72,13 @@ public class EssEconomy implements Economy {
     @Override
     public boolean hasAccount(String s) {
         Player player = core.getServer().getPlayerExact(s);
-        Players playerAPI = new Players(player);
+        EssPlayer playerAPI = new EssPlayer(player);
         return playerAPI.hasAccount();
     }
 
     @Override
     public boolean hasAccount(OfflinePlayer offlinePlayer) {
-        Players playerAPI = new Players(offlinePlayer);
+        EssPlayer playerAPI = new EssPlayer(offlinePlayer);
         return playerAPI.hasAccount();
     }
 
@@ -90,13 +90,13 @@ public class EssEconomy implements Economy {
     @Override
     public boolean hasAccount(String s, String s1) {
         Player player = core.getServer().getPlayerExact(s);
-        Players playerAPI = new Players(player);
+        EssPlayer playerAPI = new EssPlayer(player);
         return playerAPI.hasAccount();
     }
 
     @Override
     public boolean hasAccount(OfflinePlayer offlinePlayer, String s) {
-        Players playerAPI = new Players(offlinePlayer);
+        EssPlayer playerAPI = new EssPlayer(offlinePlayer);
         return playerAPI.hasAccount();
     }
 
@@ -107,13 +107,13 @@ public class EssEconomy implements Economy {
     @Override
     public double getBalance(String s) {
         Player player = core.getServer().getPlayerExact(s);
-        Players playerAPI = new Players(player);
+        EssPlayer playerAPI = new EssPlayer(player);
         return playerAPI.getBalance();
     }
 
     @Override
     public double getBalance(OfflinePlayer offlinePlayer) {
-        Players playerAPI = new Players(offlinePlayer);
+        EssPlayer playerAPI = new EssPlayer(offlinePlayer);
         return playerAPI.getBalance();
     }
 
@@ -125,13 +125,13 @@ public class EssEconomy implements Economy {
     @Override
     public double getBalance(String s, String s1) {
         Player player = core.getServer().getPlayerExact(s);
-        Players playerAPI = new Players(player);
+        EssPlayer playerAPI = new EssPlayer(player);
         return playerAPI.getBalance();
     }
 
     @Override
     public double getBalance(OfflinePlayer offlinePlayer, String s) {
-        Players playerAPI = new Players(offlinePlayer);
+        EssPlayer playerAPI = new EssPlayer(offlinePlayer);
         return playerAPI.getBalance();
     }
 
@@ -143,13 +143,13 @@ public class EssEconomy implements Economy {
     @Override
     public boolean has(String s, double v) {
         Player player = core.getServer().getPlayerExact(s);
-        Players playerAPI = new Players(player);
+        EssPlayer playerAPI = new EssPlayer(player);
         return playerAPI.hasBalance(v);
     }
 
     @Override
     public boolean has(OfflinePlayer offlinePlayer, double v) {
-        Players playerAPI = new Players(offlinePlayer);
+        EssPlayer playerAPI = new EssPlayer(offlinePlayer);
         return playerAPI.hasBalance(v);
     }
 
@@ -162,13 +162,13 @@ public class EssEconomy implements Economy {
     @Override
     public boolean has(String s, String s1, double v) {
         Player player = core.getServer().getPlayerExact(s);
-        Players playerAPI = new Players(player);
+        EssPlayer playerAPI = new EssPlayer(player);
         return playerAPI.hasBalance(v);
     }
 
     @Override
     public boolean has(OfflinePlayer offlinePlayer, String s, double v) {
-        Players playerAPI = new Players(offlinePlayer);
+        EssPlayer playerAPI = new EssPlayer(offlinePlayer);
         return playerAPI.hasBalance(v);
     }
 
@@ -180,13 +180,13 @@ public class EssEconomy implements Economy {
     @Override
     public EconomyResponse withdrawPlayer(String s, double v) {
         Player player = core.getServer().getPlayerExact(s);
-        Players playerAPI = new Players(player);
+        EssPlayer playerAPI = new EssPlayer(player);
         return new EconomyResponse(v, playerAPI.getBalance(), playerAPI.takeBalance(v) ? EconomyResponse.ResponseType.SUCCESS : EconomyResponse.ResponseType.FAILURE, "withdrawFailure");
     }
 
     @Override
     public EconomyResponse withdrawPlayer(OfflinePlayer offlinePlayer, double v) {
-        Players playerAPI = new Players(offlinePlayer);
+        EssPlayer playerAPI = new EssPlayer(offlinePlayer);
         return new EconomyResponse(v, playerAPI.getBalance(), playerAPI.takeBalance(v) ? EconomyResponse.ResponseType.SUCCESS : EconomyResponse.ResponseType.FAILURE, "withdrawFailure");
     }
 
@@ -199,13 +199,13 @@ public class EssEconomy implements Economy {
     @Override
     public EconomyResponse withdrawPlayer(String s, String s1, double v) {
         Player player = core.getServer().getPlayerExact(s);
-        Players playerAPI = new Players(player);
+        EssPlayer playerAPI = new EssPlayer(player);
         return new EconomyResponse(v, playerAPI.getBalance(), playerAPI.takeBalance(v) ? EconomyResponse.ResponseType.SUCCESS : EconomyResponse.ResponseType.FAILURE, "withdrawFailure");
     }
 
     @Override
     public EconomyResponse withdrawPlayer(OfflinePlayer offlinePlayer, String s, double v) {
-        Players playerAPI = new Players(offlinePlayer);
+        EssPlayer playerAPI = new EssPlayer(offlinePlayer);
         return new EconomyResponse(v, playerAPI.getBalance(), playerAPI.takeBalance(v) ? EconomyResponse.ResponseType.SUCCESS : EconomyResponse.ResponseType.FAILURE, "withdrawFailure");
     }
 
@@ -217,7 +217,7 @@ public class EssEconomy implements Economy {
     @Override
     public EconomyResponse depositPlayer(String s, double v) {
         Player player = core.getServer().getPlayerExact(s);
-        Players playerAPI = new Players(player);
+        EssPlayer playerAPI = new EssPlayer(player);
         double balance = playerAPI.getBalance();
         playerAPI.giveBalance(v);
         return new EconomyResponse(v, balance, EconomyResponse.ResponseType.SUCCESS, "depositFailure");
@@ -225,7 +225,7 @@ public class EssEconomy implements Economy {
 
     @Override
     public EconomyResponse depositPlayer(OfflinePlayer offlinePlayer, double v) {
-        Players playerAPI = new Players(offlinePlayer);
+        EssPlayer playerAPI = new EssPlayer(offlinePlayer);
         double balance = playerAPI.getBalance();
         playerAPI.giveBalance(v);
         return new EconomyResponse(v, balance, EconomyResponse.ResponseType.SUCCESS, "depositFailure");
@@ -240,7 +240,7 @@ public class EssEconomy implements Economy {
     @Override
     public EconomyResponse depositPlayer(String s, String s1, double v) {
         Player player = core.getServer().getPlayerExact(s);
-        Players playerAPI = new Players(player);
+        EssPlayer playerAPI = new EssPlayer(player);
         double balance = playerAPI.getBalance();
         playerAPI.giveBalance(v);
         return new EconomyResponse(v, balance, EconomyResponse.ResponseType.SUCCESS, "depositFailure");
@@ -248,7 +248,7 @@ public class EssEconomy implements Economy {
 
     @Override
     public EconomyResponse depositPlayer(OfflinePlayer offlinePlayer, String s, double v) {
-        Players playerAPI = new Players(offlinePlayer);
+        EssPlayer playerAPI = new EssPlayer(offlinePlayer);
         double balance = playerAPI.getBalance();
         playerAPI.giveBalance(v);
         return new EconomyResponse(v, balance, EconomyResponse.ResponseType.SUCCESS, "depositFailure");
@@ -261,12 +261,12 @@ public class EssEconomy implements Economy {
      */
     public void setPlayer(String s, double v) {
         Player player = core.getServer().getPlayerExact(s);
-        Players playerAPI = new Players(player);
+        EssPlayer playerAPI = new EssPlayer(player);
         playerAPI.setBalance(v);
     }
 
     public void setPlayer(OfflinePlayer offlinePlayer, double v) {
-        Players playerAPI = new Players(offlinePlayer);
+        EssPlayer playerAPI = new EssPlayer(offlinePlayer);
         playerAPI.setBalance(v);
     }
 
@@ -278,12 +278,12 @@ public class EssEconomy implements Economy {
      */
     public void setPlayer(String s, String s1, double v) {
         Player player = core.getServer().getPlayerExact(s);
-        Players playerAPI = new Players(player);
+        EssPlayer playerAPI = new EssPlayer(player);
         playerAPI.setBalance(v);
     }
 
     public void setPlayer(OfflinePlayer offlinePlayer, String s, double v) {
-        Players playerAPI = new Players(offlinePlayer);
+        EssPlayer playerAPI = new EssPlayer(offlinePlayer);
         playerAPI.setBalance(v);
     }
 
@@ -369,7 +369,7 @@ public class EssEconomy implements Economy {
     @Override
     public boolean createPlayerAccount(String s) {
         Player player = core.getServer().getPlayerExact(s);
-        Players playerAPI = new Players(player);
+        EssPlayer playerAPI = new EssPlayer(player);
         if(!playerAPI.hasAccount())
             playerAPI.setDefaultBalance();
         return true;
@@ -377,7 +377,7 @@ public class EssEconomy implements Economy {
 
     @Override
     public boolean createPlayerAccount(OfflinePlayer offlinePlayer) {
-        Players playerAPI = new Players(offlinePlayer);
+        EssPlayer playerAPI = new EssPlayer(offlinePlayer);
         if(!playerAPI.hasAccount())
             playerAPI.setDefaultBalance();
         return true;
@@ -391,7 +391,7 @@ public class EssEconomy implements Economy {
     @Override
     public boolean createPlayerAccount(String s, String s1) {
         Player player = core.getServer().getPlayerExact(s);
-        Players playerAPI = new Players(player);
+        EssPlayer playerAPI = new EssPlayer(player);
         if(!playerAPI.hasAccount())
             playerAPI.setDefaultBalance();
         return true;
@@ -399,7 +399,7 @@ public class EssEconomy implements Economy {
 
     @Override
     public boolean createPlayerAccount(OfflinePlayer offlinePlayer, String s) {
-        Players playerAPI = new Players(offlinePlayer);
+        EssPlayer playerAPI = new EssPlayer(offlinePlayer);
         if(!playerAPI.hasAccount())
             playerAPI.setDefaultBalance();
         return true;

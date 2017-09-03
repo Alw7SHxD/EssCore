@@ -1,7 +1,7 @@
 package me.Alw7SHxD.EssCore.commands;
 
 import me.Alw7SHxD.EssCore.API.EssAPI;
-import me.Alw7SHxD.EssCore.API.Homes;
+import me.Alw7SHxD.EssCore.API.EssHomes;
 import me.Alw7SHxD.EssCore.Core;
 import me.Alw7SHxD.EssCore.messages;
 import org.bukkit.command.Command;
@@ -32,8 +32,8 @@ public class CommandDelHome implements CommandExecutor, messages {
             return true;
         }
 
-        Homes homesAPI = new Homes((Player) commandSender);
-        if (homesAPI.remove(strings[0].replace(".", "-").toLowerCase()))
+        EssHomes essHomesAPI = new EssHomes((Player) commandSender);
+        if (essHomesAPI.remove(strings[0].replace(".", "-").toLowerCase()))
             commandSender.sendMessage(EssAPI.color(String.format(m_delhome_success, strings[0].replace(".", "-").toLowerCase())));
         else commandSender.sendMessage(EssAPI.color(m_delhome_failed));
         return true;

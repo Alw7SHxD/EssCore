@@ -10,22 +10,22 @@ import org.bukkit.plugin.java.JavaPlugin;
 /**
  * EssCore was created by Alw7SHxD (C) 2017
  */
-public class Vanish {
+public class EssVanish {
     private JavaPlugin plugin;
     private Player player;
-    private Players playerAPI;
+    private EssPlayer playerAPI;
     private lists lists;
 
-    public Vanish(JavaPlugin plugin, Player player) {
+    public EssVanish(JavaPlugin plugin, Player player) {
         this.plugin = plugin;
         this.player = player;
-        this.playerAPI = new Players(player);
+        this.playerAPI = new EssPlayer(player);
     }
 
-    public Vanish(Core core, Player player) {
+    public EssVanish(Core core, Player player) {
         this.plugin = core;
         this.player = player;
-        this.playerAPI = new Players(player);
+        this.playerAPI = new EssPlayer(player);
         this.lists = new lists(core);
     }
 

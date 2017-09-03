@@ -1,7 +1,7 @@
 package me.Alw7SHxD.EssCore.commands;
 
 import me.Alw7SHxD.EssCore.API.EssAPI;
-import me.Alw7SHxD.EssCore.API.Chat;
+import me.Alw7SHxD.EssCore.API.EssChat;
 import me.Alw7SHxD.EssCore.Core;
 import me.Alw7SHxD.EssCore.messages;
 import org.bukkit.command.Command;
@@ -26,11 +26,11 @@ import org.bukkit.entity.Player;
  */
 public class CommandClearChat implements CommandExecutor, messages {
     private Core core;
-    private Chat.Clear cc;
+    private EssChat.Clear cc;
 
     CommandClearChat(Core core) {
         this.core = core;
-        this.cc = new Chat.Clear(core);
+        this.cc = new EssChat.Clear(core);
     }
 
     @Override

@@ -1,7 +1,7 @@
 package me.Alw7SHxD.EssCore.commands;
 
 import me.Alw7SHxD.EssCore.API.EssAPI;
-import me.Alw7SHxD.EssCore.API.Homes;
+import me.Alw7SHxD.EssCore.API.EssHomes;
 import me.Alw7SHxD.EssCore.Core;
 import me.Alw7SHxD.EssCore.messages;
 import org.bukkit.command.Command;
@@ -32,13 +32,13 @@ public class CommandSetHome implements CommandExecutor, messages {
             return true;
         }
 
-        Homes homesAPI = new Homes((Player) commandSender);
+        EssHomes essHomesAPI = new EssHomes((Player) commandSender);
 
         int i = 0;
 
         for (String key : core.lists.getLimitHomes()) {
             if (commandSender.hasPermission("esscore.sethome." + key)) {
-                if (homesAPI.listAll() != null && homesAPI.listAll().size() >= core.getConfigCache().getInt("limit-homes." + key)) {
+                if (essHomesAPI.listAll() != null && essHomesAPI.listAll().size() >= core.getConfigCache().getInt("limit-homes." + key)) {
                     i = -1;
                     break;
                 } else {
@@ -53,14 +53,14 @@ public class CommandSetHome implements CommandExecutor, messages {
                 commandSender.sendMessage(EssAPI.color(m_sethome_limit));
                 return true;
             } else if (i == 0) {
-                if (homesAPI.listAll().size() >= 1) {
+                if (essHomesAPI.listAll().size() >= 1) {
                     commandSender.sendMessage(EssAPI.color(m_sethome_limit));
                     return true;
                 }
             }
         }
 
-        commandSender.sendMessage(homesAPI.set(strings[0].replace(".", "-").toLowerCase(), ((Player) commandSender).getLocation()) ? EssAPI.color(String.format(m_sethome_success, strings[0].replace(".", "-").toLowerCase())) : EssAPI.color(m_sethome_exists));
+        commandSender.sendMessage(essHomesAPI.set(strings[0].replace(".", "-").toLowerCase(), ((Player) commandSender).getLocation()) ? EssAPI.color(String.format(m_sethome_success, strings[0].replace(".", "-").toLowerCase())) : EssAPI.color(m_sethome_exists));
         return true;
     }
 }

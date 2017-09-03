@@ -9,13 +9,13 @@ import org.bukkit.entity.Player;
 /**
  * EssCore was created by Alw7SHxD (C) 2017
  */
-public class Nickname {
-    private Players playerAPI;
+public class EssNickname {
+    private EssPlayer playerAPI;
     private Player player;
     private Core core;
 
-    public Nickname(Player player) {
-        this.playerAPI = new Players(player);
+    public EssNickname(Player player) {
+        this.playerAPI = new EssPlayer(player);
         this.player = player;
         this.core = Core.getPlugin(Core.class);
     }

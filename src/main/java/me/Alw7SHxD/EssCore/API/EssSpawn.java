@@ -9,11 +9,11 @@ import org.bukkit.entity.Player;
 /**
  * EssCore was created by Alw7SHxD (C) 2017
  */
-public class Spawn {
+public class EssSpawn {
     private Core core;
     private Data data;
 
-    public Spawn(Core core) {
+    public EssSpawn(Core core) {
         this.core = core;
         this.data = new Data(core, "spawn");
     }

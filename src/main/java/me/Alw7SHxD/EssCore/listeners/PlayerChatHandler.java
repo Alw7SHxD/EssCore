@@ -1,7 +1,7 @@
 package me.Alw7SHxD.EssCore.listeners;
 
 import me.Alw7SHxD.EssCore.API.EssAPI;
-import me.Alw7SHxD.EssCore.API.Players;
+import me.Alw7SHxD.EssCore.API.EssPlayer;
 import me.Alw7SHxD.EssCore.Core;
 import me.Alw7SHxD.EssCore.messages;
 import me.clip.placeholderapi.PlaceholderAPI;
@@ -39,7 +39,7 @@ public class PlayerChatHandler implements Listener, messages {
 
     @EventHandler
     public void onChat(AsyncPlayerChatEvent e) {
-        Players playerAPI = new Players(e.getPlayer());
+        EssPlayer playerAPI = new EssPlayer(e.getPlayer());
         if (playerAPI.getMuted()) {
             e.getPlayer().sendMessage(EssAPI.color(m_muted));
             e.setCancelled(true);
@@ -91,7 +91,7 @@ public class PlayerChatHandler implements Listener, messages {
         }
     }
 
-    private String localph(Players playerAPI, Player player, String s){
+    private String localph(EssPlayer playerAPI, Player player, String s){
         s = s.replace("{DISPLAYNAME}", playerAPI.getNick() ? core.getConfig().getString("nickname-prefix") + playerAPI.getNickname() : player.getName());
         s = s.replace("{MESSAGE}", "%2$s");
         return s;

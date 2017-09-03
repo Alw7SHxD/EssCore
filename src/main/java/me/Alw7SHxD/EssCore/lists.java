@@ -1,6 +1,6 @@
 package me.Alw7SHxD.EssCore;
 
-import me.Alw7SHxD.EssCore.API.Players;
+import me.Alw7SHxD.EssCore.API.EssPlayer;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
@@ -43,7 +43,7 @@ public class lists{
         try {
             vanishedPlayers.clear();
             for (Player player : core.getServer().getOnlinePlayers()) {
-                Players playerAPI = new Players(player);
+                EssPlayer playerAPI = new EssPlayer(player);
                 if (playerAPI.getVanished())
                     this.vanishedPlayers.add(player);
             }

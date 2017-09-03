@@ -21,7 +21,7 @@ import org.bukkit.plugin.java.JavaPlugin;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-public class Chat {
+public class EssChat {
     public static class Clear {
         private JavaPlugin plugin;
 
@@ -67,12 +67,12 @@ public class Chat {
     }
 
     public static class Mute {
-        private Players playerAPI;
+        private EssPlayer playerAPI;
         private Player player;
         private JavaPlugin plugin;
 
         public Mute(@NotNull JavaPlugin plugin, @NotNull Player player) {
-            this.playerAPI = new Players(player);
+            this.playerAPI = new EssPlayer(player);
             this.player = player;
             this.plugin = plugin;
         }

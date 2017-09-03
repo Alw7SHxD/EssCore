@@ -1,7 +1,7 @@
 package me.Alw7SHxD.EssCore.commands;
 
 import me.Alw7SHxD.EssCore.API.EssAPI;
-import me.Alw7SHxD.EssCore.API.Chat;
+import me.Alw7SHxD.EssCore.API.EssChat;
 import me.Alw7SHxD.EssCore.Core;
 import me.Alw7SHxD.EssCore.messages;
 import org.bukkit.command.Command;
@@ -47,7 +47,7 @@ public class CommandMute implements CommandExecutor, messages {
             return true;
         }
 
-        Chat.Mute chatAPI = new Chat.Mute(core, target);
+        EssChat.Mute chatAPI = new EssChat.Mute(core, target);
         chatAPI.eMute(commandSender);
         return true;
     }

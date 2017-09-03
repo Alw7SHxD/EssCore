@@ -1,7 +1,7 @@
 package me.Alw7SHxD.EssCore.commands;
 
 import me.Alw7SHxD.EssCore.API.EssAPI;
-import me.Alw7SHxD.EssCore.API.Spawn;
+import me.Alw7SHxD.EssCore.API.EssSpawn;
 import me.Alw7SHxD.EssCore.Core;
 import me.Alw7SHxD.EssCore.messages;
 import org.bukkit.command.Command;
@@ -14,11 +14,11 @@ import org.bukkit.entity.Player;
  */
 public class CommandSpawn implements CommandExecutor, messages {
     private Core core;
-    private Spawn spawnAPI;
+    private EssSpawn spawnAPI;
 
     public CommandSpawn(Core core) {
         this.core = core;
-        this.spawnAPI = new Spawn(core);
+        this.spawnAPI = new EssSpawn(core);
     }
 
     @Override

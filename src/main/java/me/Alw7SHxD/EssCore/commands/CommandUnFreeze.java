@@ -1,7 +1,7 @@
 package me.Alw7SHxD.EssCore.commands;
 
 import me.Alw7SHxD.EssCore.API.EssAPI;
-import me.Alw7SHxD.EssCore.API.Players;
+import me.Alw7SHxD.EssCore.API.EssPlayer;
 import me.Alw7SHxD.EssCore.Core;
 import me.Alw7SHxD.EssCore.messages;
 import org.bukkit.command.Command;
@@ -31,7 +31,7 @@ public class CommandUnFreeze implements CommandExecutor, messages {
         Player target = EssAPI.getPlayer(core, commandSender, strings[0]);
         if (target == null) return true;
 
-        Players playerAPI = new Players(target);
+        EssPlayer playerAPI = new EssPlayer(target);
 
         if (!playerAPI.getFrozen()) {
             commandSender.sendMessage(EssAPI.color(m_unfreeze_unfrozen));

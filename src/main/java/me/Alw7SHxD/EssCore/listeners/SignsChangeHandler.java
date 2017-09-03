@@ -1,7 +1,7 @@
 package me.Alw7SHxD.EssCore.listeners;
 
 import me.Alw7SHxD.EssCore.API.EssAPI;
-import me.Alw7SHxD.EssCore.API.Warps;
+import me.Alw7SHxD.EssCore.API.EssWarps;
 import me.Alw7SHxD.EssCore.Core;
 import me.Alw7SHxD.EssCore.messages;
 import org.bukkit.event.EventHandler;
@@ -55,7 +55,7 @@ public class SignsChangeHandler implements Listener, messages {
                 if (!e.getPlayer().hasPermission("esscore.signs.warp.create"))
                     continue;
                 if (e.getLine(0).equalsIgnoreCase("[warp]")) {
-                    Warps warpAPI = new Warps(core);
+                    EssWarps warpAPI = new EssWarps(core);
                     if (warpAPI.list().contains(e.getLine(1).toLowerCase())) {
                         e.setLine(0, EssAPI.color("&8[&2&lWARP&8]"));
                         e.getPlayer().sendMessage(EssAPI.color(String.format(m_signs_warp_create, e.getLine(1))));

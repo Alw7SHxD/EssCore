@@ -27,7 +27,7 @@ import java.util.Objects;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-public class Warps {
+public class EssWarps {
     private Core core;
     private Data data;
     private String w1 = "warps.";
@@ -35,7 +35,7 @@ public class Warps {
     private String w3 = ".permission";
     private String w4 = "esscore.warps.";
 
-    public Warps(Core core) {
+    public EssWarps(Core core) {
         this.core = core;
         this.data = new Data(core, "warps");
     }

@@ -10,11 +10,11 @@ import java.util.List;
 /**
  * EssCore was created by Alw7SHxD (C) 2017
  */
-public class Homes extends Players {
+public class EssHomes extends EssPlayer {
     String h1 = "homes.";
     String h2 = ".location.";
 
-    public Homes(Player player) {
+    public EssHomes(Player player) {
         super(player);
     }
 

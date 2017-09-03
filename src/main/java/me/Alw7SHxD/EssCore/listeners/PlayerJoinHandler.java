@@ -1,8 +1,8 @@
 package me.Alw7SHxD.EssCore.listeners;
 
 import me.Alw7SHxD.EssCore.API.EssAPI;
-import me.Alw7SHxD.EssCore.API.Players;
-import me.Alw7SHxD.EssCore.API.Spawn;
+import me.Alw7SHxD.EssCore.API.EssPlayer;
+import me.Alw7SHxD.EssCore.API.EssSpawn;
 import me.Alw7SHxD.EssCore.util.updaters.UpdateChecker;
 import me.Alw7SHxD.EssCore.Core;
 import me.Alw7SHxD.EssCore.lists;
@@ -32,19 +32,19 @@ public class PlayerJoinHandler implements Listener {
     private Core core;
     private UpdateChecker updateChecker;
     private lists lists;
-    private Spawn spawnAPI;
+    private EssSpawn spawnAPI;
 
     PlayerJoinHandler(Core core) {
         this.core = core;
         updateChecker = new UpdateChecker(core);
         this.lists = new lists(core);
-        this.spawnAPI = new Spawn(core);
+        this.spawnAPI = new EssSpawn(core);
     }
 
     @EventHandler(priority = EventPriority.NORMAL)
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player player = e.getPlayer();
-        Players playerAPI = new Players(player);
+        EssPlayer playerAPI = new EssPlayer(player);
         if (player.hasPermission("esscore.notify"))
             updateChecker.check(player);
 

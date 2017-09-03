@@ -1,8 +1,8 @@
 package me.Alw7SHxD.EssCore.listeners;
 
 import me.Alw7SHxD.EssCore.API.EssAPI;
-import me.Alw7SHxD.EssCore.API.Spawn;
-import me.Alw7SHxD.EssCore.API.Warps;
+import me.Alw7SHxD.EssCore.API.EssSpawn;
+import me.Alw7SHxD.EssCore.API.EssWarps;
 import me.Alw7SHxD.EssCore.Core;
 import me.Alw7SHxD.EssCore.lists;
 import me.Alw7SHxD.EssCore.messages;
@@ -39,19 +39,19 @@ public class PlayerInteractHandler implements Listener, messages {
                 if (sign.getLine(0).equals(EssAPI.color("&8[&2&lWARP&8]"))) {
                     String perm = "esscore.signs.warp.use";
                     if (lists.getAllowedSigns().contains("warp") && e.getPlayer().hasPermission(perm))
-                        new Warps(core).teleport(sign.getLine(1), e.getPlayer());
+                        new EssWarps(core).teleport(sign.getLine(1), e.getPlayer());
                     else if (!e.getPlayer().hasPermission(perm) && core.lists.isDebugSigns())
                         e.getPlayer().sendMessage(EssAPI.color(String.format(m_signs_debug_permission, perm)));
                 } else if (sign.getLine(0).equals(EssAPI.color("&8[&2&lWARPS&8]"))) {
                     String perm = "esscore.signs.warps.use";
                     if (lists.getAllowedSigns().contains("warps") && e.getPlayer().hasPermission(perm))
-                        new Warps(core).list(e.getPlayer());
+                        new EssWarps(core).list(e.getPlayer());
                     else if (!e.getPlayer().hasPermission(perm) && core.lists.isDebugSigns())
                         e.getPlayer().sendMessage(EssAPI.color(String.format(m_signs_debug_permission, perm)));
                 } else if (sign.getLine(0).equals(EssAPI.color("&8[&2&lSPAWN&8]"))) {
                     String perm = "esscore.signs.spawn.use";
                     if (lists.getAllowedSigns().contains("spawn") && e.getPlayer().hasPermission(perm)) {
-                        new Spawn(core).teleport(e.getPlayer());
+                        new EssSpawn(core).teleport(e.getPlayer());
                         e.getPlayer().sendMessage(EssAPI.color(m_spawn_teleport));
                     } else if (!e.getPlayer().hasPermission(perm) && core.lists.isDebugSigns())
                         e.getPlayer().sendMessage(EssAPI.color(String.format(m_signs_debug_permission, perm)));

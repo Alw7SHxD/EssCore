@@ -1,7 +1,7 @@
 package me.Alw7SHxD.EssCore.commands;
 
 import me.Alw7SHxD.EssCore.API.EssAPI;
-import me.Alw7SHxD.EssCore.API.Homes;
+import me.Alw7SHxD.EssCore.API.EssHomes;
 import me.Alw7SHxD.EssCore.Core;
 import me.Alw7SHxD.EssCore.messages;
 import org.bukkit.command.Command;
@@ -28,8 +28,8 @@ public class CommandHome implements CommandExecutor, messages {
 
         if (!EssAPI.hasPermission(commandSender, "esscore.home")) return true;
         if (strings.length == 1) {
-            Homes homesAPI = new Homes((Player) commandSender);
-            if (homesAPI.teleport(strings[0].replace(".", "-")))
+            EssHomes essHomesAPI = new EssHomes((Player) commandSender);
+            if (essHomesAPI.teleport(strings[0].replace(".", "-")))
                 commandSender.sendMessage(EssAPI.color(m_home_teleport));
             else commandSender.sendMessage(EssAPI.color(m_home_doesnt_exist));
         } else commandSender.sendMessage(EssAPI.color(String.format(m_syntax_error_c, s + " &9<name>")));

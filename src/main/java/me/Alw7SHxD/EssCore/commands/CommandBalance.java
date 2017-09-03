@@ -1,7 +1,7 @@
 package me.Alw7SHxD.EssCore.commands;
 
 import me.Alw7SHxD.EssCore.API.EssAPI;
-import me.Alw7SHxD.EssCore.API.Players;
+import me.Alw7SHxD.EssCore.API.EssPlayer;
 import me.Alw7SHxD.EssCore.Core;
 import me.Alw7SHxD.EssCore.messages;
 import org.bukkit.OfflinePlayer;
@@ -82,7 +82,7 @@ public class CommandBalance implements CommandExecutor {
     private boolean hasAccount(OfflinePlayer player) {
         if (!core.getEssEconomy().hasAccount(player)) {
             if (player.isOnline()) {
-                new Players(core.getServer().getPlayer(player.getUniqueId())).setDefaultBalance();
+                new EssPlayer(core.getServer().getPlayer(player.getUniqueId())).setDefaultBalance();
                 return true;
             }
         } else return true;

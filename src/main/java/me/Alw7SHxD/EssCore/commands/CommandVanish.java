@@ -1,7 +1,7 @@
 package me.Alw7SHxD.EssCore.commands;
 
 import me.Alw7SHxD.EssCore.API.EssAPI;
-import me.Alw7SHxD.EssCore.API.Vanish;
+import me.Alw7SHxD.EssCore.API.EssVanish;
 import me.Alw7SHxD.EssCore.Core;
 import me.Alw7SHxD.EssCore.messages;
 import org.bukkit.command.Command;
@@ -32,7 +32,7 @@ public class CommandVanish implements CommandExecutor, messages {
                 return true;
             }
 
-            Vanish p = new Vanish(core, (Player) commandSender);
+            EssVanish p = new EssVanish(core, (Player) commandSender);
             p.eVanish();
         } else if (strings.length == 1) {
             if (!commandSender.hasPermission("esscore.vanish.target")) {
@@ -43,7 +43,7 @@ public class CommandVanish implements CommandExecutor, messages {
             Player target = EssAPI.getPlayer(core, commandSender, strings[0]);
             if (target == null) return true;
 
-            Vanish p = new Vanish(core, target);
+            EssVanish p = new EssVanish(core, target);
             p.eVanish(commandSender);
         } else commandSender.sendMessage(EssAPI.color(String.format(m_syntax_error_c, s + " &9[Player]")));
         return true;

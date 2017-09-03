@@ -1,7 +1,7 @@
 package me.Alw7SHxD.EssCore.commands;
 
 import me.Alw7SHxD.EssCore.API.EssAPI;
-import me.Alw7SHxD.EssCore.API.Warps;
+import me.Alw7SHxD.EssCore.API.EssWarps;
 import me.Alw7SHxD.EssCore.Core;
 import me.Alw7SHxD.EssCore.messages;
 import org.bukkit.command.Command;
@@ -13,11 +13,11 @@ import org.bukkit.command.CommandSender;
  */
 public class CommandWarps implements CommandExecutor, messages {
     private Core core;
-    private Warps warpAPI;
+    private EssWarps warpAPI;
 
     public CommandWarps(Core core) {
         this.core = core;
-        this.warpAPI = new Warps(core);
+        this.warpAPI = new EssWarps(core);
     }
 
     @Override

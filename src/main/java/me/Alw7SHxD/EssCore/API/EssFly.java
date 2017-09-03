@@ -21,13 +21,13 @@ import org.bukkit.plugin.java.JavaPlugin;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-public class Fly {
-    private Players playerAPI;
+public class EssFly {
+    private EssPlayer playerAPI;
     private Player player;
     private JavaPlugin plugin;
 
-    public Fly(@NotNull JavaPlugin plugin, @NotNull Player player) {
-        this.playerAPI = new Players(player);
+    public EssFly(@NotNull JavaPlugin plugin, @NotNull Player player) {
+        this.playerAPI = new EssPlayer(player);
         this.player = player;
         this.plugin = plugin;
     }

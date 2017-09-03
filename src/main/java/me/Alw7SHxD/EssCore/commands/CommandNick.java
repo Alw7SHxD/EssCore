@@ -1,7 +1,7 @@
 package me.Alw7SHxD.EssCore.commands;
 
 import me.Alw7SHxD.EssCore.API.EssAPI;
-import me.Alw7SHxD.EssCore.API.Nickname;
+import me.Alw7SHxD.EssCore.API.EssNickname;
 import me.Alw7SHxD.EssCore.Core;
 import me.Alw7SHxD.EssCore.messages;
 import org.bukkit.command.Command;
@@ -29,7 +29,7 @@ public class CommandNick implements CommandExecutor, messages {
                 return true;
             }
 
-            Nickname nickAPI = new Nickname((Player) commandSender);
+            EssNickname nickAPI = new EssNickname((Player) commandSender);
             if (checkOff(nickAPI, commandSender, ((Player) commandSender), strings[0])) return true;
 
             nickAPI.eNick(commandSender, ((Player) commandSender), strings[0]);
@@ -39,7 +39,7 @@ public class CommandNick implements CommandExecutor, messages {
             Player target = EssAPI.getPlayer(core, commandSender, strings[1]);
             if (target == null) return true;
 
-            Nickname nickAPI = new Nickname(target);
+            EssNickname nickAPI = new EssNickname(target);
 
             if (checkOff(nickAPI, commandSender, target, strings[0])) return true;
             nickAPI.eNick(commandSender, target, strings[0]);
@@ -49,7 +49,7 @@ public class CommandNick implements CommandExecutor, messages {
         return true;
     }
 
-    private boolean checkOff(Nickname nickAPI, CommandSender commandSender, Player player, String s) {
+    private boolean checkOff(EssNickname nickAPI, CommandSender commandSender, Player player, String s) {
         if (s.equalsIgnoreCase("off")) {
             if (!nickAPI.eUnNick(commandSender, player)) return false;
             if (commandSender == player)

@@ -1,7 +1,7 @@
 package me.Alw7SHxD.EssCore.listeners;
 
 import me.Alw7SHxD.EssCore.API.EssAPI;
-import me.Alw7SHxD.EssCore.API.Players;
+import me.Alw7SHxD.EssCore.API.EssPlayer;
 import me.Alw7SHxD.EssCore.Core;
 import me.Alw7SHxD.EssCore.lists;
 import org.bukkit.event.EventHandler;
@@ -22,7 +22,7 @@ public class PlayerQuitHandler implements Listener {
 
     @EventHandler
     public void onQuit(PlayerQuitEvent e) {
-        Players playerAPI = new Players(e.getPlayer());
+        EssPlayer playerAPI = new EssPlayer(e.getPlayer());
 
         if (core.getConfigCache().getBoolean("hm.leave") || e.getPlayer().hasPermission("esscore.silent"))
             e.setQuitMessage("");

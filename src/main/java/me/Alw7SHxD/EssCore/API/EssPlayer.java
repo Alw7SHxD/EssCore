@@ -25,14 +25,14 @@ import java.util.UUID;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-public class Players {
+public class EssPlayer {
     private OfflinePlayer player;
     private UUID uuid;
     private PlayerData playerData;
     private Core core;
     public boolean l = false;
 
-    public Players(Player player) {
+    public EssPlayer(Player player) {
         this.player = player;
         this.uuid = player.getUniqueId();
         this.playerData = new PlayerData(player, Core.getPlugin(Core.class));
@@ -40,7 +40,7 @@ public class Players {
         create();
     }
 
-    public Players(OfflinePlayer player) {
+    public EssPlayer(OfflinePlayer player) {
         this.player = player;
         this.uuid = player.getUniqueId();
         this.playerData = new PlayerData(player, Core.getPlugin(Core.class));

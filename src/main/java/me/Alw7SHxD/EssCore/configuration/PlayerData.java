@@ -50,7 +50,7 @@ public class PlayerData {
             throw new IllegalArgumentException("Player cannot be null");
         this.plugin = plugin;
         if (!plugin.getDataFolder().exists()) plugin.getDataFolder().mkdir();
-        File dataFolder = new File(plugin.getDataFolder().getPath() + File.separator + "Players");
+        File dataFolder = new File(plugin.getDataFolder().getPath() + File.separator + "EssPlayer");
         this.configFile = new File(dataFolder, player.getUniqueId() + ".yml");
         if (!dataFolder.exists()) dataFolder.mkdir();
         if (!configFile.exists())

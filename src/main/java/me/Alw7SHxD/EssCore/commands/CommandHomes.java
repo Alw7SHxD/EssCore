@@ -1,7 +1,7 @@
 package me.Alw7SHxD.EssCore.commands;
 
 import me.Alw7SHxD.EssCore.API.EssAPI;
-import me.Alw7SHxD.EssCore.API.Homes;
+import me.Alw7SHxD.EssCore.API.EssHomes;
 import me.Alw7SHxD.EssCore.Core;
 import me.Alw7SHxD.EssCore.messages;
 import org.bukkit.command.Command;
@@ -27,8 +27,8 @@ public class CommandHomes implements CommandExecutor, messages {
         }
 
         if(!EssAPI.hasPermission(commandSender, "esscore.homes")) return true;
-        Homes homesAPI = new Homes((Player) commandSender);
-        homesAPI.list();
+        EssHomes essHomesAPI = new EssHomes((Player) commandSender);
+        essHomesAPI.list();
         return true;
     }
 }

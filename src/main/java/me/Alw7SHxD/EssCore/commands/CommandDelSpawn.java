@@ -1,7 +1,7 @@
 package me.Alw7SHxD.EssCore.commands;
 
 import me.Alw7SHxD.EssCore.API.EssAPI;
-import me.Alw7SHxD.EssCore.API.Spawn;
+import me.Alw7SHxD.EssCore.API.EssSpawn;
 import me.Alw7SHxD.EssCore.Core;
 import me.Alw7SHxD.EssCore.messages;
 import org.bukkit.command.Command;
@@ -11,7 +11,7 @@ import org.bukkit.command.CommandSender;
 /**
  * EssCore was created by Alw7SHxD (C) 2017
  */
-public class CommandDelSpawn extends Spawn implements CommandExecutor, messages {
+public class CommandDelSpawn extends EssSpawn implements CommandExecutor, messages {
     public CommandDelSpawn(Core core) {
         super(core);
     }

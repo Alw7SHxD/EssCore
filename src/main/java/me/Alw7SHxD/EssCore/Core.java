@@ -1,6 +1,6 @@
 package me.Alw7SHxD.EssCore;
 
-import me.Alw7SHxD.EssCore.API.Players;
+import me.Alw7SHxD.EssCore.API.EssPlayer;
 import me.Alw7SHxD.EssCore.util.ConfigCache;
 import me.Alw7SHxD.EssCore.util.EssEconomy;
 import me.Alw7SHxD.EssCore.util.hooks.PlaceholderApiHook;
@@ -80,7 +80,7 @@ public class Core extends JavaPlugin {
     private void checkBalances() {
         if (getServer().getOnlinePlayers().size() != 0)
             for (Player player : getServer().getOnlinePlayers())
-                new Players(player).setBalance();
+                new EssPlayer(player).setBalance();
     }
 
     public EssEconomy getEssEconomy() {

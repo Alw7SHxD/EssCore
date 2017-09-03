@@ -1,6 +1,6 @@
 package me.Alw7SHxD.EssCore.listeners;
 
-import me.Alw7SHxD.EssCore.API.Players;
+import me.Alw7SHxD.EssCore.API.EssPlayer;
 import me.Alw7SHxD.EssCore.Core;
 import org.bukkit.Location;
 import org.bukkit.event.EventHandler;
@@ -19,7 +19,7 @@ public class PlayerMovementHandler implements Listener {
 
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent e) {
-        Players playerAPI = new Players(e.getPlayer());
+        EssPlayer playerAPI = new EssPlayer(e.getPlayer());
 
         if (playerAPI.getFrozen()) {
             Location from = e.getFrom();

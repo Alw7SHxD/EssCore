@@ -34,7 +34,7 @@ public interface messages {
     String m_cc_global_a = "&7The global chat has been cleared";
     String m_cc_target = "&7Your chat has been cleared by &c&l%s";
     String m_cc_target_a = "&7Your chat has been cleared.";
-    String m_cc_sender = "&c&l%s&7's chat has been cleared.";
+    //String m_cc_sender = "&c&l%s&7's chat has been cleared.";
 
     String m_fly_self_on = "&7Your flight has been &a&lenabled";
     String m_fly_self_off = "&7Your flight has been &c&ldisabled";
@@ -42,20 +42,20 @@ public interface messages {
     String m_fly_target_off = "&c&l%s &7has &c&ldisabled &7your flight";
     String m_fly_sender = "&c&l%s&7's flight has been %s";
 
-    String m_mute_global = "&c&l%s &7has muted the global chat.";
+    //String m_mute_global = "&c&l%s &7has muted the global chat.";
     String m_mute_target = "&c&l%s &7has muted you.";
     String m_mute_target_a = "&7You have been muted.";
     String m_mute_sender = "&7You have muted &c&l%s";
-    String m_mute_sender_g = "&c&l%s &7has muted &c&l%s&7!";
+    //String m_mute_sender_g = "&c&l%s &7has muted &c&l%s&7!";
     String m_muted_sender = "&7That player is muted already.";
 
     String m_muted = "&c&lHey! &7you're muted, stop talking to yourself.";
 
-    String m_unmute_global = "&c&l%s &7has un-muted the global chat.";
+    //String m_unmute_global = "&c&l%s &7has un-muted the global chat.";
     String m_unmute_target = "&c&l%s &7has un-muted you.";
     String m_unmute_target_a = "&7You have been un-muted.";
     String m_unmute_sender = "&7You have un-muted &c&l%s&7!";
-    String m_unmute_sender_g = "&c&l%s &7has been un-muted by &c&l%s&7!";
+    //String m_unmute_sender_g = "&c&l%s &7has been un-muted by &c&l%s&7!";
     String m_unmuted_sender = "&7That player isn't muted already.";
 
     String m_warp_no_warps = "&c&lOops! &7seems like there are no warps ;*(";
@@ -95,14 +95,14 @@ public interface messages {
     String m_nick_max_length = "&c&lHey! &7nicknames cannot be longer than &c&l%s &7letters/numbers";
     String m_nick_success = "&7Your nickname has been set to &r%s";
     String m_nick_sender = "&c&l%s&7's nickname has been set to &r%s";
-    String m_nick_target_g = "&c&l%s has set your nickname to &r%s";
+    //String m_nick_target_g = "&c&l%s has set your nickname to &r%s";
     String m_nick_off = "&7You've turned &c&loff &7your nickname.";
     String m_nick_off_fail = "&c&lHey! &7you don't have a nickname already.";
     String m_nick_off_target = "&c&l%s &7has turned &c&loff &7your nickname.";
     String m_nick_off_sender = "&c&l%s&7's nickname has been turned &c&loff&7.";
 
-    String m_kit_create = "&a&cSuccess! &7kit &c&l%s &7has been created.";
-    String m_kit_create_fail = "&a&cOops! &7that kit already exists.";
+    //String m_kit_create = "&a&cSuccess! &7kit &c&l%s &7has been created.";
+    //String m_kit_create_fail = "&a&cOops! &7that kit already exists.";
 
     String m_signs_warp_create = "&a&lSuccess! &7sign to warp &a&l%s &7has been created.";
     String m_signs_warp_create_fail = "&c&lError! &7make sure to type in the correct name of the warp.";

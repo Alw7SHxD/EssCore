@@ -1,7 +1,7 @@
 package me.Alw7SHxD.EssCore.commands;
 
 import me.Alw7SHxD.EssCore.API.EssAPI;
-import me.Alw7SHxD.EssCore.API.Fly;
+import me.Alw7SHxD.EssCore.API.EssFly;
 import me.Alw7SHxD.EssCore.Core;
 import me.Alw7SHxD.EssCore.messages;
 import org.bukkit.command.Command;
@@ -44,7 +44,7 @@ public class CommandFly implements CommandExecutor, messages {
                 return true;
             }
 
-            Fly p = new Fly(core, (Player) commandSender);
+            EssFly p = new EssFly(core, (Player) commandSender);
             p.eFly();
         } else if (strings.length == 1) {
             if (!commandSender.hasPermission("esscore.fly.target")) {
@@ -55,7 +55,7 @@ public class CommandFly implements CommandExecutor, messages {
             Player target = EssAPI.getPlayer(core, commandSender, strings[0]);
             if (target == null) return true;
 
-            Fly p = new Fly(core, target);
+            EssFly p = new EssFly(core, target);
             p.eFly(commandSender);
         } else commandSender.sendMessage(EssAPI.color(String.format(m_syntax_error_c, s + " &9[Player]")));
         return true;
