@@ -44,7 +44,7 @@ public class UpdateChecker {
             String latestVersion = new BufferedReader(new InputStreamReader(con.getInputStream())).readLine();
             return latestVersion.substring(1, latestVersion.length() - 1);
         } catch (UnknownHostException e) {
-            core.getLogger().warning("had an issue while trying to get the latest version.");
+            core.getLogger().warning("An error occurred while trying to get the latest version.");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -59,7 +59,7 @@ public class UpdateChecker {
             if (isConsole(commandSender)) commandSender.sendMessage(EssAPI.color("&7--------------------------------------"));
             commandSender.sendMessage(EssAPI.color(String.format("&7Found a newer version of &a&lEssCore &7(&a&l%s&7)", latestVersion)));
             commandSender.sendMessage(EssAPI.color("&7please make sure to update to the latest version."));
-            commandSender.sendMessage(EssAPI.color("&eSpigot Download &8@&e&n https://goo.gl/Ie0eX4"));
+            commandSender.sendMessage(EssAPI.color("&eSpigot Download &8@ &e&nhttps://goo.gl/Ie0eX4"));
             if (isConsole(commandSender)) commandSender.sendMessage(EssAPI.color("&7--------------------------------------"));
 
         } else
