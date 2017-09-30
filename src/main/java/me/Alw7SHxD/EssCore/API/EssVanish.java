@@ -1,8 +1,8 @@
 package me.Alw7SHxD.EssCore.API;
 
 import me.Alw7SHxD.EssCore.Core;
-import me.Alw7SHxD.EssCore.lists;
-import me.Alw7SHxD.EssCore.messages;
+import me.Alw7SHxD.EssCore.util.vars.lists;
+import me.Alw7SHxD.EssCore.util.vars.messages;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;

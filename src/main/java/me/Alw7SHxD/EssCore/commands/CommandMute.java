@@ -3,7 +3,7 @@ package me.Alw7SHxD.EssCore.commands;
 import me.Alw7SHxD.EssCore.API.EssAPI;
 import me.Alw7SHxD.EssCore.API.EssChat;
 import me.Alw7SHxD.EssCore.Core;
-import me.Alw7SHxD.EssCore.messages;
+import me.Alw7SHxD.EssCore.util.vars.messages;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

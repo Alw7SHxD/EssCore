@@ -1,6 +1,6 @@
 package me.Alw7SHxD.EssCore.API;
 
-import me.Alw7SHxD.EssCore.messages;
+import me.Alw7SHxD.EssCore.util.vars.messages;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 

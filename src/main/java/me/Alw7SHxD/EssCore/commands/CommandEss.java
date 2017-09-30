@@ -2,7 +2,7 @@ package me.Alw7SHxD.EssCore.commands;
 
 import me.Alw7SHxD.EssCore.API.*;
 import me.Alw7SHxD.EssCore.Core;
-import me.Alw7SHxD.EssCore.messages;
+import me.Alw7SHxD.EssCore.util.vars.messages;
 import me.Alw7SHxD.EssCore.util.json.FancyMessage;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -83,6 +83,7 @@ public class CommandEss implements CommandExecutor, messages {
         commands.put("feed", 9);
         commands.put("fly", 10);
         commands.put("freeze", 11);
+        commands.put("gm", 32);
         commands.put("heal", 12);
         commands.put("home", 13);
         commands.put("homes", 27);
@@ -101,7 +102,7 @@ public class CommandEss implements CommandExecutor, messages {
         commands.put("vanish", 24);
         commands.put("warp", 25);
         commands.put("warps", 26);
-        // 31
+        // 32
 
         paginate(commandSender, commands, page, 8, max);
     }
@@ -118,7 +119,7 @@ public class CommandEss implements CommandExecutor, messages {
             k++;
             if ((((page * pageLength) + i + 1) == k) && (k != ((page * pageLength) + pageLength + 1))) {
                 i++;
-                FancyMessage tooltips = new FancyMessage("aliases: ").color(ChatColor.GRAY).then(core.getCommand(e.getKey()).getAliases().toString()).color(ChatColor.DARK_AQUA).then("\n").then("usage: ").color(ChatColor.GRAY).then(core.getCommand(e.getKey()).getUsage().replace("<command>", e.getKey())).color(ChatColor.DARK_AQUA);
+                FancyMessage tooltips = new FancyMessage(core.getCommand(e.getKey()).getAliases().size() == 1 ? "alias: " : "aliases: ").color(ChatColor.GRAY).then(core.getCommand(e.getKey()).getAliases().toString()).color(ChatColor.DARK_AQUA).then("\n").then("usage: ").color(ChatColor.GRAY).then(core.getCommand(e.getKey()).getUsage().replace("<command>", e.getKey())).color(ChatColor.DARK_AQUA);
                 new FancyMessage("/").color(ChatColor.DARK_GRAY).then(e.getKey()).color(ChatColor.AQUA).suggest("/" + e.getKey()).formattedTooltip(tooltips).then(" > ").color(ChatColor.GRAY).then(core.getCommand(e.getKey()).getDescription()).send(sender);
             }
         }
@@ -126,7 +127,7 @@ public class CommandEss implements CommandExecutor, messages {
     }
 
     private String header(int current, int max) {
-        return "&b> &2&lessCore commands &7(&c&l" + current + "&8/&c&l" + max + "&7)";
+        return "&b> &2&lEssCore commands &7(&c&l" + current + "&8/&c&l" + max + "&7)";
     }
 
     private String footer() {

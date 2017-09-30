@@ -1,4 +1,4 @@
-package me.Alw7SHxD.EssCore;
+package me.Alw7SHxD.EssCore.util.vars;
 
 /*
  * (C) Copyright 2017 Alw7SHxD.
@@ -22,8 +22,8 @@ public interface messages {
     String m_syntax_error_c = "&c&lSyntax Error! &7correct usage &6&l/%s";
     String m_target_offline = "&c&lOops! &7that player is currently offline.";
     String m_not_player = "Hey! only players can use this command.";
-    String m_reload_done = "&a&lessCore &8» &2successfully reloaded configuration files.";
-    String m_reload_error = "&a&lessCore &8» &can error occurred.";
+    String m_reload_done = "&a&lEssCore &8» &2successfully reloaded configuration files.";
+    String m_reload_error = "&a&lEssCore &8» &can error occurred.";
     String m_number_format = "&c&lOops! &7you must include a number.";
     String m_player_doesnt_exist = "&c&lOops! &7seems like that player hasn't been on the server yet.";
     String m_vault_unavailable = "&c&lSorry! &7this server doesn't allow an economy.";
@@ -172,4 +172,7 @@ public interface messages {
     String m_pay_confirmed_target = "&6&l%s &7paid you &6&l%s&7, your new balance is &c&l%s";
     String m_pay_self = "&c&lHey! &7you cannot pay yourself.";
     String m_pay_zero = "&c&lHey! &7what's the point of paying nothing?";
+
+    String m_gamemode = "&7Your gamemode has been updated to &a&l%s &7mode.";
+    String m_gamemode_sender = "&7You have updated &c&l%s&7's gamemode to &c&l%s &7mode.";
 }

@@ -34,6 +34,10 @@ permissions:
       esscore.freeze.force: true
       esscore.freeze: true
       esscore.gamemode: true
+      esscore.gamemode.survival: true
+      esscore.gamemode.creative: true
+      esscore.gamemode.adventure: true
+      esscore.gamemode.spectator: true
       esscore.heal.all: true
       esscore.heal.target: true
       esscore.heal.target: true
@@ -114,6 +118,21 @@ permissions:
     default: op
   esscore.gamemode:
     description: "grant using the gamemode alias command"
+    default: op
+  esscore.gamemode.target:
+    description: "grant using the gamemode alias command on players"
+    default: op
+  esscore.gamemode.survival:
+    description: "grant using the survival gamemode alias command"
+    default: op
+  esscore.gamemode.creative:
+    description: "grant using the creative gamemode alias command"
+    default: op
+  esscore.gamemode.adventure:
+    description: "grant using the adventure gamemode alias command"
+    default: op
+  esscore.gamemode.spectator:
+    description: "grant using the spectator gamemode alias command"
     default: op
   esscore.mute:
     description: "grant muting players"
@@ -302,6 +321,14 @@ commands:
     description: "freeze a certain player."
     usage: /<command> <Player>
     aliases: [efreeze]
+  gm:
+    description: "gamemode alias"
+    usage: |
+      /<command>
+      /<command> [Player]
+      /<command> <gamemode> [Player]
+      /<command> <gamemode>
+    aliases: [gmc, gma, gms, gmsp]
   heal:
     description: "restore your health"
     usage: |

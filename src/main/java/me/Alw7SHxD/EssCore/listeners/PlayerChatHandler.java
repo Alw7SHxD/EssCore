@@ -3,7 +3,7 @@ package me.Alw7SHxD.EssCore.listeners;
 import me.Alw7SHxD.EssCore.API.EssAPI;
 import me.Alw7SHxD.EssCore.API.EssPlayer;
 import me.Alw7SHxD.EssCore.Core;
-import me.Alw7SHxD.EssCore.messages;
+import me.Alw7SHxD.EssCore.util.vars.messages;
 import me.clip.placeholderapi.PlaceholderAPI;
 import net.milkbowl.vault.economy.EconomyResponse;
 import org.bukkit.entity.Player;
@@ -76,11 +76,11 @@ public class PlayerChatHandler implements Listener, messages {
                 if (core.usingPlaceholderAPI) {
                     String s1 = core.getConfigCache().getString("cf.default-format");
                     String s2 = PlaceholderAPI.setPlaceholders(e.getPlayer(), s1);
-                    s2 = s2.replaceAll("%", "%%");
+                    s2 = s2.replace("%", "%%");
                     e.setFormat(EssAPI.color(localph(playerAPI, e.getPlayer(), s2)));
                 } else {
                     String s1 = core.getConfigCache().getString("cf.default-format");
-                    s1 = s1.replaceAll("%", "%%");
+                    s1 = s1.replace("%", "%%");
                     e.setFormat(EssAPI.color(localph(playerAPI, e.getPlayer(), s1)));
                 }
             } catch (UnknownFormatConversionException ex) {

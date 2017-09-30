@@ -3,7 +3,7 @@ package me.Alw7SHxD.EssCore.listeners;
 import me.Alw7SHxD.EssCore.API.EssAPI;
 import me.Alw7SHxD.EssCore.API.EssPlayer;
 import me.Alw7SHxD.EssCore.Core;
-import me.Alw7SHxD.EssCore.lists;
+import me.Alw7SHxD.EssCore.util.vars.lists;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;

@@ -2,7 +2,7 @@ package me.Alw7SHxD.EssCore.API;
 
 import me.Alw7SHxD.EssCore.Core;
 import me.Alw7SHxD.EssCore.configuration.Data;
-import me.Alw7SHxD.EssCore.messages;
+import me.Alw7SHxD.EssCore.util.vars.messages;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;

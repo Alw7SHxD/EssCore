@@ -1,6 +1,8 @@
-package me.Alw7SHxD.EssCore;
+package me.Alw7SHxD.EssCore.util;
 
 import me.Alw7SHxD.EssCore.API.EssAPI;
+import me.Alw7SHxD.EssCore.Core;
+import me.Alw7SHxD.EssCore.util.vars.messages;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.UUID;

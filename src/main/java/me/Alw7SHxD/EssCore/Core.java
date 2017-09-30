@@ -8,6 +8,8 @@ import me.Alw7SHxD.EssCore.util.updaters.UpdateChecker;
 import me.Alw7SHxD.EssCore.commands.RegisterCommands;
 import me.Alw7SHxD.EssCore.listeners.RegisterListeners;
 import me.Alw7SHxD.EssCore.util.hooks.VaultHook;
+import me.Alw7SHxD.EssCore.util.Runnables;
+import me.Alw7SHxD.EssCore.util.vars.lists;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -31,7 +33,7 @@ public class Core extends JavaPlugin {
     public boolean usingPlaceholderAPI = false;
     public UpdateChecker updateChecker = new UpdateChecker(this);
     public boolean hookedWithVault = false;
-    public lists lists;
+    public me.Alw7SHxD.EssCore.util.vars.lists lists;
     private EssEconomy essEconomy;
     private VaultHook vaultHook;
     private Runnables runnables;
@@ -52,10 +54,10 @@ public class Core extends JavaPlugin {
             this.hookedWithVault = true;
         }
 
-        if (getServer().getPluginManager().isPluginEnabled("PlaceholderAPI")) {
+        if (getServer().getPluginManager().getPlugin("PlaceholderAPI") != null) {
             new PlaceholderApiHook(this).hook();
             this.usingPlaceholderAPI = true;
-            getLogger().info("detected PlaceholderAPI.");
+            getLogger().info("[API] Detected PlaceholderAPI.");
         }
 
         this.lists = new lists(this);
@@ -64,7 +66,7 @@ public class Core extends JavaPlugin {
         new RegisterListeners(this);
         new RegisterCommands(this);
 
-        if (getConfig().getDouble("EssCore") != 7.1)
+        if (getConfig().getDouble("EssCore") != 7.1 || getConfig().getDouble("essCore") != 7.1)
             getLogger().info("Your configuration file is outdated, please remove your old config.yml file.");
 
         checkBalances();

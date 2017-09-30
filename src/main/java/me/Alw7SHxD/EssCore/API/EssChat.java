@@ -1,7 +1,7 @@
 package me.Alw7SHxD.EssCore.API;
 
 import com.sun.istack.internal.NotNull;
-import me.Alw7SHxD.EssCore.messages;
+import me.Alw7SHxD.EssCore.util.vars.messages;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;

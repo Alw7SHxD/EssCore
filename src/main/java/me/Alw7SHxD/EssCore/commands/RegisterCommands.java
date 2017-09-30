@@ -57,6 +57,7 @@ public class RegisterCommands {
             commands.put("warp", new CommandWarp(core));
             commands.put("warps", new CommandWarps(core));
             commands.put("workbench", new CommandCraftingTable(core));
+            commands.put("gm", new CommandGamemode(core));
 
             for (String command : commands.keySet())
                 core.getCommand(command).setExecutor(commands.get(command));
