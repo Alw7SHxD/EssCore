@@ -1,7 +1,7 @@
 package me.Alw7SHxD.EssCore.commands;
 
 import me.Alw7SHxD.EssCore.API.EssAPI;
-import me.Alw7SHxD.EssCore.API.EssSpawn;
+import me.Alw7SHxD.EssCore.API.EssHomes;
 import me.Alw7SHxD.EssCore.Core;
 import me.Alw7SHxD.EssCore.util.vars.messages;
 import org.bukkit.command.Command;
@@ -12,11 +12,10 @@ import org.bukkit.entity.Player;
 /**
  * EssCore was created by Alw7SHxD (C) 2017
  */
-public class CommandSetSpawn extends EssSpawn implements CommandExecutor, messages {
+public class ComDelHome implements CommandExecutor, messages {
     private Core core;
 
-    public CommandSetSpawn(Core core) {
-        super(core);
+    public ComDelHome(Core core) {
         this.core = core;
     }
 
@@ -27,18 +26,16 @@ public class CommandSetSpawn extends EssSpawn implements CommandExecutor, messag
             return true;
         }
 
-        if (!EssAPI.hasPermission(commandSender, "esscore.setspawn")) return true;
-        if (strings.length != 0) {
-            commandSender.sendMessage(EssAPI.color(String.format(m_syntax_error_c, s)));
+        if (!EssAPI.hasPermission(commandSender, "esscore.delhome")) return true;
+        if (strings.length != 1) {
+            commandSender.sendMessage(EssAPI.color(String.format(m_syntax_error_c, s + " &9<name>")));
             return true;
         }
 
-        try {
-            set(((Player) commandSender).getLocation());
-            commandSender.sendMessage(EssAPI.color(m_setspawn));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        EssHomes essHomesAPI = new EssHomes((Player) commandSender);
+        if (essHomesAPI.remove(strings[0].replace(".", "-").toLowerCase()))
+            commandSender.sendMessage(EssAPI.color(String.format(m_delhome_success, strings[0].replace(".", "-").toLowerCase())));
+        else commandSender.sendMessage(EssAPI.color(m_delhome_failed));
         return true;
     }
 }

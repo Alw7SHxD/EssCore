@@ -1,7 +1,7 @@
 package me.Alw7SHxD.EssCore.commands;
 
 import me.Alw7SHxD.EssCore.API.EssAPI;
-import me.Alw7SHxD.EssCore.API.EssChat;
+import me.Alw7SHxD.EssCore.API.EssFly;
 import me.Alw7SHxD.EssCore.Core;
 import me.Alw7SHxD.EssCore.util.vars.messages;
 import org.bukkit.command.Command;
@@ -24,46 +24,39 @@ import org.bukkit.entity.Player;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-public class CommandClearChat implements CommandExecutor, messages {
+public class ComFly implements CommandExecutor, messages {
     private Core core;
-    private EssChat.Clear cc;
 
-    CommandClearChat(Core core) {
+    ComFly(Core core) {
         this.core = core;
-        this.cc = new EssChat.Clear(core);
     }
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-        if (!commandSender.hasPermission("esscore.clearchat")) {
+        if (!commandSender.hasPermission("esscore.fly")) {
             commandSender.sendMessage(EssAPI.color(m_no_permission));
             return true;
         }
 
         if (strings.length == 0) {
-            if (!commandSender.hasPermission("esscore.clearchat.global")) {
-                commandSender.sendMessage(m_no_permission);
+            if (!(commandSender instanceof Player)) {
+                commandSender.sendMessage(m_not_player);
                 return true;
             }
 
-            cc.clearChat(commandSender);
-        } else if (strings.length == 1 && strings[0].equalsIgnoreCase("-a")) {
-            cc.clearChat();
-        } else if (strings.length > 0) {
-            if (!commandSender.hasPermission("esscore.clearchat.target")) {
-                commandSender.sendMessage(m_no_permission);
+            EssFly p = new EssFly(core, (Player) commandSender);
+            p.eFly();
+        } else if (strings.length == 1) {
+            if (!commandSender.hasPermission("esscore.fly.target")) {
+                commandSender.sendMessage(EssAPI.color(m_no_permission));
                 return true;
             }
 
             Player target = EssAPI.getPlayer(core, commandSender, strings[0]);
             if (target == null) return true;
 
-            if (strings.length == 1)
-                cc.clearChat(commandSender, target);
-            else if (strings.length == 2 && strings[1].equalsIgnoreCase("-a"))
-                cc.clearChat(target);
-            else
-                commandSender.sendMessage(EssAPI.color(String.format(m_syntax_error_c, s + " &9[Player]")));
+            EssFly p = new EssFly(core, target);
+            p.eFly(commandSender);
         } else commandSender.sendMessage(EssAPI.color(String.format(m_syntax_error_c, s + " &9[Player]")));
         return true;
     }

@@ -13,11 +13,11 @@ import org.bukkit.entity.Player;
  * EssCore was created by Alw7SHxD (C) 2017
  */
 
-public class CommandSetWarp extends EssWarps implements CommandExecutor, messages {
+public class ComSetWarp extends EssWarps implements CommandExecutor, messages {
     private Core core;
     private EssWarps warpAPI;
 
-    CommandSetWarp(Core core) {
+    ComSetWarp(Core core) {
         super(core);
         this.core = core;
         this.warpAPI = new EssWarps(core);

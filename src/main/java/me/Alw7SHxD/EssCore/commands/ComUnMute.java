@@ -1,7 +1,7 @@
 package me.Alw7SHxD.EssCore.commands;
 
 import me.Alw7SHxD.EssCore.API.EssAPI;
-import me.Alw7SHxD.EssCore.API.EssFly;
+import me.Alw7SHxD.EssCore.API.EssChat;
 import me.Alw7SHxD.EssCore.Core;
 import me.Alw7SHxD.EssCore.util.vars.messages;
 import org.bukkit.command.Command;
@@ -24,40 +24,26 @@ import org.bukkit.entity.Player;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-public class CommandFly implements CommandExecutor, messages {
+public class ComUnMute implements CommandExecutor, messages {
     private Core core;
 
-    CommandFly(Core core) {
+    public ComUnMute(Core core) {
         this.core = core;
     }
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-        if (!commandSender.hasPermission("esscore.fly")) {
-            commandSender.sendMessage(EssAPI.color(m_no_permission));
+        if (!EssAPI.hasPermission(commandSender, "esscore.unmute")) return true;
+        if (strings.length != 1) {
+            commandSender.sendMessage(EssAPI.color(String.format(m_syntax_error_c, s + " &9<Player>")));
             return true;
         }
 
-        if (strings.length == 0) {
-            if (!(commandSender instanceof Player)) {
-                commandSender.sendMessage(m_not_player);
-                return true;
-            }
+        Player target = EssAPI.getPlayer(core, commandSender, strings[0]);
+        if (target == null) return true;
 
-            EssFly p = new EssFly(core, (Player) commandSender);
-            p.eFly();
-        } else if (strings.length == 1) {
-            if (!commandSender.hasPermission("esscore.fly.target")) {
-                commandSender.sendMessage(EssAPI.color(m_no_permission));
-                return true;
-            }
-
-            Player target = EssAPI.getPlayer(core, commandSender, strings[0]);
-            if (target == null) return true;
-
-            EssFly p = new EssFly(core, target);
-            p.eFly(commandSender);
-        } else commandSender.sendMessage(EssAPI.color(String.format(m_syntax_error_c, s + " &9[Player]")));
+        EssChat.Mute chatAPI = new EssChat.Mute(core, target);
+        chatAPI.eUnMute(commandSender);
         return true;
     }
 }

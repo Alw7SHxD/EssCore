@@ -11,10 +11,10 @@ import org.bukkit.entity.Player;
 /**
  * EssCore was created by Alw7SHxD (C) 2017
  */
-public class CommandEconomy implements CommandExecutor {
+public class ComEconomy implements CommandExecutor {
     private Core core;
 
-    public CommandEconomy(Core core) {
+    public ComEconomy(Core core) {
         this.core = core;
     }
 

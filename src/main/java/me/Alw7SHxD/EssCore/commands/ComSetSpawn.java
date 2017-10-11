@@ -1,6 +1,7 @@
 package me.Alw7SHxD.EssCore.commands;
 
 import me.Alw7SHxD.EssCore.API.EssAPI;
+import me.Alw7SHxD.EssCore.API.EssSpawn;
 import me.Alw7SHxD.EssCore.Core;
 import me.Alw7SHxD.EssCore.util.vars.messages;
 import org.bukkit.command.Command;
@@ -11,10 +12,11 @@ import org.bukkit.entity.Player;
 /**
  * EssCore was created by Alw7SHxD (C) 2017
  */
-public class CommandOpenInv implements CommandExecutor, messages {
+public class ComSetSpawn extends EssSpawn implements CommandExecutor, messages {
     private Core core;
 
-    public CommandOpenInv(Core core) {
+    public ComSetSpawn(Core core) {
+        super(core);
         this.core = core;
     }
 
@@ -25,17 +27,18 @@ public class CommandOpenInv implements CommandExecutor, messages {
             return true;
         }
 
-        if (!EssAPI.hasPermission(commandSender, "esscore.openinv")) return true;
-        if(strings.length != 1) {
-            commandSender.sendMessage(EssAPI.color(String.format(m_syntax_error_c, s + " &9<Player>")));
+        if (!EssAPI.hasPermission(commandSender, "esscore.setspawn")) return true;
+        if (strings.length != 0) {
+            commandSender.sendMessage(EssAPI.color(String.format(m_syntax_error_c, s)));
             return true;
         }
 
-        Player target = EssAPI.getPlayer(core, commandSender, strings[0]);
-        if(target == null) return true;
-
-        ((Player) commandSender).openInventory(target.getInventory());
-        commandSender.sendMessage(EssAPI.color(String.format(m_openinv, target.getName())));
+        try {
+            set(((Player) commandSender).getLocation());
+            commandSender.sendMessage(EssAPI.color(m_setspawn));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return true;
     }
 }

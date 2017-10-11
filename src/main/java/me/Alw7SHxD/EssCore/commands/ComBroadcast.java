@@ -1,13 +1,11 @@
 package me.Alw7SHxD.EssCore.commands;
 
 import me.Alw7SHxD.EssCore.API.EssAPI;
-import me.Alw7SHxD.EssCore.API.EssChat;
 import me.Alw7SHxD.EssCore.Core;
 import me.Alw7SHxD.EssCore.util.vars.messages;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 /*
  * (C) Copyright 2017 Alw7SHxD.
@@ -24,31 +22,31 @@ import org.bukkit.entity.Player;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-public class CommandMute implements CommandExecutor, messages {
+public class ComBroadcast implements CommandExecutor, messages {
     private Core core;
 
-    public CommandMute(Core core) {
+    public ComBroadcast(Core core) {
         this.core = core;
     }
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-        if (!EssAPI.hasPermission(commandSender, "esscore.mute")) return true;
-        if (strings.length != 1) {
-            commandSender.sendMessage(EssAPI.color(String.format(m_syntax_error_c, s + " &9<Player>")));
+        if (!commandSender.hasPermission("esscore.broadcast")) {
+            commandSender.sendMessage(EssAPI.color(m_no_permission));
             return true;
         }
 
-        Player target = EssAPI.getPlayer(core, commandSender, strings[0]);
-        if (target == null) return true;
-
-        if (target.hasPermission("esscore.mute.bypass") && !commandSender.hasPermission("esscore.mute.force")) {
-            commandSender.sendMessage(EssAPI.color(String.format(m_target_no_permission, "&c&lmute")));
+        if (strings.length < 1) {
+            commandSender.sendMessage(EssAPI.color(String.format(m_syntax_error_c, s + " &9<message>")));
             return true;
         }
 
-        EssChat.Mute chatAPI = new EssChat.Mute(core, target);
-        chatAPI.eMute(commandSender);
+        String message = "";
+        for (String part : strings) {
+            if (!message.equals("")) message += " ";
+            message += part;
+        }
+        core.getServer().broadcastMessage(EssAPI.color(core.getConfigCache().getString("broadcast-prefix") != null ? core.getConfigCache().getString("broadcast-prefix") + message : "&c&lBROADCAST! &r" + message));
         return true;
     }
 }

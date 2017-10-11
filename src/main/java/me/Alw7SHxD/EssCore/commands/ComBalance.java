@@ -15,11 +15,11 @@ import java.text.DecimalFormat;
 /**
  * EssCore was created by Alw7SHxD (C) 2017
  */
-public class CommandBalance implements CommandExecutor {
+public class ComBalance implements CommandExecutor {
     private Core core;
     private boolean t;
 
-    public CommandBalance(Core core, boolean type) {
+    public ComBalance(Core core, boolean type) {
         this.core = core;
         this.t = type;
     }

@@ -12,10 +12,10 @@ import org.bukkit.entity.Player;
 /**
  * EssCore was created by Alw7SHxD (C) 2017
  */
-public class CommandNick implements CommandExecutor, messages {
+public class ComNick implements CommandExecutor, messages {
     private Core core;
 
-    public CommandNick(Core core) {
+    public ComNick(Core core) {
         this.core = core;
     }
 

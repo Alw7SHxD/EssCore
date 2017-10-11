@@ -12,10 +12,10 @@ import org.bukkit.entity.Player;
 /**
  * EssCore was created by Alw7SHxD (C) 2017
  */
-public class CommandUnFreeze implements CommandExecutor, messages {
+public class ComUnFreeze implements CommandExecutor, messages {
     private Core core;
 
-    CommandUnFreeze(Core core) {
+    ComUnFreeze(Core core) {
         this.core = core;
     }
 

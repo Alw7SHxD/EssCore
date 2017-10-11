@@ -12,10 +12,10 @@ import org.bukkit.entity.Player;
 /**
  * EssCore was created by Alw7SHxD (C) 2017
  */
-public class CommandDelHome implements CommandExecutor, messages {
+public class ComHome implements CommandExecutor, messages {
     private Core core;
 
-    public CommandDelHome(Core core) {
+    public ComHome(Core core) {
         this.core = core;
     }
 
@@ -26,16 +26,13 @@ public class CommandDelHome implements CommandExecutor, messages {
             return true;
         }
 
-        if (!EssAPI.hasPermission(commandSender, "esscore.delhome")) return true;
-        if (strings.length != 1) {
-            commandSender.sendMessage(EssAPI.color(String.format(m_syntax_error_c, s + " &9<name>")));
-            return true;
-        }
-
-        EssHomes essHomesAPI = new EssHomes((Player) commandSender);
-        if (essHomesAPI.remove(strings[0].replace(".", "-").toLowerCase()))
-            commandSender.sendMessage(EssAPI.color(String.format(m_delhome_success, strings[0].replace(".", "-").toLowerCase())));
-        else commandSender.sendMessage(EssAPI.color(m_delhome_failed));
+        if (!EssAPI.hasPermission(commandSender, "esscore.home")) return true;
+        if (strings.length == 1) {
+            EssHomes essHomesAPI = new EssHomes((Player) commandSender);
+            if (essHomesAPI.teleport(strings[0].replace(".", "-")))
+                commandSender.sendMessage(EssAPI.color(m_home_teleport));
+            else commandSender.sendMessage(EssAPI.color(m_home_doesnt_exist));
+        } else commandSender.sendMessage(EssAPI.color(String.format(m_syntax_error_c, s + " &9<name>")));
         return true;
     }
 }

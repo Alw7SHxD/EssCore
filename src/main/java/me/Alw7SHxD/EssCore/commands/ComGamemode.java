@@ -13,10 +13,10 @@ import org.bukkit.entity.Player;
  * EssCore was created by ApixTeam (C) 2017
  * in association with TheSourceCode (C) 2017
  */
-public class CommandGamemode implements CommandExecutor {
+public class ComGamemode implements CommandExecutor {
     private Core core;
 
-    public CommandGamemode(Core core) {
+    public ComGamemode(Core core) {
         this.core = core;
     }
 

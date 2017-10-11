@@ -12,10 +12,10 @@ import org.bukkit.entity.Player;
 /**
  * EssCore was created by Alw7SHxD (C) 2017
  */
-public class CommandVanish implements CommandExecutor, messages {
+public class ComVanish implements CommandExecutor, messages {
     private Core core;
 
-    CommandVanish(Core core) {
+    ComVanish(Core core) {
         this.core = core;
     }
 

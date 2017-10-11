@@ -12,10 +12,10 @@ import org.bukkit.entity.Player;
 /**
  * EssCore was created by Alw7SHxD (C) 2017
  */
-public class CommandSetHome implements CommandExecutor, messages {
+public class ComSetHome implements CommandExecutor, messages {
     private Core core;
 
-    public CommandSetHome(Core core) {
+    public ComSetHome(Core core) {
         this.core = core;
     }
 

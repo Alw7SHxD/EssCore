@@ -11,8 +11,8 @@ import org.bukkit.command.CommandSender;
 /**
  * EssCore was created by Alw7SHxD (C) 2017
  */
-public class CommandDelWarp extends EssWarps implements CommandExecutor, messages {
-    public CommandDelWarp(Core core) {
+public class ComDelWarp extends EssWarps implements CommandExecutor, messages {
+    public ComDelWarp(Core core) {
         super(core);
     }
 

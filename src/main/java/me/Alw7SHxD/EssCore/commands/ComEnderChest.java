@@ -11,10 +11,10 @@ import org.bukkit.entity.Player;
 /**
  * EssCore was created by Alw7SHxD (C) 2017
  */
-public class CommandEnderChest implements CommandExecutor, messages {
+public class ComEnderChest implements CommandExecutor, messages {
     private Core core;
 
-    public CommandEnderChest(Core core) {
+    public ComEnderChest(Core core) {
         this.core = core;
     }
 

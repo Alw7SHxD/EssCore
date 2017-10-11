@@ -24,16 +24,16 @@ import org.bukkit.entity.Player;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-public class CommandUnMute implements CommandExecutor, messages {
+public class ComMute implements CommandExecutor, messages {
     private Core core;
 
-    public CommandUnMute(Core core) {
+    public ComMute(Core core) {
         this.core = core;
     }
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-        if (!EssAPI.hasPermission(commandSender, "esscore.unmute")) return true;
+        if (!EssAPI.hasPermission(commandSender, "esscore.mute")) return true;
         if (strings.length != 1) {
             commandSender.sendMessage(EssAPI.color(String.format(m_syntax_error_c, s + " &9<Player>")));
             return true;
@@ -42,8 +42,13 @@ public class CommandUnMute implements CommandExecutor, messages {
         Player target = EssAPI.getPlayer(core, commandSender, strings[0]);
         if (target == null) return true;
 
+        if (target.hasPermission("esscore.mute.bypass") && !commandSender.hasPermission("esscore.mute.force")) {
+            commandSender.sendMessage(EssAPI.color(String.format(m_target_no_permission, "&c&lmute")));
+            return true;
+        }
+
         EssChat.Mute chatAPI = new EssChat.Mute(core, target);
-        chatAPI.eUnMute(commandSender);
+        chatAPI.eMute(commandSender);
         return true;
     }
 }

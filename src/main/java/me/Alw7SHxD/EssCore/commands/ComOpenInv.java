@@ -1,7 +1,6 @@
 package me.Alw7SHxD.EssCore.commands;
 
 import me.Alw7SHxD.EssCore.API.EssAPI;
-import me.Alw7SHxD.EssCore.API.EssHomes;
 import me.Alw7SHxD.EssCore.Core;
 import me.Alw7SHxD.EssCore.util.vars.messages;
 import org.bukkit.command.Command;
@@ -12,10 +11,10 @@ import org.bukkit.entity.Player;
 /**
  * EssCore was created by Alw7SHxD (C) 2017
  */
-public class CommandHome implements CommandExecutor, messages {
+public class ComOpenInv implements CommandExecutor, messages {
     private Core core;
 
-    public CommandHome(Core core) {
+    public ComOpenInv(Core core) {
         this.core = core;
     }
 
@@ -26,13 +25,17 @@ public class CommandHome implements CommandExecutor, messages {
             return true;
         }
 
-        if (!EssAPI.hasPermission(commandSender, "esscore.home")) return true;
-        if (strings.length == 1) {
-            EssHomes essHomesAPI = new EssHomes((Player) commandSender);
-            if (essHomesAPI.teleport(strings[0].replace(".", "-")))
-                commandSender.sendMessage(EssAPI.color(m_home_teleport));
-            else commandSender.sendMessage(EssAPI.color(m_home_doesnt_exist));
-        } else commandSender.sendMessage(EssAPI.color(String.format(m_syntax_error_c, s + " &9<name>")));
+        if (!EssAPI.hasPermission(commandSender, "esscore.openinv")) return true;
+        if(strings.length != 1) {
+            commandSender.sendMessage(EssAPI.color(String.format(m_syntax_error_c, s + " &9<Player>")));
+            return true;
+        }
+
+        Player target = EssAPI.getPlayer(core, commandSender, strings[0]);
+        if(target == null) return true;
+
+        ((Player) commandSender).openInventory(target.getInventory());
+        commandSender.sendMessage(EssAPI.color(String.format(m_openinv, target.getName())));
         return true;
     }
 }

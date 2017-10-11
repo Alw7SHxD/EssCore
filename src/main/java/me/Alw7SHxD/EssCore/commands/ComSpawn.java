@@ -12,11 +12,11 @@ import org.bukkit.entity.Player;
 /**
  * EssCore was created by Alw7SHxD (C) 2017
  */
-public class CommandSpawn implements CommandExecutor, messages {
+public class ComSpawn implements CommandExecutor, messages {
     private Core core;
     private EssSpawn spawnAPI;
 
-    public CommandSpawn(Core core) {
+    public ComSpawn(Core core) {
         this.core = core;
         this.spawnAPI = new EssSpawn(core);
     }

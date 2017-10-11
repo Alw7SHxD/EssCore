@@ -11,8 +11,8 @@ import org.bukkit.command.CommandSender;
 /**
  * EssCore was created by Alw7SHxD (C) 2017
  */
-public class CommandDelSpawn extends EssSpawn implements CommandExecutor, messages {
-    public CommandDelSpawn(Core core) {
+public class ComDelSpawn extends EssSpawn implements CommandExecutor, messages {
+    public ComDelSpawn(Core core) {
         super(core);
     }
 
