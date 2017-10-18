@@ -42,7 +42,7 @@ public class ComEss implements CommandExecutor, messages {
                         core.getConfigCache().load();
                         new EssWarps(core).reload();
                         new EssSpawn(core).reload();
-                        core.lists.startup();
+                        core.Lists.startup();
                         sender.sendMessage(EssAPI.color(m_reload_done));
                     } catch (Exception e) {
                         sender.sendMessage(EssAPI.color(m_reload_error));

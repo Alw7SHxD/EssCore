@@ -94,6 +94,6 @@ public class ComEconomy implements CommandExecutor {
 
     private void hasAccount(Player player) {
         if (!core.getEssEconomy().hasAccount(player))
-            core.lists.getPlayerBank().put(player.getUniqueId(), core.getConfigCache().getDouble("starting-balance") != null ? core.getConfigCache().getDouble("starting-balance") : 0);
+            core.Lists.getPlayerBank().put(player.getUniqueId(), core.getConfigCache().getDouble("starting-balance") != null ? core.getConfigCache().getDouble("starting-balance") : 0);
     }
 }

@@ -12,7 +12,7 @@ import java.util.UUID;
 /**
  * EssCore was created by Alw7SHxD (C) 2017
  */
-public class lists{
+public class Lists {
     private Core core;
 
     private ArrayList<String> allowedSigns = new ArrayList<>();
@@ -22,9 +22,9 @@ public class lists{
     private final HashMap<UUID, Double> playerBank = new HashMap<>();
     private HashMap<UUID, Integer> playerPayTransactionTime = new HashMap<>();
     private HashMap<UUID, HashMap<UUID, Double>> playerPayTransaction = new HashMap<>();
-    private HashMap<String, Location> warps = new HashMap<>();
+    private ArrayList<String> kits = new ArrayList<>();
 
-    public lists(Core core) {
+    public Lists(Core core) {
         this.core = core;
     }
 
@@ -117,7 +117,7 @@ public class lists{
         return playerPayTransaction;
     }
 
-    public HashMap<String, Location> getWarps() {
-        return warps;
+    public ArrayList<String> getKits() {
+        return kits;
     }
 }

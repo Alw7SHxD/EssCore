@@ -20,7 +20,7 @@ public class SignsChangeHandler implements Listener, messages {
 
     @EventHandler
     public void onSignChange(SignChangeEvent e) {
-        for (String s : core.lists.getAllowedSigns()) {
+        for (String s : core.Lists.getAllowedSigns()) {
             if (s.equalsIgnoreCase("colors")) {
                 if (!e.getPlayer().hasPermission("esscore.signs.colors.create"))
                     continue;

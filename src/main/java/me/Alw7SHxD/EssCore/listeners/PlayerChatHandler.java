@@ -45,9 +45,9 @@ public class PlayerChatHandler implements Listener, messages {
             e.setCancelled(true);
         }
 
-        if(core.lists.getPlayerPayTransaction().containsKey(e.getPlayer().getUniqueId())){
+        if(core.Lists.getPlayerPayTransaction().containsKey(e.getPlayer().getUniqueId())){
             if(e.getMessage().equalsIgnoreCase("yes")){
-                HashMap<UUID, Double> hashMap = core.lists.getPlayerPayTransaction().get(e.getPlayer().getUniqueId());
+                HashMap<UUID, Double> hashMap = core.Lists.getPlayerPayTransaction().get(e.getPlayer().getUniqueId());
                 UUID targetUUID = null;
                 for(UUID uuid: hashMap.keySet())
                     targetUUID = uuid;
@@ -63,7 +63,7 @@ public class PlayerChatHandler implements Listener, messages {
                 e.getPlayer().sendMessage(EssAPI.color(m_pay_confirm_decline));
             else
                 e.getPlayer().sendMessage(EssAPI.color(m_economy_transaction_fail));
-            core.lists.removePlayerPayTransaction(e.getPlayer().getUniqueId());
+            core.Lists.removePlayerPayTransaction(e.getPlayer().getUniqueId());
             e.setCancelled(true);
         }
 

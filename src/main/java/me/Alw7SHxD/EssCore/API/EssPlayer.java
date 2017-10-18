@@ -201,7 +201,7 @@ public class EssPlayer {
     }
 
     public double getBalance() {
-        return core.lists.getPlayerBank().get(uuid);
+        return core.Lists.getPlayerBank().get(uuid);
     }
 
     public double getLocalBalance() {
@@ -209,12 +209,12 @@ public class EssPlayer {
     }
 
     public void setBalance(double balance) {
-        core.lists.getPlayerBank().put(uuid, balance);
+        core.Lists.getPlayerBank().put(uuid, balance);
         set("player.economy.balance", balance);
     }
 
     public void setBalance() {
-        core.lists.getPlayerBank().put(uuid, getDouble("player.economy.balance"));
+        core.Lists.getPlayerBank().put(uuid, getDouble("player.economy.balance"));
     }
 
     public void setDefaultBalance() {
@@ -223,13 +223,13 @@ public class EssPlayer {
 
     public void giveBalance(double amount) {
         amount = Double.parseDouble(String.valueOf(amount).replace("-", ""));
-        Double balance = core.lists.getPlayerBank().get(uuid);
+        Double balance = core.Lists.getPlayerBank().get(uuid);
         setBalance(balance + amount);
     }
 
     public boolean takeBalance(double amount) {
         amount = Double.parseDouble(String.valueOf(amount).replace("-", ""));
-        Double balance = core.lists.getPlayerBank().get(uuid);
+        Double balance = core.Lists.getPlayerBank().get(uuid);
         if (!core.getConfigCache().getBoolean("allow-negative-balance") && balance - amount < 0)
             return false;
         if (core.getConfigCache().getBoolean("allow-negative-balance")) {
@@ -247,7 +247,7 @@ public class EssPlayer {
     }
 
     public boolean hasAccount() {
-        return core.lists.getPlayerBank().containsKey(uuid);
+        return core.Lists.getPlayerBank().containsKey(uuid);
     }
 
     public boolean hasLocalAccount() {

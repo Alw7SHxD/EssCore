@@ -5,7 +5,7 @@ import me.Alw7SHxD.EssCore.API.EssPlayer;
 import me.Alw7SHxD.EssCore.API.EssSpawn;
 import me.Alw7SHxD.EssCore.util.updaters.UpdateChecker;
 import me.Alw7SHxD.EssCore.Core;
-import me.Alw7SHxD.EssCore.util.vars.lists;
+import me.Alw7SHxD.EssCore.util.vars.Lists;
 import me.Alw7SHxD.EssCore.util.vars.messages;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -31,13 +31,13 @@ import org.bukkit.event.player.PlayerJoinEvent;
 public class PlayerJoinHandler implements Listener {
     private Core core;
     private UpdateChecker updateChecker;
-    private lists lists;
+    private Lists Lists;
     private EssSpawn spawnAPI;
 
     PlayerJoinHandler(Core core) {
         this.core = core;
         updateChecker = new UpdateChecker(core);
-        this.lists = new lists(core);
+        this.Lists = new Lists(core);
         this.spawnAPI = new EssSpawn(core);
     }
 
@@ -71,12 +71,12 @@ public class PlayerJoinHandler implements Listener {
         }
 
         try {
-            lists.loadVanishedPlayers();
-            for (Player p : lists.getVanishedPlayers()) {
+            Lists.loadVanishedPlayers();
+            for (Player p : Lists.getVanishedPlayers()) {
                 if (p != player)
                     player.hidePlayer(p);
             }
-            if (lists.getVanishedPlayers().contains(player)) {
+            if (Lists.getVanishedPlayers().contains(player)) {
                 for (Player p : core.getServer().getOnlinePlayers())
                     p.hidePlayer(player);
                 if (player.hasPermission("esscore.vanish.silent")) e.setJoinMessage("");

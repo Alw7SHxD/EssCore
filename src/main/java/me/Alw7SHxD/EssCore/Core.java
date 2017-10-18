@@ -1,6 +1,7 @@
 package me.Alw7SHxD.EssCore;
 
 import me.Alw7SHxD.EssCore.API.EssPlayer;
+import me.Alw7SHxD.EssCore.API.EssWarps;
 import me.Alw7SHxD.EssCore.util.ConfigCache;
 import me.Alw7SHxD.EssCore.util.EssEconomy;
 import me.Alw7SHxD.EssCore.util.hooks.PlaceholderApiHook;
@@ -8,8 +9,8 @@ import me.Alw7SHxD.EssCore.util.updaters.UpdateChecker;
 import me.Alw7SHxD.EssCore.commands.RegisterCommands;
 import me.Alw7SHxD.EssCore.listeners.RegisterListeners;
 import me.Alw7SHxD.EssCore.util.hooks.VaultHook;
-import me.Alw7SHxD.EssCore.util.Runnables;
-import me.Alw7SHxD.EssCore.util.vars.lists;
+import me.Alw7SHxD.EssCore.util.Runnable;
+import me.Alw7SHxD.EssCore.util.vars.Lists;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -33,10 +34,9 @@ public class Core extends JavaPlugin {
     public boolean usingPlaceholderAPI = false;
     public UpdateChecker updateChecker = new UpdateChecker(this);
     public boolean hookedWithVault = false;
-    public me.Alw7SHxD.EssCore.util.vars.lists lists;
+    public Lists Lists;
     private EssEconomy essEconomy;
     private VaultHook vaultHook;
-    private Runnables runnables;
 
     public void onEnable() {
         if (!getDataFolder().exists()) getDataFolder().mkdir();
@@ -44,8 +44,8 @@ public class Core extends JavaPlugin {
         configCache.load();
 
         updateChecker.check(getServer().getConsoleSender());
-        this.runnables = new Runnables(this);
-        this.runnables.asyncOneSecond();
+        Runnable runnable = new Runnable(this);
+        runnable.asyncOneSecond();
 
         if(getServer().getPluginManager().isPluginEnabled("Vault")) {
             this.essEconomy = new EssEconomy(this);
@@ -60,8 +60,8 @@ public class Core extends JavaPlugin {
             getLogger().info("[API] Detected PlaceholderAPI.");
         }
 
-        this.lists = new lists(this);
-        this.lists.startup();
+        this.Lists = new Lists(this);
+        this.Lists.startup();
 
         new RegisterListeners(this);
         new RegisterCommands(this);

@@ -49,11 +49,11 @@ public class ComPay implements CommandExecutor {
             } else if (!core.getEssEconomy().has(player, amount)) {
                 commandSender.sendMessage(EssAPI.color(messages.m_economy_not_enough_money));
                 return true;
-            } else if (core.lists.getPlayerPayTransaction().containsKey(player.getUniqueId()) || core.lists.getPlayerPayTransactionTime().containsKey(player.getUniqueId())) {
+            } else if (core.Lists.getPlayerPayTransaction().containsKey(player.getUniqueId()) || core.Lists.getPlayerPayTransactionTime().containsKey(player.getUniqueId())) {
                 commandSender.sendMessage(EssAPI.color(messages.m_economy_transaction_pending));
                 return true;
             }
-            core.lists.addPlayerPayTransaction(player.getUniqueId(), target.getUniqueId(), 10, amount);
+            core.Lists.addPlayerPayTransaction(player.getUniqueId(), target.getUniqueId(), 10, amount);
             player.sendMessage(EssAPI.color(String.format(messages.m_pay_confirm, core.getEssEconomy().format(amount), target.getName())));
         } catch (NumberFormatException e) {
             commandSender.sendMessage(EssAPI.color(messages.m_number_format));

@@ -1,7 +1,7 @@
 package me.Alw7SHxD.EssCore.API;
 
 import me.Alw7SHxD.EssCore.Core;
-import me.Alw7SHxD.EssCore.util.vars.lists;
+import me.Alw7SHxD.EssCore.util.vars.Lists;
 import me.Alw7SHxD.EssCore.util.vars.messages;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -14,7 +14,7 @@ public class EssVanish {
     private JavaPlugin plugin;
     private Player player;
     private EssPlayer playerAPI;
-    private lists lists;
+    private Lists Lists;
 
     public EssVanish(JavaPlugin plugin, Player player) {
         this.plugin = plugin;
@@ -26,21 +26,21 @@ public class EssVanish {
         this.plugin = core;
         this.player = player;
         this.playerAPI = new EssPlayer(player);
-        this.lists = new lists(core);
+        this.Lists = new Lists(core);
     }
 
     private boolean vanish(){
-        lists.loadVanishedPlayers();
+        Lists.loadVanishedPlayers();
         if(playerAPI.toggle("vanished")){
             playerAPI.setVanished(true);
-            lists.addVanishedPlayers(player);
+            Lists.addVanishedPlayers(player);
             for(Player p: plugin.getServer().getOnlinePlayers()){
                 p.hidePlayer(player);
             }
             return true;
         }else{
             playerAPI.setVanished(false);
-            lists.removeVanishedPlayers(player);
+            Lists.removeVanishedPlayers(player);
             for(Player p: plugin.getServer().getOnlinePlayers()){
                 p.showPlayer(player);
             }
