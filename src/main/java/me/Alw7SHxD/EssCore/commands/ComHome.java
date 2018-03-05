@@ -29,7 +29,7 @@ public class ComHome implements CommandExecutor, messages {
         if (!EssAPI.hasPermission(commandSender, "esscore.home")) return true;
         if (strings.length == 1) {
             EssHomes essHomesAPI = new EssHomes((Player) commandSender);
-            if (essHomesAPI.teleport(strings[0].replace(".", "-")))
+            if (essHomesAPI.teleport(strings[0].toLowerCase().replace(".", "-")))
                 commandSender.sendMessage(EssAPI.color(m_home_teleport));
             else commandSender.sendMessage(EssAPI.color(m_home_doesnt_exist));
         } else commandSender.sendMessage(EssAPI.color(String.format(m_syntax_error_c, s + " &9<name>")));

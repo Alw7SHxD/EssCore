@@ -1,14 +1,12 @@
 ###
 # +
-# | EssCore made by Alw7SHxD
+### EssCore made with <3 by Alw7SHxD
 # +
 ###
 
 # EssCore is a minecraft essentials plugin
 # providing commands & features for daily
-# use, it is still in the beta phase but
-# i'm continuing to work on it hard to
-# make it the better it can be.
+# use, it is still in the beta phase.
 
 # If you receive an error when loading EssCore, make sure that:
 #   - No tabs are present: YAML only allows spaces
@@ -52,10 +50,10 @@ allowed-signs:
   #- warps
 
 # Limit how many homes can each permission make
-# use esscore.sethome.<name> permission for the following
-# ex. 'esscore.sethome.member' will limit the user to 3 homes.
-# default (without permissions) is 1 home only.
-# top has the best priority.
+# Use 'esscore.sethome.<name>' permission for the following
+# (ex. 'esscore.sethome.member' will limit the user to 3 homes).
+# Default (without permissions) is 1 home only.
+# Top has the best priority.
 limit-homes:
   staff: 7
   vip: 5
@@ -117,12 +115,6 @@ currency-format:
 # Set new players starting balance
 starting-balance: 0
 
-# If set to true, the player who sends money to
-# another player, needs to confirm their
-# transaction. set to false to make it instant.
-#send-pay-confirmation: true
-# this will not work anymore. unsupported.
-
 # If enabled, players can go under 0 dollars
 # negative balance has been tested, but it's
 # risky to use, use it at your own risk.
@@ -141,11 +133,11 @@ maximum-negative-balance: -1000
 # Modify on which event should the player get teleported to the spawn.
 spawn-teleport:
   player-join: true
-  player-first-join: true
   player-respawn: true
+  player-first-join: true
 
-# If enabled, people with no permissions will get notified about the permission.
+# If enabled, people with no permissions will get notified about "some" missing permission.
 debug-signs: false
 
 # Don't change this value, unless you know what to do.
-essCore: 7.1
+EssCore: 8

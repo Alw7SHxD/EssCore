@@ -32,14 +32,15 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Core extends JavaPlugin {
     private ConfigCache configCache = new ConfigCache(this);
     public boolean usingPlaceholderAPI = false;
-    public UpdateChecker updateChecker = new UpdateChecker(this);
+    public UpdateChecker updateChecker = new UpdateChecker(this, 37766);
     public boolean hookedWithVault = false;
     public Lists Lists;
     private EssEconomy essEconomy;
     private VaultHook vaultHook;
 
     public void onEnable() {
-        if (!getDataFolder().exists()) getDataFolder().mkdir();
+        if (!getDataFolder().exists())
+            getDataFolder().mkdir();
         saveDefaultConfig();
         configCache.load();
 
@@ -66,7 +67,7 @@ public class Core extends JavaPlugin {
         new RegisterListeners(this);
         new RegisterCommands(this);
 
-        if (getConfig().getDouble("EssCore") != 7.1 || getConfig().getDouble("essCore") != 7.1)
+        if (getConfig().getDouble("EssCore") != 8 || getConfig().getDouble("essCore") != 8)
             getLogger().info("Your configuration file is outdated, please remove your old config.yml file.");
 
         checkBalances();

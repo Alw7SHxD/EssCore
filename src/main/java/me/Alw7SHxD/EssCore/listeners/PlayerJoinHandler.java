@@ -36,7 +36,7 @@ public class PlayerJoinHandler implements Listener {
 
     PlayerJoinHandler(Core core) {
         this.core = core;
-        updateChecker = new UpdateChecker(core);
+        updateChecker = core.updateChecker;
         this.Lists = new Lists(core);
         this.spawnAPI = new EssSpawn(core);
     }

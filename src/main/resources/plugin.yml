@@ -299,7 +299,7 @@ commands:
       /<command> reset <Player>
     aliases: [eeco, economy, eeconomy]
   enderchest:
-    description: "open your enderchest."
+    description: "open's your enderchest."
     usage: |
       /<command>
       /<command> [Player]
@@ -363,7 +363,7 @@ commands:
   openinv:
     description: "open a certain player's inventory."
     usage: /<command> <Player>
-    aliases: [eopeninv, openinventory]
+    aliases: [eopeninv, openinventory, seeinv]
   pay:
     description: "send payments (money) to players."
     usage: /<command> <Player> <Amount>

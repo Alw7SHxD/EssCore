@@ -2,7 +2,6 @@ package me.Alw7SHxD.EssCore.util.vars;
 
 import me.Alw7SHxD.EssCore.API.EssPlayer;
 import me.Alw7SHxD.EssCore.Core;
-import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
