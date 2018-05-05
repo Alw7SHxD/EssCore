@@ -1,15 +1,14 @@
 package me.Alw7SHxD.EssCore;
 
 import me.Alw7SHxD.EssCore.API.EssPlayer;
-import me.Alw7SHxD.EssCore.API.EssWarps;
-import me.Alw7SHxD.EssCore.util.ConfigCache;
-import me.Alw7SHxD.EssCore.util.EssEconomy;
-import me.Alw7SHxD.EssCore.util.hooks.PlaceholderApiHook;
-import me.Alw7SHxD.EssCore.util.updaters.UpdateChecker;
 import me.Alw7SHxD.EssCore.commands.RegisterCommands;
 import me.Alw7SHxD.EssCore.listeners.RegisterListeners;
-import me.Alw7SHxD.EssCore.util.hooks.VaultHook;
+import me.Alw7SHxD.EssCore.util.ConfigCache;
+import me.Alw7SHxD.EssCore.util.EssEconomy;
 import me.Alw7SHxD.EssCore.util.Runnable;
+import me.Alw7SHxD.EssCore.util.hooks.PlaceholderApiHook;
+import me.Alw7SHxD.EssCore.util.hooks.VaultHook;
+import me.Alw7SHxD.EssCore.util.updaters.UpdateChecker;
 import me.Alw7SHxD.EssCore.util.vars.Lists;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -32,7 +31,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Core extends JavaPlugin {
     private ConfigCache configCache = new ConfigCache(this);
     public boolean usingPlaceholderAPI = false;
-    public UpdateChecker updateChecker = new UpdateChecker(this, 37766);
+    public UpdateChecker updateChecker = new UpdateChecker(this);
     public boolean hookedWithVault = false;
     public Lists Lists;
     private EssEconomy essEconomy;

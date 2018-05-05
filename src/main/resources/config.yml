@@ -140,4 +140,4 @@ spawn-teleport:
 debug-signs: false
 
 # Don't change this value, unless you know what to do.
-EssCore: 8
+EssCore: 7
