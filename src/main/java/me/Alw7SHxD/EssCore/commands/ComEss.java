@@ -49,7 +49,7 @@ public class ComEss implements CommandExecutor, messages {
                     }
                 } else sender.sendMessage(EssAPI.color(m_no_permission));
             else if (args[0].equalsIgnoreCase("update") || args[0].equalsIgnoreCase("check"))
-               core.updateChecker.check(sender);
+               core.spigotUpdater.check(sender);
             else if (args[0].equalsIgnoreCase("help") || args[0].equals("?")) {
                 Integer maxPage = 4;
                 try {

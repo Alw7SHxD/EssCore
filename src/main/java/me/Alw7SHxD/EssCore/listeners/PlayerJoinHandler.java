@@ -3,8 +3,8 @@ package me.Alw7SHxD.EssCore.listeners;
 import me.Alw7SHxD.EssCore.API.EssAPI;
 import me.Alw7SHxD.EssCore.API.EssPlayer;
 import me.Alw7SHxD.EssCore.API.EssSpawn;
-import me.Alw7SHxD.EssCore.util.updaters.UpdateChecker;
 import me.Alw7SHxD.EssCore.Core;
+import me.Alw7SHxD.EssCore.util.updaters.SpigotUpdater;
 import me.Alw7SHxD.EssCore.util.vars.Lists;
 import me.Alw7SHxD.EssCore.util.vars.messages;
 import org.bukkit.entity.Player;
@@ -30,13 +30,13 @@ import org.bukkit.event.player.PlayerJoinEvent;
  */
 public class PlayerJoinHandler implements Listener {
     private Core core;
-    private UpdateChecker updateChecker;
+    private SpigotUpdater spigotUpdater;
     private Lists Lists;
     private EssSpawn spawnAPI;
 
     PlayerJoinHandler(Core core) {
         this.core = core;
-        updateChecker = core.updateChecker;
+        spigotUpdater = core.spigotUpdater;
         this.Lists = new Lists(core);
         this.spawnAPI = new EssSpawn(core);
     }
@@ -46,7 +46,7 @@ public class PlayerJoinHandler implements Listener {
         Player player = e.getPlayer();
         EssPlayer playerAPI = new EssPlayer(player);
         if (player.hasPermission("esscore.notify"))
-            updateChecker.check(player);
+            spigotUpdater.check(player);
 
         if (core.getConfigCache().getBoolean("hm.join") || e.getPlayer().hasPermission("esscore.silent"))
             e.setJoinMessage("");

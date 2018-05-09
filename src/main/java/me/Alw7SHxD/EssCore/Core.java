@@ -8,7 +8,7 @@ import me.Alw7SHxD.EssCore.util.EssEconomy;
 import me.Alw7SHxD.EssCore.util.Runnable;
 import me.Alw7SHxD.EssCore.util.hooks.PlaceholderApiHook;
 import me.Alw7SHxD.EssCore.util.hooks.VaultHook;
-import me.Alw7SHxD.EssCore.util.updaters.UpdateChecker;
+import me.Alw7SHxD.EssCore.util.updaters.SpigotUpdater;
 import me.Alw7SHxD.EssCore.util.vars.Lists;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -31,7 +31,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Core extends JavaPlugin {
     private ConfigCache configCache = new ConfigCache(this);
     public boolean usingPlaceholderAPI = false;
-    public UpdateChecker updateChecker = new UpdateChecker(this);
+    public SpigotUpdater spigotUpdater = new SpigotUpdater(this);
     public boolean hookedWithVault = false;
     public Lists Lists;
     private EssEconomy essEconomy;
@@ -43,7 +43,7 @@ public class Core extends JavaPlugin {
         saveDefaultConfig();
         configCache.load();
 
-        updateChecker.check(getServer().getConsoleSender());
+        spigotUpdater.check(getServer().getConsoleSender());
         Runnable runnable = new Runnable(this);
         runnable.asyncOneSecond();
 
@@ -66,7 +66,7 @@ public class Core extends JavaPlugin {
         new RegisterListeners(this);
         new RegisterCommands(this);
 
-        if (getConfig().getDouble("EssCore") != 8 || getConfig().getDouble("essCore") != 8)
+        if (getConfig().getDouble("EssCore") != 7 || getConfig().getDouble("essCore") != 7)
             getLogger().info("Your configuration file is outdated, please remove your old config.yml file.");
 
         checkBalances();
