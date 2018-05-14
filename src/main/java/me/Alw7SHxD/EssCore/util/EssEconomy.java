@@ -1,5 +1,6 @@
-package me.Alw7SHxD.EssCore.API;
+package me.Alw7SHxD.EssCore.util;
 
+import me.Alw7SHxD.EssCore.API.EssPlayer;
 import me.Alw7SHxD.EssCore.Core;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.economy.EconomyResponse;
