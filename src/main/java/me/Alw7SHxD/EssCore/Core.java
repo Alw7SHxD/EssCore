@@ -1,10 +1,10 @@
 package me.Alw7SHxD.EssCore;
 
+import me.Alw7SHxD.EssCore.API.EssEconomy;
 import me.Alw7SHxD.EssCore.API.EssPlayer;
 import me.Alw7SHxD.EssCore.commands.RegisterCommands;
 import me.Alw7SHxD.EssCore.listeners.RegisterListeners;
 import me.Alw7SHxD.EssCore.util.ConfigCache;
-import me.Alw7SHxD.EssCore.API.EssEconomy;
 import me.Alw7SHxD.EssCore.util.Runnable;
 import me.Alw7SHxD.EssCore.util.hooks.PlaceholderApiHook;
 import me.Alw7SHxD.EssCore.util.hooks.VaultHook;
@@ -66,7 +66,7 @@ public class Core extends JavaPlugin {
         new RegisterListeners(this);
         new RegisterCommands(this);
 
-        if (getConfig().getDouble("EssCore") != 7 || getConfig().getDouble("essCore") != 7)
+        if (!getConfigCache().getString("version").equals("7"))
             getLogger().info("Your configuration file is outdated, please remove your old config.yml file.");
 
         checkBalances();
