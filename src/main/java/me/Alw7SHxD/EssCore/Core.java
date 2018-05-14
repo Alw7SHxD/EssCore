@@ -4,7 +4,7 @@ import me.Alw7SHxD.EssCore.API.EssPlayer;
 import me.Alw7SHxD.EssCore.commands.RegisterCommands;
 import me.Alw7SHxD.EssCore.listeners.RegisterListeners;
 import me.Alw7SHxD.EssCore.util.ConfigCache;
-import me.Alw7SHxD.EssCore.util.EssEconomy;
+import me.Alw7SHxD.EssCore.API.EssEconomy;
 import me.Alw7SHxD.EssCore.util.Runnable;
 import me.Alw7SHxD.EssCore.util.hooks.PlaceholderApiHook;
 import me.Alw7SHxD.EssCore.util.hooks.VaultHook;
