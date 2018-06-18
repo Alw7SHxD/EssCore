@@ -68,6 +68,7 @@ permissions:
       esscore.warps.*: true
       esscore.warps: true
       esscore.workbench: true
+      esscore.metrics: true
   esscore.broadcast:
     description: "grant broadcasting to the whole server"
     default: op
@@ -244,6 +245,9 @@ permissions:
     default: op
   esscore.pay:
     description: "grant the ability to use the pay command"
+    default: op
+  esscore.metrics:
+    description: "grant the ability to use the metrics sub-command"
     default: op
 commands:
   esscore:

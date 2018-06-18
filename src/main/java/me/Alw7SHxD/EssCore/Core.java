@@ -37,6 +37,7 @@ public class Core extends JavaPlugin {
     public Lists Lists;
     private EssEconomy essEconomy;
     private VaultHook vaultHook;
+    private Metrics metrics = null;
 
     public void onEnable() {
         if (!getDataFolder().exists())
@@ -48,10 +49,12 @@ public class Core extends JavaPlugin {
         Runnable runnable = new Runnable(this);
         runnable.asyncOneSecond();
 
-        if(configCache.getBoolean("metrics"))
-            new Metrics(this);
+        if (getConfigCache().getBoolean("metrics")) {
+            metrics = new Metrics(this);
+            getLogger().info("Sending bStats metrics anonymously!");
+        }
 
-        if(getServer().getPluginManager().isPluginEnabled("Vault")) {
+        if (getServer().getPluginManager().isPluginEnabled("Vault")) {
             this.essEconomy = new EssEconomy(this);
             this.vaultHook = new VaultHook(this);
             vaultHook.hook();
@@ -70,14 +73,14 @@ public class Core extends JavaPlugin {
         new RegisterListeners(this);
         new RegisterCommands(this);
 
-        if (getConfig().getDouble("EssCore") != 7.3 || getConfig().getDouble("essCore") != 7.3)
-            getLogger().info("Your configuration file is outdated, please remove your old config.yml file.");
+        if (!getConfigCache().getString("EssCore").equals("7.3"))
+            getLogger().severe("Your configuration file is outdated, please remove your old config.yml file.");
 
         checkBalances();
     }
 
     public void onDisable() {
-        if(hookedWithVault)
+        if (hookedWithVault)
             vaultHook.unHook();
 
         getLogger().info("EssCore v" + getDescription().getVersion() + " has been disabled.");
@@ -95,5 +98,9 @@ public class Core extends JavaPlugin {
 
     public ConfigCache getConfigCache() {
         return configCache;
+    }
+
+    public Metrics getMetrics() {
+        return metrics;
     }
 }
