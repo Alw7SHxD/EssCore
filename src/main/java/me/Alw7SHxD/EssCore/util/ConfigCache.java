@@ -38,10 +38,11 @@ public class ConfigCache {
             config.put("stp.player-join", core.getConfig().getBoolean("spawn-teleport.player-join"));
             config.put("stp.player-first-join", core.getConfig().getBoolean("spawn-teleport.player-first-join"));
             config.put("stp.player-respawn", core.getConfig().getBoolean("spawn-teleport.player-respawn"));
+            config.put("metrics", core.getConfig().getBoolean("metrics"));
             config.put("version", core.getConfig().getString("EssCore"));
         }catch (Exception e){
-            core.getLogger().warning("seems like your config is outdated, please make sure to update it.");
-            e.printStackTrace();
+            core.getLogger().severe("Seems like your config is outdated, please make sure to update it.");
+            //e.printStackTrace();
         }
     }
 

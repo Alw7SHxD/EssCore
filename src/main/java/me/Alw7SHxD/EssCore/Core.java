@@ -1,15 +1,16 @@
 package me.Alw7SHxD.EssCore;
 
+import me.Alw7SHxD.EssCore.API.EssEconomy;
 import me.Alw7SHxD.EssCore.API.EssPlayer;
 import me.Alw7SHxD.EssCore.commands.RegisterCommands;
 import me.Alw7SHxD.EssCore.listeners.RegisterListeners;
 import me.Alw7SHxD.EssCore.util.ConfigCache;
-import me.Alw7SHxD.EssCore.API.EssEconomy;
 import me.Alw7SHxD.EssCore.util.Runnable;
 import me.Alw7SHxD.EssCore.util.hooks.PlaceholderApiHook;
 import me.Alw7SHxD.EssCore.util.hooks.VaultHook;
 import me.Alw7SHxD.EssCore.util.updaters.SpigotUpdater;
 import me.Alw7SHxD.EssCore.util.vars.Lists;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -47,6 +48,9 @@ public class Core extends JavaPlugin {
         Runnable runnable = new Runnable(this);
         runnable.asyncOneSecond();
 
+        if(configCache.getBoolean("metrics"))
+            new Metrics(this);
+
         if(getServer().getPluginManager().isPluginEnabled("Vault")) {
             this.essEconomy = new EssEconomy(this);
             this.vaultHook = new VaultHook(this);
@@ -66,7 +70,7 @@ public class Core extends JavaPlugin {
         new RegisterListeners(this);
         new RegisterCommands(this);
 
-        if (getConfig().getDouble("EssCore") != 7 || getConfig().getDouble("essCore") != 7)
+        if (getConfig().getDouble("EssCore") != 7.3 || getConfig().getDouble("essCore") != 7.3)
             getLogger().info("Your configuration file is outdated, please remove your old config.yml file.");
 
         checkBalances();
