@@ -73,8 +73,8 @@ public class Core extends JavaPlugin {
         new RegisterListeners(this);
         new RegisterCommands(this);
 
-        if (!getConfigCache().getString("EssCore").equals("7.3"))
-            getLogger().severe("Your configuration file is outdated, please remove your old config.yml file.");
+        if (!getConfigCache().getString("version").equals("7.3"))
+            getLogger().severe(String.format("Your configuration file is outdated (Current: %s) Please remove your old config.yml file and restart the server.", getConfigCache().getString("EssCore")));
 
         checkBalances();
     }
