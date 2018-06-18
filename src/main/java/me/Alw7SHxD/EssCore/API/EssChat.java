@@ -1,6 +1,5 @@
 package me.Alw7SHxD.EssCore.API;
 
-import com.sun.istack.internal.NotNull;
 import me.Alw7SHxD.EssCore.util.vars.messages;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -71,7 +70,7 @@ public class EssChat {
         private Player player;
         private JavaPlugin plugin;
 
-        public Mute(@NotNull JavaPlugin plugin, @NotNull Player player) {
+        public Mute(JavaPlugin plugin, Player player) {
             this.playerAPI = new EssPlayer(player);
             this.player = player;
             this.plugin = plugin;
