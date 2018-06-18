@@ -1,5 +1,6 @@
 package me.Alw7SHxD.EssCore.util;
 
+import me.Alw7SHxD.EssCore.API.EssAPI;
 import me.Alw7SHxD.EssCore.Core;
 
 import java.util.HashMap;
@@ -38,10 +39,11 @@ public class ConfigCache {
             config.put("stp.player-join", core.getConfig().getBoolean("spawn-teleport.player-join"));
             config.put("stp.player-first-join", core.getConfig().getBoolean("spawn-teleport.player-first-join"));
             config.put("stp.player-respawn", core.getConfig().getBoolean("spawn-teleport.player-respawn"));
-            config.put("version", core.getConfig().getString("EssCore"));
+            config.put("version", String.valueOf(core.getConfig().get("EssCore")));
+            config.put("metrics", core.getConfig().getBoolean("send-metrics"));
         }catch (Exception e){
-            core.getLogger().warning("seems like your config is outdated, please make sure to update it.");
-            e.printStackTrace();
+            core.getServer().getConsoleSender().sendMessage(EssAPI.color("[EssCore] &cSeems like your config is outdated, please make sure to update it."));
+            //e.printStackTrace();
         }
     }
 

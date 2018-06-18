@@ -1,6 +1,5 @@
 package me.Alw7SHxD.EssCore.API;
 
-import com.sun.istack.internal.NotNull;
 import me.Alw7SHxD.EssCore.util.vars.messages;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -26,7 +25,7 @@ public class EssFly {
     private Player player;
     private JavaPlugin plugin;
 
-    public EssFly(@NotNull JavaPlugin plugin, @NotNull Player player) {
+    public EssFly(JavaPlugin plugin, Player player) {
         this.playerAPI = new EssPlayer(player);
         this.player = player;
         this.plugin = plugin;
@@ -49,7 +48,7 @@ public class EssFly {
             player.sendMessage(EssAPI.color(messages.m_fly_self_off));
     }
 
-    public void eFly(@NotNull CommandSender sender) {
+    public void eFly(CommandSender sender) {
         Boolean f = fly();
         if (f) {
             player.sendMessage(EssAPI.color(String.format(messages.m_fly_target_on, EssAPI.getSenderDisplayName(plugin, sender))));

@@ -20,6 +20,10 @@
 #   YOU ARE NOT ALLOWED TO MODIFY THE CODE OF THE PLUGIN,
 #   IF YOU DON'T HAVE THE PERMISSION TO DO THAT.
 
+# If you encounter any type of bug, please don't hesitate to report it
+# on EssCore's Github repository via the link below
+# https://github.com/Alw7SHxD/EssCore/issues
+
 ###
 # +
 # | GLOBAL
@@ -139,5 +143,17 @@ spawn-teleport:
 # If enabled, people with no permissions will get notified about "some" missing permission.
 debug-signs: false
 
-# Don't change this value, unless you know what to do.
-EssCore: 7
+# This will send some basic info about your server's
+# version, player count, name and version of your OS,
+# etc, note that all data sent is anonymous and wont
+# include your server name nor ip address.
+# You can check the data sent over at
+# https://bstats.org/getting-started
+# -----------------------------------
+# If you're interested, you can check out
+# https://bstats.org/plugin/bukkit/EssCore
+# for EssCore's metrics.
+send-metrics: true
+
+# Don't change this value, unless you know what you're doing.
+EssCore: 7.3

@@ -10,6 +10,7 @@ import me.Alw7SHxD.EssCore.util.hooks.PlaceholderApiHook;
 import me.Alw7SHxD.EssCore.util.hooks.VaultHook;
 import me.Alw7SHxD.EssCore.util.updaters.SpigotUpdater;
 import me.Alw7SHxD.EssCore.util.vars.Lists;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -36,6 +37,7 @@ public class Core extends JavaPlugin {
     public Lists Lists;
     private EssEconomy essEconomy;
     private VaultHook vaultHook;
+    private Metrics metrics = null;
 
     public void onEnable() {
         if (!getDataFolder().exists())
@@ -47,7 +49,12 @@ public class Core extends JavaPlugin {
         Runnable runnable = new Runnable(this);
         runnable.asyncOneSecond();
 
-        if(getServer().getPluginManager().isPluginEnabled("Vault")) {
+        if (getConfigCache().getBoolean("metrics")) {
+            metrics = new Metrics(this);
+            getLogger().info("Sending bStats metrics anonymously!");
+        }
+
+        if (getServer().getPluginManager().isPluginEnabled("Vault")) {
             this.essEconomy = new EssEconomy(this);
             this.vaultHook = new VaultHook(this);
             vaultHook.hook();
@@ -66,14 +73,14 @@ public class Core extends JavaPlugin {
         new RegisterListeners(this);
         new RegisterCommands(this);
 
-        if (!getConfigCache().getString("version").equals("7"))
-            getLogger().info("Your configuration file is outdated, please remove your old config.yml file.");
+        if (!getConfigCache().getString("version").equals("7.3"))
+            getLogger().severe(String.format("Your configuration file is outdated (Current: %s) Please remove your old config.yml file and restart the server.", getConfigCache().getString("EssCore")));
 
         checkBalances();
     }
 
     public void onDisable() {
-        if(hookedWithVault)
+        if (hookedWithVault)
             vaultHook.unHook();
 
         getLogger().info("EssCore v" + getDescription().getVersion() + " has been disabled.");
@@ -91,5 +98,9 @@ public class Core extends JavaPlugin {
 
     public ConfigCache getConfigCache() {
         return configCache;
+    }
+
+    public Metrics getMetrics() {
+        return metrics;
     }
 }

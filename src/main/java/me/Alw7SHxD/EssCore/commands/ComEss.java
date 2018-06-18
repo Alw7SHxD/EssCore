@@ -1,15 +1,19 @@
 package me.Alw7SHxD.EssCore.commands;
 
-import me.Alw7SHxD.EssCore.API.*;
+import me.Alw7SHxD.EssCore.API.EssAPI;
+import me.Alw7SHxD.EssCore.API.EssSpawn;
+import me.Alw7SHxD.EssCore.API.EssWarps;
 import me.Alw7SHxD.EssCore.Core;
-import me.Alw7SHxD.EssCore.util.vars.messages;
 import me.Alw7SHxD.EssCore.util.json.FancyMessage;
+import me.Alw7SHxD.EssCore.util.vars.messages;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import java.util.*;
+import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 /*
  * (C) Copyright 2017 Alw7SHxD.
@@ -49,18 +53,22 @@ public class ComEss implements CommandExecutor, messages {
                     }
                 } else sender.sendMessage(EssAPI.color(m_no_permission));
             else if (args[0].equalsIgnoreCase("update") || args[0].equalsIgnoreCase("check"))
-               core.spigotUpdater.check(sender);
-            else if (args[0].equalsIgnoreCase("help") || args[0].equals("?")) {
-                Integer maxPage = 4;
-                try {
-                    if (args.length == 1 || args[1].isEmpty())
-                        getCommands(sender, 1, maxPage);
-                    else
-                        getCommands(sender, Integer.parseInt(args[1]), maxPage);
-                } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
-                    sender.sendMessage(EssAPI.color("&c&lHey! &7only numbers are allowed to be used."));
-                }
-            } else sender.sendMessage(EssAPI.color(String.format(m_syntax_error_c, s + " help")));
+                core.spigotUpdater.check(sender);
+            else if ((args[0].equalsIgnoreCase("metrics") || args[0].equalsIgnoreCase("bStats")) && sender.hasPermission("esscore.metrics"))
+                if (core.getMetrics() != null)
+                    for (Object obj : core.getMetrics().getPluginData().keySet())
+                        sender.sendMessage(EssAPI.color(String.format("&b%s&8:&7%s", obj, core.getMetrics().getPluginData().get(obj))));
+                else if (args[0].equalsIgnoreCase("help") || args[0].equals("?")) {
+                    Integer maxPage = 4;
+                    try {
+                        if (args.length == 1 || args[1].isEmpty())
+                            getCommands(sender, 1, maxPage);
+                        else
+                            getCommands(sender, Integer.parseInt(args[1]), maxPage);
+                    } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+                        sender.sendMessage(EssAPI.color("&c&lHey! &7only numbers are allowed to be used."));
+                    }
+                } else sender.sendMessage(EssAPI.color(String.format(m_syntax_error_c, s + " help")));
         } else {
             sender.sendMessage(EssAPI.color(String.format("&a&lEssCore &7version &a&l%s", core.getDescription().getVersion())));
             sender.sendMessage(EssAPI.color("&7Created by: &a&lAlw7SHxD"));
