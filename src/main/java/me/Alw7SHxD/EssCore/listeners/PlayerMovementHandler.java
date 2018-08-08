@@ -1,7 +1,6 @@
 package me.Alw7SHxD.EssCore.listeners;
 
 import me.Alw7SHxD.EssCore.API.EssPlayer;
-import me.Alw7SHxD.EssCore.Core;
 import org.bukkit.Location;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -11,17 +10,11 @@ import org.bukkit.event.player.PlayerMoveEvent;
  * EssCore was created by Alw7SHxD (C) 2017
  */
 public class PlayerMovementHandler implements Listener {
-    private Core core;
-
-    PlayerMovementHandler(Core core) {
-        this.core = core;
-    }
-
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent e) {
-        EssPlayer playerAPI = new EssPlayer(e.getPlayer());
+        EssPlayer player = new EssPlayer(e.getPlayer());
 
-        if (playerAPI.getFrozen()) {
+        if (player.getFrozen()) {
             Location from = e.getFrom();
             Location to = e.getTo();
             double x = Math.floor(from.getX());

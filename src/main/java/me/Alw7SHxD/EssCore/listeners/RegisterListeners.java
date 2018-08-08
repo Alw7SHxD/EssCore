@@ -23,8 +23,8 @@ public class RegisterListeners {
             core.getServer().getPluginManager().registerEvents(new PlayerJoinHandler(core), core);
             core.getServer().getPluginManager().registerEvents(new PlayerQuitHandler(core), core);
             core.getServer().getPluginManager().registerEvents(new PlayerChatHandler(core), core);
-            core.getServer().getPluginManager().registerEvents(new PlayerMovementHandler(core), core);
-            core.getServer().getPluginManager().registerEvents(new BlocksHandler(core), core);
+            core.getServer().getPluginManager().registerEvents(new PlayerMovementHandler(), core);
+            core.getServer().getPluginManager().registerEvents(new BlocksHandler(), core);
             core.getServer().getPluginManager().registerEvents(new SignsChangeHandler(core), core);
             core.getServer().getPluginManager().registerEvents(new PlayerInteractHandler(core), core);
             core.getServer().getPluginManager().registerEvents(new PlayerRespawnHandler(core), core);

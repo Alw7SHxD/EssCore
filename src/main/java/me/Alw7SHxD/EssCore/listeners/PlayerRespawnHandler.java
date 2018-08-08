@@ -22,6 +22,5 @@ public class PlayerRespawnHandler implements Listener {
     public void onPlayerRespawn(PlayerRespawnEvent e){
         if(core.getConfigCache().getBoolean("stp.player-respawn"))
             e.setRespawnLocation(spawnAPI.getLocation());
-            //spawnAPI.teleport(e.getPlayer());
     }
 }
