@@ -40,8 +40,6 @@ permissions:
       esscore.gamemode.spectator: true
       esscore.heal.all: true
       esscore.heal.target: true
-      esscore.heal.target: true
-      esscore.heal: true
       esscore.heal: true
       esscore.home: true
       esscore.homes: true
@@ -186,20 +184,8 @@ permissions:
   esscore.vanish.target:
     description: "grant the ability to vanish other players"
     default: op
-  esscore.heal:
-    description: "grant the ability to heal yourself"
-    default: op
-  esscore.heal.target:
-    description: "grant the ability to heal other players"
-    default: op
   esscore.heal.all:
     description: "grant the ability to heal all the players"
-    default: op
-  esscore.feed:
-    description: "grant the ability to feed yourself"
-    default: op
-  esscore.feed.target:
-    description: "grant the ability to feed other players"
     default: op
   esscore.feed.all:
     description: "grant the ability to feed all the players"
@@ -236,9 +222,6 @@ permissions:
     default: op
   esscore.balance.target:
     description: "grant the ability to use the balance command on a player"
-    default: op
-  esscore.balance:
-    description: "grant the ability to use the money command"
     default: op
   esscore.money.target:
     description: "grant the ability to use the money command on a player"
