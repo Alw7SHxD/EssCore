@@ -51,7 +51,7 @@ public class PlayerJoinHandler implements Listener {
         if (core.getConfigCache().getBoolean("hm.join") || e.getPlayer().hasPermission("esscore.silent"))
             e.setJoinMessage("");
         if (!core.getConfigCache().getString("cm.join").isEmpty() && (!core.getConfigCache().getBoolean("hm.join") || !e.getPlayer().hasPermission("esscore.silent")))
-            e.setJoinMessage(core.getConfig().getString("custom-messages.join").replaceAll("%name%", player.getDisplayName()));
+            e.setJoinMessage(EssAPI.color(core.getConfig().getString("custom-messages.join").replaceAll("%name%", player.getDisplayName())));
         if (playerAPI.getFlight()) {
             player.setAllowFlight(true);
             player.sendMessage(EssAPI.color(messages.m_fly_self_on));
