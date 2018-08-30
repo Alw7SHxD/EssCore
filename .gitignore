@@ -3,3 +3,4 @@ out/
 src/test/
 target/
 dependency-reduced-pom.xml
+*.iml
