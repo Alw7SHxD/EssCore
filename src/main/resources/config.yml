@@ -80,7 +80,7 @@ broadcast-prefix: "&c&lBROADCAST! &r"
 # Set custom join/leave messages
 # this will change the default
 # join/leave message.
-# use %name% to display the
+# use {DISPLAYNAME} to display the
 # player display-name.
 # set to "" to disable.
 custom-messages:
@@ -95,11 +95,12 @@ hide-messages:
 
 # Customize the default chat format when any
 # player sends a new message in the chat.
-# placeholderapi is supported.
+# PlaceholderAPI is supported.
 # colorcodes are supported.
 # make sure to implement {MESSAGE} in order to display
 # the message, and {DISPLAYNAME} to display the players
 # real name or the nickname.
+# you also can use {PREFIX} & {SUFFIX} if you have vault installed.
 chat-format:
   enabled: false
   default-format: "<{DISPLAYNAME}> {MESSAGE}"
@@ -156,4 +157,4 @@ debug-signs: false
 send-metrics: true
 
 # Don't change this value, unless you know what you're doing.
-EssCore: 7.3
+EssCore: 8

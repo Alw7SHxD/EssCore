@@ -20,12 +20,12 @@ public class PlayerQuitHandler implements Listener {
     }
 
     @EventHandler
-    public void onQuit(PlayerQuitEvent e) {
+    public void onPlayerQuit(PlayerQuitEvent e) {
         if (core.getConfigCache().getBoolean("hm.leave") || e.getPlayer().hasPermission("esscore.silent"))
             e.setQuitMessage("");
 
         if (!core.getConfigCache().getString("cm.leave").isEmpty() && (!core.getConfigCache().getBoolean("hm.leave") || !e.getPlayer().hasPermission("esscore.silent")))
-            e.setQuitMessage(EssAPI.color(core.getConfigCache().getString("cm.leave").replaceAll("%name%", e.getPlayer().getDisplayName())));
+            e.setQuitMessage(EssAPI.color(core.getConfigCache().getString("cm.leave").replace("{DISPLAYNAME}", e.getPlayer().getDisplayName())));
 
         Lists.loadVanishedPlayers();
         if(Lists.getVanishedPlayers().contains(e.getPlayer()) && e.getPlayer().hasPermission("esscore.vanish.silent"))

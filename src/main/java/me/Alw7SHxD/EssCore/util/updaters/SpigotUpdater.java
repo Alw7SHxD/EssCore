@@ -1,16 +1,15 @@
 package me.Alw7SHxD.EssCore.util.updaters;
 
+import me.Alw7SHxD.EssCore.API.EssAPI;
+import me.Alw7SHxD.EssCore.Core;
+import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-
-import me.Alw7SHxD.EssCore.API.EssAPI;
-import me.Alw7SHxD.EssCore.Core;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.plugin.java.JavaPlugin;
 
 /**
  * EssCore made by Alw7SHxD (C) 2018
@@ -32,15 +31,8 @@ public class SpigotUpdater {
         try {
             this.checkURL = new URL("https://api.spigotmc.org/legacy/update.php?resource=" + project);
         } catch (MalformedURLException e) {
+            // ignored
         }
-    }
-
-    public int getProjectID() {
-        return project;
-    }
-
-    public JavaPlugin getPlugin() {
-        return core;
     }
 
     public String getLatestVersion() {
@@ -54,10 +46,6 @@ public class SpigotUpdater {
         if (this.newVersion.endsWith(")"))
             s = String.format("%s)", s);
         return s;
-    }
-
-    public String getResourceURL() {
-        return "https://www.spigotmc.org/resources/" + project;
     }
 
     public boolean checkForUpdates() throws Exception {

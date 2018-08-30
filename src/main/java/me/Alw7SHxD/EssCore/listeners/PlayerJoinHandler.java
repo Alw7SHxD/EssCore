@@ -36,7 +36,7 @@ public class PlayerJoinHandler implements Listener {
 
     PlayerJoinHandler(Core core) {
         this.core = core;
-        spigotUpdater = core.spigotUpdater;
+        spigotUpdater = core.getSpigotUpdater();
         this.Lists = new Lists(core);
         this.spawnAPI = new EssSpawn(core);
     }
@@ -51,7 +51,7 @@ public class PlayerJoinHandler implements Listener {
         if (core.getConfigCache().getBoolean("hm.join") || e.getPlayer().hasPermission("esscore.silent"))
             e.setJoinMessage("");
         if (!core.getConfigCache().getString("cm.join").isEmpty() && (!core.getConfigCache().getBoolean("hm.join") || !e.getPlayer().hasPermission("esscore.silent")))
-            e.setJoinMessage(EssAPI.color(core.getConfig().getString("custom-messages.join").replaceAll("%name%", player.getDisplayName())));
+            e.setJoinMessage(EssAPI.color(core.getConfig().getString("custom-messages.join").replace("{DISPLAYNAME}", player.getDisplayName())));
         if (playerAPI.getFlight()) {
             player.setAllowFlight(true);
             player.sendMessage(EssAPI.color(messages.m_fly_self_on));
@@ -64,7 +64,7 @@ public class PlayerJoinHandler implements Listener {
         else if (core.getConfigCache().getBoolean("stp.player-join"))
             spawnAPI.teleport(player);
 
-        if(core.hookedWithVault) {
+        if(core.isHookedWithVault()) {
             if(playerAPI.hasLocalAccount())
                 playerAPI.setBalance(playerAPI.getLocalBalance());
             core.getEssEconomy().createPlayerAccount(player);
