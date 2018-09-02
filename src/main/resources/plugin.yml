@@ -4,6 +4,6 @@ prefix: EssCore
 load: STARTUP
 loadbefore: [Vault]
 author: Alw7SHxD
-description: "An essentials plugin providing useful commands and features"
+description: ${project.description}
 website: "https://www.spigotmc.org/resources/esscore.37766/"
 main: me.alw7shxd.esscore.EssCore

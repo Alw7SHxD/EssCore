@@ -11,7 +11,7 @@
 
     <name>EssCore</name>
 
-    <description>An essentials plugin providing useful commands and features</description>
+    <description>An essential plugin providing useful commands and features</description>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -27,6 +27,9 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                    <compilerArgs>
+                        <arg>-parameters</arg>
+                    </compilerArgs>
                 </configuration>
             </plugin>
             <plugin>
