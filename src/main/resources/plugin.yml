@@ -3,7 +3,7 @@ version: ${project.version}
 prefix: EssCore
 load: STARTUP
 loadbefore: [Vault]
-author: Alw7SHxD
+author: dotalw
 description: ${project.description}
-website: "https://www.spigotmc.org/resources/esscore.37766/"
-main: me.alw7shxd.esscore.EssCore
+website: ${project.url}
+main: me.dotalw.esscore.EssCore
