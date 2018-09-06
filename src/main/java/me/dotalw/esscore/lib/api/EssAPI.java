@@ -48,10 +48,6 @@ public class EssAPI {
         return new String(b);
     }
 
-    public void sendMessage(Player player, String message, Object... replacements) {
-        sendMessage((CommandSender) player, message, replacements);
-    }
-
     public void sendMessage(CommandSender commandSender, String message, Object... replacements) {
         message = MessageFormat.format(color(message).replace("'", "''"), replacements);
         commandSender.sendMessage(message);
