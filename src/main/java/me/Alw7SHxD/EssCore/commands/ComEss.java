@@ -46,14 +46,14 @@ public class ComEss implements CommandExecutor, messages {
                         core.getConfigCache().load();
                         new EssWarps(core).reload();
                         new EssSpawn(core).reload();
-                        core.Lists.startup();
+                        core.getLists().startup();
                         sender.sendMessage(EssAPI.color(m_reload_done));
                     } catch (Exception e) {
                         sender.sendMessage(EssAPI.color(m_reload_error));
                     }
                 } else sender.sendMessage(EssAPI.color(m_no_permission));
             else if (args[0].equalsIgnoreCase("update") || args[0].equalsIgnoreCase("check"))
-                core.spigotUpdater.check(sender);
+                core.getSpigotUpdater().check(sender);
             else if ((args[0].equalsIgnoreCase("metrics") || args[0].equalsIgnoreCase("bStats")) && sender.hasPermission("esscore.metrics"))
                 if (core.getMetrics() != null)
                     for (Object obj : core.getMetrics().getPluginData().keySet())
