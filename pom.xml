@@ -14,6 +14,7 @@
     <description>An essential plugin that provides useful commands and features</description>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <config.version>10</config.version>
     </properties>
     <url>https://www.spigotmc.org/resources/esscore.37766/</url>
 

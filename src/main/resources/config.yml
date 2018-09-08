@@ -1,0 +1,184 @@
+###
+#
+###ssCore made with <3 by dotalw
+#
+###
+
+#     EssCore is an essential plugin
+# that provides useful commands & features
+
+# If you receive an error when loading EssCore, make sure that:
+#   - No tabs are present: YAML only allows spaces
+#   - Indents are correct: YAML hierarchy is based entirely on indentation
+#   - You have "escaped" all apostrophes in your text: If you want to write "don't", for example, write "don''t" instead (note the doubled apostrophe)
+#   - Text with symbols is enclosed in single or double quotation marks
+
+# If you encounter bugs, please don't hesitate to report them
+# over at EssCore's Github repository via the link below
+# https://github.com/dotalw/EssCore/issues
+
+# You can always find the online documentation over at
+# https://github.com/dotalw/EssCore/wiki
+
+# DISCLAIMER:
+#   YOU ARE NOT ALLOWED TO MODIFY THE CODE OF THE PLUGIN,
+#   AND CLAIMING IT AS IT'S YOUR'S.
+#   YOU ARE NOT ALLOWED TO MODIFY THE CODE OF THE PLUGIN,
+#   IF YOU DON'T HAVE THE PERMISSION TO DO THAT.
+
+configuration:
+
+  # DO NOT MODIFY THIS WHATSOEVER.
+  version: ${config.version}
+
+  # Allow sending basic anonymous data about the server and the plugin
+  #           https://bstats.org/plugin/bukkit/EssCore
+  metrics: true
+
+  # Notifies players with the (esscore.notify) permission
+  #       when a new version of EssCore comes out.
+  notify: true
+
+#-=|
+#  | CHAT SETTINGS
+#-=|
+
+chat:
+
+  # Usability of colorcodes to anyone
+  # without (esscore.chat.colorcode) permission.
+  allow colorcodes: false
+
+  # NOTE: Supports colorcodes
+  broadcast prefix: "&c&lBROADCAST!"
+
+
+  # Modify the nicknames feature
+  nicknames:
+
+    # Enable the ability to use nicknames.
+    enabled: true
+
+    # Append a character to nicknames
+    # use FALSE to disable this feature.
+    # NOTE: Supports colorcodes
+    prefix: "~"
+
+    length:
+
+      # The minimum length of a nickname
+      #  --
+      # NOTE: Must be lower than the maximum length
+      minimum: 3
+
+      # The maximum length of a nickname
+      #  --
+      # NOTE: You won't be able to go past 32 characters
+      #  ++   Must be higher than the minimum length
+      maximum: 16
+
+      # Ignore counting a specific feature in the maximum length
+      ignore:
+        prefix: false
+        colorcodes: false
+
+  # Modify the default chat format
+  format:
+
+    # Enable the ability to use custom chat format
+    enabled: false
+
+    # List of chat formats that's used based on the player's permission.
+    # For example, in order to use the "moderator" chat format, a player
+    # must have the (esscore.chat.format.moderator) permission
+    # same thing for the administrator format, and so on.
+    #  --
+    # Checkout EssCore's github wiki for information on default placeholders
+    #         https://github.com/dotalw/EssCore/wiki/Placeholders
+    #  --
+    # NOTE: Supports colorcodes
+    #  ++   Supports PlaceholderAPI placeholders
+    #  ++   The list can go on as far as you want it to be, there's no limits
+    formats:
+
+      # Used by default, no need for permission.
+      default: "{DISPLAYNAME}: {MESSAGE}"
+
+      # Permission (esscore.chat.format.moderator)
+      moderator: "&9&lMOD&r {DISPLAYNAME}: {MESSAGE}"
+
+      # Permission (esscore.chat.format.administrator)
+      administrator: "&c&lADMIN&r {DISPLAYNAME}: {MESSAGE}"
+
+  # Modify certain messages
+  # Use "TRUE" without the quotes to hide the message
+  # or "FALSE" to disable customization to the message
+  #  --
+  # NOTE: Supports colorcodes
+  #  ++   Supports PlaceholderAPI placeholders
+  custom messages:
+    player joined: "Welcome {DISPLAYNAME}!"
+    player left: "{DISPLAYNAME} left the server."
+
+#-=|
+#  | ECONOMY SETTINGS
+#  |     (VAULT)
+#-=|
+
+economy:
+
+  # Enable the ability to use economy on the server.
+  # Upon disabling, economy related commands and features
+  # would stop working, also enabling it still requires Vault.
+  enabled: true
+
+  # Pretty self-explanatory.
+  currency symbol: "$"
+
+  balance:
+    # When a new player joins, this will be their starting balance.
+    starting: 0
+
+    # Define a maximum balance, players can't go higher than that.
+    maximum: 10000000000000
+
+    #  !!!EXPERIMENTAL!!!
+    # USE AT YOUR OWN RISK / NOT RECOMMENDED
+    # -
+    # Ignores the maximum balance in transactions.
+    # Meaning that the transaction will process successfully
+    # without giving money to the target player, it will
+    # still take money from the player that paid them.
+    ignore : false
+
+    #  !!!EXPERIMENTAL!!!
+    # USE AT YOUR OWN RISK
+    negatives:
+      # Allow players to have their balance go under 0.
+      allowed: false
+
+      # Define a maximum negative balance, players can't go lower than that.
+      maximum: -5000
+
+#-=|
+#  | MISCELLANEOUS SETTINGS
+#-=|
+
+# Does it need to be explained? smh.
+teleport to spawn when a player:
+    joins: false
+    respawns: true
+    joins for the first time: true
+
+# Limit how many homes a player
+# can create with certain permissions.
+# By default everyone gets to create 1 home
+# if they have the access to the home command.
+# --
+# NOTE: Top permission has the best priority
+#  ++   It's recommended to do this list from top to bottom,
+#       otherwise it might break.
+limit homes:
+  administrator: 7
+  moderator: 5
+  member: 3
