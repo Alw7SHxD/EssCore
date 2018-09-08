@@ -6,12 +6,12 @@
 
     <groupId>me.dotalw</groupId>
     <artifactId>EssCore</artifactId>
-    <version>0.8</version>
+    <version>0.10</version>
     <packaging>jar</packaging>
 
     <name>EssCore</name>
 
-    <description>An essential plugin providing useful commands and features</description>
+    <description>An essential plugin that provides useful commands and features</description>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
