@@ -30,13 +30,24 @@ class ComEssCore extends BaseCommand {
 
     @CatchUnknown
     public void catchUnknown(CommandSender commandSender) {
-        api.sendMessage(commandSender, "&cUnknown subcommand.");
+        api.sendMessage(commandSender, api.getTranslatableMessage(commandSender, "general.unknown_subcommand"), getExecCommandLabel(), "?s");
     }
 
     @Subcommand("help|?|-h|--help")
     @Description("{@@command.esscore.description.help}")
     @CommandCompletion("@commands")
     public void onHelp(CommandSender commandSender, String[] strings) {
-        api.sendMessage(commandSender, "&7help, this is like... new tech or some shit");
+        api.sendMessage(commandSender, helpHeader(false), "commands");
+    }
+
+    @Subcommand("subcommands|sub|?s|-hs")
+    @Description("{@@command.esscore.description.help_sub}")
+    @CommandCompletion("@sub.esscore")
+    public void onSubHelp(CommandSender commandSender, String[] strings) {
+        api.sendMessage(commandSender, helpHeader(false), "subcommands");
+    }
+
+    private String helpHeader(boolean hasPages) {
+        return String.format("&7» EssCore {0} %s", hasPages ? "&8(&c{1}&7/&c{2}&8)" : "");
     }
 }
