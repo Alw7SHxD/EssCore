@@ -24,7 +24,7 @@ A clear and concise description of what you expected to happen.
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
 
-**Versions (please complete the following information):**
- - Minecraft version [e.g. 1.12.2]
- - Server version~build [e.g. spigot-1.12.2-R0.1-SNAPSHOT-b1636]
- - EssCore version~build [e.g. 0.7.2]
+**Versions:**
+ - Minecraft: [e.g. 1.13.1]
+ - Server: [e.g. spigot-1.13.1-R0.1-SNAPSHOT-b1898]
+ - EssCore: [e.g. 0.10]
