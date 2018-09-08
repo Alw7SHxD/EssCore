@@ -1,7 +1,6 @@
 package me.dotalw.esscore.lib.commands;
 
 import co.aikar.commands.BaseCommand;
-import co.aikar.commands.BukkitCommandManager;
 import co.aikar.commands.annotation.*;
 import me.dotalw.esscore.EssCore;
 import me.dotalw.esscore.lib.api.EssAPI;
@@ -14,11 +13,9 @@ import org.bukkit.command.CommandSender;
 class ComEssCore extends BaseCommand {
     private EssAPI api;
     private EssCore ess;
-    private BukkitCommandManager commandManager;
 
-    ComEssCore(EssCore ess, BukkitCommandManager manager) {
+    ComEssCore(EssCore ess) {
         this.ess = ess;
-        this.commandManager = manager;
         this.api = ess.getAPI();
     }
 

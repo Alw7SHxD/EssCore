@@ -15,6 +15,11 @@ import java.util.*;
  * EssCore (2017) made by dotalw (C) 2011-2018
  */
 public class RegisterCommands {
+    private void regCommands(EssCore ess, List<BaseCommand> commandList) {
+        Collections.addAll(commandList,
+                new ComEssCore(ess));
+    }
+
     public RegisterCommands(EssCore ess, BukkitCommandManager manager) {
         manager.getLocales().addMessageBundles("messages", ess.getDescription().getName(), ess.getDescription().getName().toLowerCase());
         manager.addSupportedLanguage(Locale.ENGLISH);
@@ -23,8 +28,7 @@ public class RegisterCommands {
 
         List<BaseCommand> commands = new ArrayList<>();
         List<String> commandsName = new ArrayList<>();
-        Collections.addAll(commands,
-                new ComEssCore(ess, manager));
+        regCommands(ess, commands);
 
         commands.forEach(command -> {
             manager.registerCommand(command);
