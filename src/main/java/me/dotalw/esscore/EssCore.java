@@ -4,6 +4,8 @@ import co.aikar.commands.BukkitCommandManager;
 import me.dotalw.esscore.lib.api.EssAPI;
 import me.dotalw.esscore.lib.commands.RegisterCommands;
 import me.dotalw.esscore.lib.handlers.RegisterHandlers;
+import me.dotalw.esscore.lib.utils.Configuration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -23,6 +25,13 @@ import org.bukkit.plugin.java.JavaPlugin;
  */
 public final class EssCore extends JavaPlugin {
     private EssAPI api;
+    private Configuration config;
+
+    @Override
+    public void onLoad() {
+        this.config = new Configuration(this, "config.yml", true);
+        config.update();
+    }
 
     @Override
     public void onEnable() {
@@ -44,5 +53,14 @@ public final class EssCore extends JavaPlugin {
 
     public EssAPI getAPI() {
         return api;
+    }
+
+    public Configuration getConfiguration() {
+        return config;
+    }
+
+    @Override
+    public YamlConfiguration getConfig() {
+        return config.getConfig();
     }
 }
