@@ -1,8 +1,11 @@
-###
+#   ___________             _________
+#   \_   _____/ ______ _____\_   ___ \  ___________   ____
+#    |    __)_ /  ___//  ___/    \  \/ /  _ \_  __ \_/ __ \
+#    |        \\___ \ \___ \\     \___(  <_> )  | \/\  ___/
+#   /_______  /____  >____  >\______  /\____/|__|    \___  >
+#           \/     \/     \/        \/                   \/
 #
-###ssCore made with <3 by dotalw
-#
-###
+#                   Made with <3 by dotalw.
 
 #     EssCore is an essential plugin
 # that provides useful commands & features
@@ -35,8 +38,8 @@ configuration:
   #           https://bstats.org/plugin/bukkit/EssCore
   metrics: true
 
-  # Notifies players with the (esscore.notify) permission
-  #       when a new version of EssCore comes out.
+  # Notifies players with (esscore.notify) permission
+  #     when a new version of EssCore comes out.
   notify: true
 
 #-=|
@@ -45,13 +48,12 @@ configuration:
 
 chat:
 
-  # Usability of colorcodes to anyone
+  # Allow the usage of colorcodes to anyone
   # without (esscore.chat.colorcode) permission.
   allow colorcodes: false
 
   # NOTE: Supports colorcodes
-  broadcast prefix: "&c&lBROADCAST!"
-
+  broadcast prefix: "&c&lBROADCAST!&r"
 
   # Modify the nicknames feature
   nicknames:
@@ -158,27 +160,29 @@ economy:
       allowed: false
 
       # Define a maximum negative balance, players can't go lower than that.
-      maximum: -5000
+      maximum: -1000
 
 #-=|
 #  | MISCELLANEOUS SETTINGS
 #-=|
 
-# Does it need to be explained? smh.
-teleport to spawn when a player:
-    joins: false
-    respawns: true
-    joins for the first time: true
+misc:
 
-# Limit how many homes a player
-# can create with certain permissions.
-# By default everyone gets to create 1 home
-# if they have the access to the home command.
-# --
-# NOTE: Top permission has the best priority
-#  ++   It's recommended to do this list from top to bottom,
-#       otherwise it might break.
-limit homes:
-  administrator: 7
-  moderator: 5
-  member: 3
+  # Limit how many homes a player
+  # can create with certain permissions.
+  # By default everyone gets to create 1 home
+  # if they have the access to the home command.
+  # --
+  # NOTE: Top permission has the best priority
+  #  ++   It's recommended to do this list from top to bottom,
+  #       otherwise it might break.
+  limit homes:
+    administrator: 7
+    moderator: 5
+    member: 3
+
+  # Does it need to be explained? smh.
+  teleport to spawn when a player:
+      joins: false
+      respawns: true
+      joins for the first time: true
