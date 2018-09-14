@@ -43,6 +43,53 @@ configuration:
   notify: true
 
 #-=|
+#  | DATABASE SETTINGS
+#-=|
+
+# Since EssCore version 0.10rc, the use of .yml files
+# to store player, spawn, and warp information has been deprecated.
+# In favor to replacing it with a far better solution, which is using SQL
+# databases in order to save such important information, with it being lightweight
+# to some extent. As such, older versions (0.7.3 or lower) will not be supported
+# by any means, even the data provided (in a migration) might be lost.
+# You could always migrate (experimental feature) older version's data
+# to the newer system, while it's not pitch perfect, but it works.
+database:
+
+  # This will define the method that's going to be used by the plugin
+  # to store the information on, remember that text files are not supported.
+  #
+  # ---------= Currently supported methods (DATABASES)
+  #
+  #                   Remote databases
+  # ----= MySQL
+  #
+  #                Flatfile/Local Databases
+  # ----= H2
+  # ----= SQLite
+  #
+  # EssCore by default comes with SQLite as it's default storage method.
+  storage method: sqlite
+
+  # The data section is used only if you're using a remote database as a storage method.
+  # There's no need to touch this section if you're using a Flatfile/Local database
+  data:
+
+    # Define the address and the port (if it's different to the default one) for the database.
+    #  --
+    # NOTE: MySQL's default port is 3306
+    #  ++   You could use "host:port" if the port is different than the default.
+    address: localhost
+
+    # Database credentials
+    username: root
+    password: ''
+
+    # This will be applied to all EssCore's tables.
+    # It's useful when you're using it for different servers.
+    table prefix: "EssCore_"
+
+#-=|
 #  | CHAT SETTINGS
 #-=|
 
