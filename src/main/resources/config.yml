@@ -48,7 +48,7 @@ configuration:
 
 # Since EssCore version 0.10rc, the use of .yml files
 # to store player, spawn, and warp information has been deprecated.
-# In favor to replacing it with a far better solution, which is using SQL
+# In favor to replace it with a far better solution, which is using SQL
 # databases in order to save such important information, with it being lightweight
 # to some extent. As such, older versions (0.7.3 or lower) will not be supported
 # by any means, even the data provided (in a migration) might be lost.
@@ -61,7 +61,7 @@ database:
   #
   # ---------= Currently supported methods (DATABASES)
   #
-  #                   Remote databases
+  #                   Remote Databases
   # ----= MySQL
   #
   #                Flatfile/Local Databases
