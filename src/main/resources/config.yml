@@ -70,11 +70,11 @@ database:
   # EssCore by default comes with SQLite as it's default storage method.
   storage method: sqlite
 
-  # The data section is used only if you're using a remote database as a storage method.
-  # There's no need to touch this section if you're using a Flatfile/Local database
-  data:
+  # The credentials section is used only if you're using a remote database as a storage method.
+  # There's no need to touch this section if you're using a Flatfile/Local database.
+  credentials:
 
-    # Define the address and the port for the database.
+    # Define the address and the port of the database.
     #  --
     # NOTE: MySQL's default port is 3306
     #  ++   You could use "host:port" if the port is different than the default.
@@ -86,7 +86,7 @@ database:
 
     # This will be applied to all EssCore's tables.
     # It's useful when you're using it for different servers.
-    table prefix: "EssCore_"
+    table prefix: "esscore_"
 
 #-=|
 #  | CHAT SETTINGS
@@ -133,13 +133,13 @@ chat:
   # Modify the default chat format
   format:
 
-    # Enable the ability to use custom chat format
+    # Enable the ability to use custom chat formats
     enabled: false
 
     # List of chat formats that's used based on the player's permission.
     # For example, in order to use the "moderator" chat format, a player
     # must have the (esscore.chat.format.moderator) permission
-    # same thing for the administrator format, and so on.
+    # same thing goes for the administrator format, and so on.
     #  --
     # Checkout EssCore's github wiki for information on default placeholders
     #         https://github.com/dotalw/EssCore/wiki/Placeholders
