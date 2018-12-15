@@ -7,6 +7,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
 import java.text.MessageFormat;
+import java.util.stream.IntStream;
 
 /**
  * EssCore (2017) made by dotalw (C) 2011-2018
@@ -20,10 +21,15 @@ public class Utils {
         this.manager = manager;
     }
 
-    public Utils() {}
+    public Utils() {
+    }
 
     public static String color(String s) {
-        return ChatColor.translateAlternateColorCodes(COLORCODE, s);
+        return color(COLORCODE, s);
+    }
+
+    public static String color(char altCode, String s) {
+        return ChatColor.translateAlternateColorCodes(altCode, s);
     }
 
     public static String stripColor(String s) {
@@ -36,14 +42,10 @@ public class Utils {
 
     public static String removeAltColorCodes(char altColorChar, String textToTranslate) {
         char[] b = textToTranslate.toCharArray();
-
-        for(int i = 0; i < b.length - 1; ++i) {
-            if(b[i] == altColorChar && "0123456789AaBbCcDdEeFfKkLlMmNnOoRr".indexOf(b[i + 1]) > -1) {
-                b[i] = 167;
-                b[i + 1] = Character.toLowerCase(b[i + 1]);
-            }
-        }
-
+        IntStream.range(0, b.length - 1).filter(i -> b[i] == altColorChar && "0123456789AaBbCcDdEeFfKkLlMmNnOoRr".indexOf(b[i + 1]) > -1).forEach(i -> {
+            b[i] = 167;
+            b[i + 1] = Character.toLowerCase(b[i + 1]);
+        });
         return new String(b);
     }
 
