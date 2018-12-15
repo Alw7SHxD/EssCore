@@ -4,7 +4,7 @@
 #    |        \\___ \ \___ \\     \___(  <_> )  | \/\  ___/
 #   /_______  /____  >____  >\______  /\____/|__|    \___  >
 #           \/     \/     \/        \/                   \/
-
+#           _______________________________________
 #                   Made with <3 by dotalw.
 
 #     EssCore is an essential plugin
@@ -24,10 +24,9 @@
 # https://github.com/dotalw/EssCore/wiki
 
 # DISCLAIMER:
-#   YOU ARE NOT ALLOWED TO MODIFY THE CODE OF THE PLUGIN,
+# * YOU ARE NOT ALLOWED TO MODIFY THE CODE OF THE PLUGIN,
 #   AND CLAIMING IT AS IT'S YOUR'S.
-#   YOU ARE NOT ALLOWED TO MODIFY THE CODE OF THE PLUGIN,
-#   IF YOU DON'T HAVE THE PERMISSION TO DO THAT.
+# * YOU ARE NOT ALLOWED TO SELL THIS PLUGIN OR IT'S SOURCE CODE.
 
 configuration:
 
@@ -53,7 +52,7 @@ configuration:
 # to some extent. As such, older versions (0.7.3 or lower) will not be supported
 # by any means, even the data provided (in a migration) might be lost.
 # You could always migrate (experimental feature) older version's data
-# to the newer system, while it's not pitch perfect, but it works.
+# to the newer system, while it's not pitch perfect, but it should do the job.
 database:
 
   # This will define the method that's going to be used by the plugin
@@ -75,7 +74,7 @@ database:
   # There's no need to touch this section if you're using a Flatfile/Local database
   data:
 
-    # Define the address and the port (if it's different to the default one) for the database.
+    # Define the address and the port for the database.
     #  --
     # NOTE: MySQL's default port is 3306
     #  ++   You could use "host:port" if the port is different than the default.
@@ -161,7 +160,7 @@ chat:
 
   # Modify certain messages
   # Use "TRUE" without the quotes to hide the message
-  # or "FALSE" to disable customization to the message
+  # or "FALSE" to disable customization of the message
   #  --
   # NOTE: Supports colorcodes
   #  ++   Supports PlaceholderAPI placeholders
@@ -178,7 +177,7 @@ economy:
 
   # Enable the ability to use economy on the server.
   # Upon disabling, economy related commands and features
-  # would stop working, also enabling it still requires Vault.
+  # would stop working, it'll still require Vault upon enabling.
   enabled: true
 
   # Pretty self-explanatory.
@@ -218,14 +217,19 @@ misc:
   # Limit how many homes a player
   # can create with certain permissions.
   # By default everyone gets to create 1 home
-  # if they have the access to the home command.
+  # if they have the permission to use the home command.
   # --
   # NOTE: Top permission has the best priority
-  #  ++   It's recommended to do this list from top to bottom,
-  #       otherwise it might break.
+  #  ++   It's recommended to do this list from
+  #       top (high priority) to bottom (low priority),
+  #       otherwise it wont work as expected.
+  #  ++   Home command permission (esscore.command.home)
   limit homes:
+    # Permission (esscore.home.administrator)
     administrator: 7
+    # Permission (esscore.home.moderator)
     moderator: 5
+    # Permission (esscore.home.member)
     member: 3
 
   # Does it need to be explained? smh.
