@@ -1,27 +1,26 @@
-package me.dotalw.esscore.lib.api;
+package me.dotalw.esscore.lib.utils;
 
 import co.aikar.commands.BukkitCommandManager;
 import co.aikar.commands.CommandIssuer;
 import co.aikar.locales.MessageKey;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 import java.text.MessageFormat;
 
 /**
  * EssCore (2017) made by dotalw (C) 2011-2018
  */
-public class EssAPI {
+public class Utils {
     private static final char COLORCODE = '&';
 
     private BukkitCommandManager manager;
 
-    public EssAPI(BukkitCommandManager manager) {
+    public Utils(BukkitCommandManager manager) {
         this.manager = manager;
     }
 
-    public EssAPI() {}
+    public Utils() {}
 
     public static String color(String s) {
         return ChatColor.translateAlternateColorCodes(COLORCODE, s);
