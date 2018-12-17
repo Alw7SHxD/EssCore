@@ -11,7 +11,7 @@ import org.bukkit.ChatColor;
 
 import java.util.*;
 
-/**
+/*
  *    Copyright (C) 2011-2018 dotalw.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");

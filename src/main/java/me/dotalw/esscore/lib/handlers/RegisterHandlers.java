@@ -2,7 +2,7 @@ package me.dotalw.esscore.lib.handlers;
 
 import me.dotalw.esscore.EssCore;
 
-/**
+/*
  *    Copyright (C) 2011-2018 dotalw.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");

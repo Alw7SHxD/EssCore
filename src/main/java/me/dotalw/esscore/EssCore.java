@@ -8,7 +8,7 @@ import me.dotalw.esscore.lib.utils.Configuration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-/**
+/*
  *    Copyright (C) 2011-2018 dotalw.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");

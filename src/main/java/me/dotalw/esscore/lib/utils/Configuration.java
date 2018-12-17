@@ -6,7 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
 import java.io.IOException;
 
-/**
+/*
  *    Copyright (C) 2011-2018 dotalw.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");

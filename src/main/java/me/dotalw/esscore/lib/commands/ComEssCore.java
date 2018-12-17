@@ -6,7 +6,7 @@ import me.dotalw.esscore.EssCore;
 import me.dotalw.esscore.lib.utils.Utils;
 import org.bukkit.command.CommandSender;
 
-/**
+/*
  *    Copyright (C) 2011-2018 dotalw.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
@@ -42,7 +42,7 @@ class ComEssCore extends BaseCommand {
         utils.sendMessage(commandSender, utils.getTranslatableMessage(commandSender, "general.unknown_subcommand"), getExecCommandLabel(), "?s");
     }
 
-    @Subcommand("help|?|-h|--help")
+    @Subcommand("help|commands|?|-h|--help")
     @Description("{@@command.esscore.description.help}")
     @CommandCompletion("@commands")
     public void onHelp(CommandSender commandSender, String[] strings) {
