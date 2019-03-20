@@ -24,8 +24,7 @@
 # https://github.com/dotalw/EssCore/wiki
 
 # DISCLAIMER:
-# * YOU ARE NOT ALLOWED TO MODIFY THE CODE OF THE PLUGIN,
-#   AND CLAIMING IT AS IT'S YOUR'S.
+# * YOU ARE NOT ALLOWED TO MODIFY THE CODE OF THE PLUGIN, AND CLAIMING IT AS IT'S YOUR'S.
 # * YOU ARE NOT ALLOWED TO SELL THIS PLUGIN OR IT'S SOURCE CODE.
 
 configuration:
@@ -55,30 +54,33 @@ configuration:
 # to the newer system, while it's not pitch perfect, but it should do the job.
 database:
 
-  # This will define the method that's going to be used by the plugin
-  # to store the information on, remember that text files are not supported.
+  # This will define how the plugin will handle storing data.
   #
-  # ---------= Currently supported methods (DATABASES)
+  # - Currently supported storage methods:
   #
-  #                   Remote Databases
-  # ----= MySQL
+  # | Remote Databases
+  # |=> MySQL
+  # |=> PostgreSQL
   #
-  #                Flatfile/Local Databases
-  # ----= H2
-  # ----= SQLite
+  # | Flatfile/Local Databases
+  # |=> H2
+  # |=> SQLite
   #
   # EssCore by default comes with SQLite as it's default storage method.
   storage method: sqlite
 
-  # The credentials section is used only if you're using a remote database as a storage method.
+  # Remote database properties
   # There's no need to touch this section if you're using a Flatfile/Local database.
-  credentials:
+  properties:
 
     # Define the address and the port of the database.
     #  --
     # NOTE: MySQL's default port is 3306
     #  ++   You could use "host:port" if the port is different than the default.
     address: localhost
+
+    # Define the name of the database
+    database name: esscore
 
     # Database credentials
     username: root
