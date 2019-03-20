@@ -44,14 +44,6 @@ configuration:
 #  | DATABASE SETTINGS
 #-=|
 
-# Since EssCore version 0.10rc, the use of .yml files
-# to store player, spawn, and warp information has been deprecated.
-# In favor to replace it with a far better solution, which is using SQL
-# databases in order to save such important information, with it being lightweight
-# to some extent. As such, older versions (0.7.3 or lower) will not be supported
-# by any means, even the data provided (in a migration) might be lost.
-# You could always migrate (experimental feature) older version's data
-# to the newer system, while it's not pitch perfect, but it should do the job.
 database:
 
   # This will define how the plugin will handle storing data.
