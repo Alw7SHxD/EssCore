@@ -1,9 +1,6 @@
 package me.dotalw.esscore;
 
-import co.aikar.commands.BukkitCommandManager;
 import me.dotalw.esscore.lib.utils.Utils;
-import me.dotalw.esscore.lib.commands.RegisterCommands;
-import me.dotalw.esscore.lib.handlers.RegisterHandlers;
 import me.dotalw.esscore.lib.utils.Configuration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -35,10 +32,8 @@ public final class EssCore extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        BukkitCommandManager commandManager = new BukkitCommandManager(this);
-        utils = new Utils(commandManager);
 
-        register(commandManager);
+
     }
 
     @Override
@@ -46,10 +41,7 @@ public final class EssCore extends JavaPlugin {
         // Plugin shutdown logic
     }
 
-    private void register(BukkitCommandManager manager) {
-        new RegisterHandlers(this);
-        new RegisterCommands(this, manager);
-    }
+
 
     public Utils getUtils() {
         return utils;
