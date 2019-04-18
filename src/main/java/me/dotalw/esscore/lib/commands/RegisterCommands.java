@@ -1,14 +1,5 @@
 package me.dotalw.esscore.lib.commands;
 
-import co.aikar.commands.BaseCommand;
-import co.aikar.commands.BukkitCommandManager;
-import co.aikar.commands.MessageType;
-import co.aikar.commands.RegisteredCommand;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.SetMultimap;
-import me.dotalw.esscore.EssCore;
-import org.bukkit.ChatColor;
-
 import java.util.*;
 
 /*
@@ -26,6 +17,7 @@ import java.util.*;
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
+/*
 public class RegisterCommands {
     private void regCommands(EssCore ess, List<BaseCommand> commandList) {
         Collections.addAll(commandList,
@@ -59,3 +51,4 @@ public class RegisterCommands {
         });
     }
 }
+*/

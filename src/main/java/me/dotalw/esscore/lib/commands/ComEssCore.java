@@ -1,10 +1,5 @@
 package me.dotalw.esscore.lib.commands;
 
-import co.aikar.commands.BaseCommand;
-import co.aikar.commands.annotation.*;
-import me.dotalw.esscore.EssCore;
-import me.dotalw.esscore.lib.utils.Utils;
-import org.bukkit.command.CommandSender;
 
 /*
  *    Copyright (C) 2011-2018 dotalw.
@@ -20,7 +15,7 @@ import org.bukkit.command.CommandSender;
  *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
- */
+ */ /*
 @CommandAlias("esscore|ess|essc")
 class ComEssCore extends BaseCommand {
     private Utils utils;
@@ -60,3 +55,4 @@ class ComEssCore extends BaseCommand {
         return String.format("&7» EssCore {0} %s", hasPages ? "&8(&c{1}&7/&c{2}&8)" : "");
     }
 }
+*/
