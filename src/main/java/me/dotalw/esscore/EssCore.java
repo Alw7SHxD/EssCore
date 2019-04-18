@@ -34,8 +34,7 @@ public final class EssCore extends JavaPlugin {
     public void onEnable() {
 
 
-    }
-
+    }   
     @Override
     public void onDisable() {
         // Plugin shutdown logic

@@ -57,8 +57,8 @@ public class Utils {
         commandSender.sendMessage(message);
     }
 
-    public String getTranslatableMessage(CommandSender commandSender, String key) {
+    /*public String getTranslatableMessage(CommandSender commandSender, String key) {
         CommandIssuer issuer = manager.getCommandIssuer(commandSender);
         return manager.getLocales().getMessage(issuer, MessageKey.of(key));
-    }
+    }*/
 }
