@@ -1,16 +1,5 @@
-package me.dotalw.esscore.lib.utils;
-
-import co.aikar.commands.BukkitCommandManager;
-import co.aikar.commands.CommandIssuer;
-import co.aikar.locales.MessageKey;
-import org.bukkit.ChatColor;
-import org.bukkit.command.CommandSender;
-
-import java.text.MessageFormat;
-import java.util.stream.IntStream;
-
 /*
- *    Copyright (C) 2011-2018 dotalw.
+ *    Copyright (C) 2011-2019 dotalw.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -24,14 +13,16 @@ import java.util.stream.IntStream;
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
+package me.dotalw.esscore.lib.utils;
+
+import org.bukkit.ChatColor;
+import org.bukkit.command.CommandSender;
+
+import java.text.MessageFormat;
+import java.util.stream.IntStream;
+
 public class Utils {
     private static final char COLORCODE = '&';
-
-    private BukkitCommandManager manager;
-
-    public Utils(BukkitCommandManager manager) {
-        this.manager = manager;
-    }
 
     public Utils() {
     }
