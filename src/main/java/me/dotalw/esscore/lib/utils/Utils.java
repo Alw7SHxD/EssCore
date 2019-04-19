@@ -27,39 +27,72 @@ public class Utils {
     public Utils() {
     }
 
-    public static String color(String s) {
-        return color(COLORCODE, s);
+    public static class Chat {
+        public static String color(String s) {
+            return color(COLORCODE, s);
+        }
+
+        public static String color(char altCode, String s) {
+            return ChatColor.translateAlternateColorCodes(altCode, s);
+        }
+
+        public static String stripColor(String s) {
+            return ChatColor.stripColor(s);
+        }
+
+        public static String removeAltColorCodes(String s) {
+            return removeAltColorCodes(COLORCODE, s);
+        }
+
+
+        public static String removeAltColorCodes(char altColorChar, String textToTranslate) {
+            char[] b = textToTranslate.toCharArray();
+            IntStream.range(0, b.length - 1).filter(i -> b[i] == altColorChar && "0123456789AaBbCcDdEeFfKkLlMmNnOoRr".indexOf(b[i + 1]) > -1).forEach(i -> {
+                b[i] = 167;
+                b[i + 1] = Character.toLowerCase(b[i + 1]);
+            });
+            return new String(b);
+        }
     }
 
-    public static String color(char altCode, String s) {
-        return ChatColor.translateAlternateColorCodes(altCode, s);
-    }
+    public static class Text {
+        public static String between(String value, String a, String b) {
+            // Return a substring between the two strings.
+            int posA = value.indexOf(a);
+            if (posA == -1) return "";
+            int posB = value.lastIndexOf(b);
+            if (posB == -1) return "";
+            int adjustedPosA = posA + a.length();
+            if (adjustedPosA >= posB) return "";
+            return value.substring(adjustedPosA, posB);
+        }
 
-    public static String stripColor(String s) {
-        return ChatColor.stripColor(s);
-    }
+        public static String before(String value, String a) {
+            // Return substring containing all characters before a string.
+            int posA = value.indexOf(a);
+            if (posA == -1) return "";
+            return value.substring(0, posA);
+        }
 
-    public static String removeAltColorCodes(String s) {
-        return removeAltColorCodes(COLORCODE, s);
-    }
-
-
-    public static String removeAltColorCodes(char altColorChar, String textToTranslate) {
-        char[] b = textToTranslate.toCharArray();
-        IntStream.range(0, b.length - 1).filter(i -> b[i] == altColorChar && "0123456789AaBbCcDdEeFfKkLlMmNnOoRr".indexOf(b[i + 1]) > -1).forEach(i -> {
-            b[i] = 167;
-            b[i + 1] = Character.toLowerCase(b[i + 1]);
-        });
-        return new String(b);
+        public static String after(String value, String a) {
+            // Returns a substring containing all characters after a string.
+            int posA = value.lastIndexOf(a);
+            if (posA == -1) return "";
+            int adjustedPosA = posA + a.length();
+            if (adjustedPosA >= value.length()) return "";
+            return value.substring(adjustedPosA);
+        }
     }
 
     public void sendMessage(CommandSender commandSender, String message, Object... replacements) {
-        message = MessageFormat.format(color(message).replace("'", "''"), replacements);
+        message = MessageFormat.format(Chat.color(message).replace("'", "''"), replacements);
         commandSender.sendMessage(message);
     }
 
-    /*public String getTranslatableMessage(CommandSender commandSender, String key) {
+    /*
+    public String getTranslatableMessage(CommandSender commandSender, String key) {
         CommandIssuer issuer = manager.getCommandIssuer(commandSender);
         return manager.getLocales().getMessage(issuer, MessageKey.of(key));
-    }*/
+    }
+    */
 }

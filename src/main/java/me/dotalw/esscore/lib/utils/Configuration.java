@@ -34,7 +34,7 @@ public class Configuration {
         this.configuration = new File(plugin.getDataFolder(), filename);
 
         if (!plugin.getDataFolder().exists()) {
-            plugin.getDataFolder().mkdir()
+            plugin.getDataFolder().mkdir();
             if (copyResource)
                 plugin.saveResource(filename, false);
         }
