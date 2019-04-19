@@ -1,12 +1,5 @@
-package me.dotalw.esscore;
-
-import me.dotalw.esscore.lib.utils.Utils;
-import me.dotalw.esscore.lib.utils.Configuration;
-import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.plugin.java.JavaPlugin;
-
 /*
- *    Copyright (C) 2011-2018 dotalw.
+ *    Copyright (C) 2011-2019 dotalw.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -20,6 +13,13 @@ import org.bukkit.plugin.java.JavaPlugin;
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
+package me.dotalw.esscore;
+
+import me.dotalw.esscore.lib.utils.Utils;
+import me.dotalw.esscore.lib.utils.Configuration;
+import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.plugin.java.JavaPlugin;
+
 public final class EssCore extends JavaPlugin {
     private Utils utils;
     private Configuration config;
@@ -32,9 +32,8 @@ public final class EssCore extends JavaPlugin {
 
     @Override
     public void onEnable() {
-
-
     }
+
     @Override
     public void onDisable() {
         // Plugin shutdown logic
@@ -52,6 +51,6 @@ public final class EssCore extends JavaPlugin {
 
     @Override
     public YamlConfiguration getConfig() {
-        return config.getConfig();
+        return getConfiguration().getConfig();
     }
 }

@@ -1,12 +1,5 @@
-package me.dotalw.esscore.lib.utils;
-
-import org.bukkit.Material;
-import org.bukkit.inventory.ItemStack;
-
-import java.util.HashMap;
-
 /*
- *    Copyright (C) 2011-2018 dotalw.
+ *    Copyright (C) 2011-2019 dotalw.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -19,6 +12,16 @@ import java.util.HashMap;
  *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
+ */
+package me.dotalw.esscore.lib.utils;
+
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
+
+import java.util.HashMap;
+
+/*
+ * This will be removed later on.
  */
 public enum Materials {
     ACACIA_BOAT(0, "BOAT_ACACIA"),
@@ -874,12 +877,12 @@ public enum Materials {
 
     ;
 
-    String[] aliases;
     int data;
+    String[] aliases;
 
     Materials(int data, String... aliases) {
-        this.aliases = aliases;
         this.data = data;
+        this.aliases = aliases;
     }
 
     public ItemStack parseItem() {

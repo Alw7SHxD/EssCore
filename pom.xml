@@ -31,10 +31,6 @@
                             <pattern>org.bstats</pattern>
                             <shadedPattern>me.dotalw.esscore</shadedPattern>
                         </relocation>
-                        <relocation>
-                            <pattern>co.aikar.commands</pattern>
-                            <shadedPattern>me.dotalw.esscore.acf</shadedPattern>
-                        </relocation>
                     </relocations>
                 </configuration>
                 <executions>
@@ -103,6 +99,7 @@
     </repositories>
 
     <dependencies>
+        <!--Spigot API-->
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
@@ -123,12 +120,14 @@
             <version>1.7</version>
             <scope>provided</scope>
         </dependency>
+        <!--PlaceholderAPI-->
         <dependency>
             <groupId>me.clip</groupId>
             <artifactId>placeholderapi</artifactId>
             <version>2.9.2</version>
             <scope>provided</scope>
         </dependency>
+        <!--bStats-->
         <dependency>
             <groupId>org.bstats</groupId>
             <artifactId>bstats-bukkit</artifactId>

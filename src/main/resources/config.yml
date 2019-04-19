@@ -210,7 +210,7 @@ misc:
 
   # Limit how many homes a player
   # can create with certain permissions.
-  # By default everyone gets to create 1 home
+  # By default everyone gets to create ONE home
   # if they have the permission to use the home command.
   # --
   # NOTE: Top permission has the best priority

@@ -1,9 +1,5 @@
-package me.dotalw.esscore.lib.handlers;
-
-import me.dotalw.esscore.EssCore;
-
 /*
- *    Copyright (C) 2011-2018 dotalw.
+ *    Copyright (C) 2011-2019 dotalw.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -17,6 +13,10 @@ import me.dotalw.esscore.EssCore;
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
+package me.dotalw.esscore.lib.handlers;
+
+import me.dotalw.esscore.EssCore;
+
 public class RegisterHandlers {
     public RegisterHandlers(EssCore ess) {
 
