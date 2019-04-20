@@ -1,31 +1,31 @@
-#   ___________             _________
-#   \_   _____/ ______ _____\_   ___ \  ___________   ____
-#    |    __)_ /  ___//  ___/    \  \/ /  _ \_  __ \_/ __ \
-#    |        \\___ \ \___ \\     \___(  <_> )  | \/\  ___/
-#   /_______  /____  >____  >\______  /\____/|__|    \___  >
-#           \/     \/     \/        \/                   \/
-#
-#                        Made by dotalw.
-# -
-#     EssCore is an essential plugin
-# that provides useful commands & features
-# -
-# If you receive an error when loading EssCore, make sure that:
-#   - No tabs are present: YAML only allows spaces
-#   - Indents are correct: YAML hierarchy is based entirely on indentation
-#   - You have "escaped" all apostrophes in your text: If you want to write "don't", for example, write "don''t" instead (note the doubled apostrophe)
-#   - Text with symbols is enclosed in single or double quotation marks
-# -
-# If you encounter bugs, please don't hesitate to report them
-# over at EssCore's Github repository via the link below
-# https://github.com/dotalw/EssCore/issues
-# -
-# You can always find the online documentation over at
-# https://github.com/dotalw/EssCore/wiki
-# -
-# DISCLAIMER:
-# * YOU ARE NOT ALLOWED TO MODIFY THE CODE OF THE PLUGIN, AND CLAIMING IT AS IT'S YOUR'S.
-# * YOU ARE NOT ALLOWED TO SELL THIS PLUGIN OR IT'S SOURCE CODE.
+# .  ___________             _________
+# .  \_   _____/ ______ _____\_   ___ \  ___________   ____
+# .   |    __)_ /  ___//  ___/    \  \/ /  _ \_  __ \_/ __ \
+# .   |        \\___ \ \___ \\     \___(  <_> )  | \/\  ___/
+# .  /_______  /____  >____  >\______  /\____/|__|    \___  >
+# .          \/     \/     \/        \/                   \/
+# .
+# .                       Made by dotalw.
+# .
+# .              EssCore is an essential plugin
+# .          that provides useful commands & features
+# .
+# . If you receive an error when loading EssCore, make sure that:
+# .   - No tabs are present: YAML only allows spaces
+# .   - Indents are correct: YAML hierarchy is based entirely on indentation
+# .   - You have "escaped" all apostrophes in your text: If you want to write "don't", for example, write "don''t" instead (note the doubled apostrophe)
+# .   - Text with symbols is enclosed in single or double quotation marks
+# .
+# . If you encounter bugs, please don't hesitate to report them
+# . over at EssCore's Github repository via the link below
+# . https://github.com/dotalw/EssCore/issues
+# .
+# . You can always find the online documentation over at
+# . https://github.com/dotalw/EssCore/wiki
+# .
+# . DISCLAIMER:
+# . * YOU ARE NOT ALLOWED TO MODIFY THE CODE OF THE PLUGIN, AND CLAIMING IT AS IT'S YOUR'S.
+# . * YOU ARE NOT ALLOWED TO SELL THIS PLUGIN OR IT'S SOURCE CODE.
 
 configuration:
 
