@@ -21,7 +21,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.stream.Collectors;
 
-public enum Config {
+public enum EConfig {
     VERSION("configuration.version", 10),
     METRICS("configuration.metrics", true),
     NOTIFY("configuration.notify", true),
@@ -71,12 +71,12 @@ public enum Config {
     final String key;
     final Object defaultValue;
 
-    Config(String key, Object defaultValue) {
+    EConfig(String key, Object defaultValue) {
         this.key = key;
         this.defaultValue = defaultValue;
     }
 
-    Config(String key, String... defaultValues) {
+    EConfig(String key, String... defaultValues) {
         this.key = key;
         this.defaultValue = Arrays.stream(defaultValues).collect(Collectors.toMap(k -> Utils.Text.before(k, "="), k -> Utils.Text.after(k, "="), (a, b) -> b, HashMap::new));
     }
@@ -87,10 +87,5 @@ public enum Config {
 
     public Object getDefaultValue() {
         return defaultValue;
-    }
-
-    @Override
-    public String toString() {
-        return getKey();
     }
 }

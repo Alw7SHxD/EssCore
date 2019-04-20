@@ -15,8 +15,8 @@
  */
 package me.dotalw.esscore;
 
-import me.dotalw.esscore.lib.utils.Utils;
 import me.dotalw.esscore.lib.utils.Configuration;
+import me.dotalw.esscore.lib.utils.Utils;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -26,7 +26,7 @@ public final class EssCore extends JavaPlugin {
 
     @Override
     public void onLoad() {
-        this.config = new Configuration(this, "config.yml", true);
+        this.config = new Configuration(this, "config.yml", true, true);
         config.update();
     }
 
