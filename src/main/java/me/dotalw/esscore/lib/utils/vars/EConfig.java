@@ -19,9 +19,10 @@ import me.dotalw.esscore.lib.utils.Utils;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
-public enum EConfig {
+public enum EConfig implements ICacheable<EConfig> {
     VERSION("configuration.version", 10),
     METRICS("configuration.metrics", true),
     NOTIFY("configuration.notify", true),
@@ -79,6 +80,10 @@ public enum EConfig {
     EConfig(String key, String... defaultValues) {
         this.key = key;
         this.defaultValue = Arrays.stream(defaultValues).collect(Collectors.toMap(k -> Utils.Text.before(k, "="), k -> Utils.Text.after(k, "="), (a, b) -> b, HashMap::new));
+    }
+
+    public EConfig getNameByKey(String key) {
+        return Arrays.stream(EConfig.values()).filter(c -> Objects.equals(c.key, key)).findFirst().orElse(null);
     }
 
     public String getKey() {

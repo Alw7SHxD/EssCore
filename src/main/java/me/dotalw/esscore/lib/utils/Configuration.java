@@ -15,20 +15,26 @@
  */
 package me.dotalw.esscore.lib.utils;
 
+import me.dotalw.esscore.lib.utils.vars.ICacheable;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.LinkedHashMap;
 import java.util.List;
 
-public class Configuration {
+@SuppressWarnings({"WeakerAccess", "unused"})
+public class Configuration<T extends ICacheable<T>> {
+    private T type;
     private final static int VERSION = 10;
     private JavaPlugin plugin;
     private File configuration;
     private YamlConfiguration yamlConfiguration;
     private String filename, versionPath;
     private boolean updatable;
+    private LinkedHashMap<T, Object> cache = new LinkedHashMap<>();
 
     public Configuration(JavaPlugin plugin, String filename) {
         this(plugin, filename, false, false, null);
@@ -104,8 +110,14 @@ public class Configuration {
         }
     }
 
+    private void loadCache() {
+        cache.clear();
+        getConfig().getKeys(true).stream().filter(s -> type.getNameByKey(s) != null).forEachOrdered(s -> cache.put(type.getNameByKey(s), get(s)));
+    }
+    
     public void reload() {
         yamlConfiguration = YamlConfiguration.loadConfiguration(configuration);
+        loadCache();
     }
 
     // Sadly, still doesn't save comments....
@@ -127,32 +139,79 @@ public class Configuration {
         getConfig().set(path, value);
     }
 
-    public void sets(String path, Object value) {
-        set(path, value);
-        save();
-    }
-
     public boolean isSet(String path) {
         return getConfig().isSet(path);
+    }
+
+    public Object get(String path) {
+        return getConfig().get(path);
+    }
+
+    public Object get(T key) {
+        return cache.get(key);
     }
 
     public String getString(String path) {
         return getConfig().getString(path);
     }
 
+    public String getString(T key) {
+        return (String) get(key);
+    }
+
     public int getInt(String path) {
         return getConfig().getInt(path);
+    }
+
+    public int getInt(T key) {
+        return (int) get(key);
+    }
+
+    public long getLong(String path) {
+        return getConfig().getLong(path);
+    }
+
+    public long getLong(T key) {
+        return (long) get(key);
     }
 
     public Double getDouble(String path) {
         return getConfig().getDouble(path);
     }
 
+    public double getDouble(T key) {
+        return (double) get(key);
+    }
+
+    public float getFloat(String path) {
+        return (float) get(path);
+    }
+
+    public float getFloat(T key) {
+        return (float) get(key);
+    }
+
     public Boolean getBool(String path) {
         return getConfig().getBoolean(path);
     }
 
+    public boolean getBool(T key) {
+        return (boolean) get(key);
+    }
+
     public List<?> getList(String path) {
         return getConfig().getList(path);
+    }
+
+    public List<?> getList(T key) {
+        return (List<?>) get(key);
+    }
+
+    public ConfigurationSection getSection(String path) {
+        return getConfig().getConfigurationSection(path);
+    }
+
+    public ConfigurationSection getSection(T key) {
+        return (ConfigurationSection) get(key);
     }
 }
